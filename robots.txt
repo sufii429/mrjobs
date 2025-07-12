@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrjobs.netlify.app/sitemap.xml
