@@ -31,6 +31,15 @@
     }
   }
   </script>
+<!-- 🟢 Improved Ticker Embed with better height and alignment -->
+<div style="width: 100%; background: #edf2f7; display: flex; justify-content: center;">
+  <iframe
+    src="https://script.google.com/macros/s/AKfycbyC7c_F9ZqA4VE694dSZtn9Ej52iLP9QyGD0OB1kjJhhVApXkqqDJlskP_GeQxOwdSA/exec"
+    style="border: none; width: 100%; max-width: 1100px; height: 60px;"
+    scrolling="no"
+    loading="lazy">
+  </iframe>
+</div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -216,6 +225,69 @@
   <footer>
     <p>&copy; 2025 MrJobs – Connecting Medical Sales Professionals with Pakistan's Pharma Industry</p>
   </footer>
+<!-- 📨 Newsletter Signup (paste after <footer> and before </body>) -->
+<section id="newsletter"
+         style="max-width:600px;margin:60px auto;padding:30px;border:1px solid #e2e8f0;border-radius:12px;background:#ffffff">
+  <h2 style="text-align:center;margin-bottom:20px;color:#1a4731">Subscribe to MrJobs Weekly</h2>
+
+  <form id="subscribeForm">
+    <input name="name"  type="text"  placeholder="Your name"  required
+           style="width:100%;padding:12px 16px;margin-bottom:12px;border:1px solid #ccc;border-radius:8px">
+    <input name="email" type="email" placeholder="Your email" required
+           style="width:100%;padding:12px 16px;margin-bottom:12px;border:1px solid #ccc;border-radius:8px">
+    <select name="area"
+            style="width:100%;padding:12px 16px;margin-bottom:16px;border:1px solid #ccc;border-radius:8px">
+      <option value="">Preferred city (optional)</option>
+      <option>Lahore</option><option>Karachi</option><option>Faisalabad</option>
+      <option>Sargodha</option><option>Jhang</option><option>Chiniot</option>
+    </select>
+
+    <button type="submit"
+            style="width:100%;padding:12px;font-weight:600;background:#2c6e49;color:#fff;border:none;border-radius:50px">
+      Subscribe 📩
+    </button>
+  </form>
+
+  <p id="subOK"        style="display:none;margin-top:15px;color:#2c6e49;text-align:center">
+    ✅ You’re subscribed! Check your email.
+  </p>
+  <p id="duplicateMsg" style="display:none;margin-top:15px;color:#e67e22;text-align:center">
+    ⚠️ You already subscribed recently. Please wait a few minutes.
+  </p>
+  <p id="errorMsg"     style="display:none;margin-top:15px;color:#e74c3c;text-align:center">
+    ❌ Error – please try again later.
+  </p>
+</section>
+
+<script>
+  const SUB_URL = "https://script.google.com/macros/s/AKfycbyC77h0v-TUHe6RvTsUG8GZ_-K0JN1dLZd-z8IiQkuN7J4QPTdab0c2XY-xe8-Frri3uA/exec";   // ← Apps Script /exec link here
+
+  document.getElementById("subscribeForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+
+    // hide all messages
+    ["subOK","duplicateMsg","errorMsg"].forEach(id => 
+      document.getElementById(id).style.display = "none");
+
+    try {
+      const res = await fetch(SUB_URL, { method: "POST", body: fd });
+      const txt = await res.text();
+
+      if (txt.trim() === "OK") {
+        e.target.reset();
+        document.getElementById("subOK").style.display = "block";
+      } else if (txt.trim() === "DUPLICATE") {
+        document.getElementById("duplicateMsg").style.display = "block";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    } catch (err) {
+      console.error(err);
+      document.getElementById("errorMsg").style.display = "block";
+    }
+  });
+</script>
 
   <script>
     const API_URL =
