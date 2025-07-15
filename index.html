@@ -51,7 +51,7 @@
       line-height: 1.6;
     }
     header {
-      background: linear-gradient(135deg, #2c6e49 0%, #1a4731 100%);
+      background: linear-gradient(135deg, #2d849e 0%, #2d849e 100%);
       color: #fff;
       padding: 2rem;
       text-align: center;
@@ -100,7 +100,7 @@
     #jobCount {
       margin-bottom: 15px;
       font-weight: 600;
-      color: #2c6e49;
+      color: #2d849e;
     }
     #jobListings {
       display: grid;
@@ -116,7 +116,7 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      border-top: 4px solid #2c6e49;
+      border-top: 4px solid #2d849e;
     }
     .job-card:hover {
       transform: translateY(-5px);
@@ -138,7 +138,7 @@
       gap: 5px;
     }
     .job-card h3 {
-      color: #1a4731;
+      color: #2d849e;
       margin-bottom: 10px;
       font-size: 1.4rem;
     }
@@ -160,7 +160,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: #2c6e49;
+      background: #2d849e;
       color: white;
       padding: 12px 20px;
       border-radius: 50px;
@@ -170,7 +170,7 @@
       margin-top: 15px;
     }
     .apply-btn:hover {
-      background: #1a4731;
+      background: #2d849e;
     }
     footer {
       text-align: center;
@@ -206,6 +206,43 @@
   </style>
 </head>
 <body>
+  <!-- 🔰 Navbar Start -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <img src="https://i.postimg.cc/NMzV9rP0/Chat-GPT-Image-Jul-9-2025-01-38-08-PM.png" alt="MrJobs Logo" style="height:40px">
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>          <!-- blog folder -->
+      <li><a href="#newsletter">Subscribe</a></li><!-- newsletter section id -->
+      <li><a href="/about.html">About</a></li>    <!-- new page -->
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </div>
+</nav>
+
+<style>
+  .navbar{background:#96bac5;padding:12px 20px;position:sticky;top:0;z-index:999}
+  .nav-container{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nav-links{list-style:none;display:flex;gap:20px;margin:0;padding:0}
+  .nav-links li a{color:#fff;text-decoration:none;font-weight:500;font-size:16px}
+  .nav-links li a:hover{text-decoration:underline}
+  .hamburger{display:none;font-size:24px;color:#fff;cursor:pointer}
+  @media(max-width:768px){
+    .nav-links{display:none;flex-direction:column;background:#1a4731;width:100%;padding:10px 0}
+    .nav-links.show{display:flex}
+    .hamburger{display:block}
+  }
+</style>
+
+<script>
+  function toggleMenu(){ document.querySelector('.nav-links').classList.toggle('show'); }
+</script>
+<!-- 🔰 Navbar End -->
+
   <header>
     <img src="logo.png" alt="MrJobs logo" style="height:70px;margin-bottom:10px">
     <h1>MrJobs – PharmaRep Jobs</h1>
@@ -225,10 +262,10 @@
   <footer>
     <p>&copy; 2025 MrJobs – Connecting Medical Sales Professionals with Pakistan's Pharma Industry</p>
   </footer>
-<!-- 📨 Newsletter Signup (paste after <footer> and before </body>) -->
+
 <section id="newsletter"
          style="max-width:600px;margin:60px auto;padding:30px;border:1px solid #e2e8f0;border-radius:12px;background:#ffffff">
-  <h2 style="text-align:center;margin-bottom:20px;color:#1a4731">Subscribe to MrJobs Weekly</h2>
+  <h2 style="text-align:center;margin-bottom:20px;color:#2d849e">Subscribe to MrJobs Weekly</h2>
 
   <form id="subscribeForm">
     <input name="name"  type="text"  placeholder="Your name"  required
@@ -243,12 +280,12 @@
     </select>
 
     <button type="submit"
-            style="width:100%;padding:12px;font-weight:600;background:#2c6e49;color:#fff;border:none;border-radius:50px">
+            style="width:100%;padding:12px;font-weight:600;background:#2d849e;color:#fff;border:none;border-radius:50px">
       Subscribe 📩
     </button>
   </form>
 
-  <p id="subOK"        style="display:none;margin-top:15px;color:#2c6e49;text-align:center">
+  <p id="subOK"        style="display:none;margin-top:15px;color:#2d849e;text-align:center">
     ✅ You’re subscribed! Check your email.
   </p>
   <p id="duplicateMsg" style="display:none;margin-top:15px;color:#e67e22;text-align:center">
