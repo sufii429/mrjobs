@@ -35,6 +35,7 @@ img { max-width: 100%; }
   overflow: hidden;
   white-space: nowrap;
   font-size: .88rem;
+  padding-left: 24px;
 }
 .ticker-track {
   display: inline-block;
@@ -64,7 +65,7 @@ img { max-width: 100%; }
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.nav-logo img { height: 42px; display: block; }
+.nav-logo img { height: 44px; display: block; }
 .nav-links {
   list-style: none;
   display: flex;
@@ -96,7 +97,7 @@ img { max-width: 100%; }
   text-align: center;
   padding: 56px 20px 64px;
 }
-.hero img { height: 72px; margin-bottom: 12px; }
+.hero img { height: 88px; margin-bottom: 12px; }
 .hero h1 { margin: 0 0 10px; font-size: 2.3rem; }
 .hero p { margin: 0 auto; max-width: 680px; opacity: .93; }
 
