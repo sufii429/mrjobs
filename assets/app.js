@@ -9,6 +9,18 @@
   var JOB_DATA_URL = "./jobs.json";
   var NEW_WITHIN_DAYS = 14;          // "NEW" badge for recent postings
   var EXPIRE_AFTER_DAYS = 28;        // listings auto-expire this many days after posting
+
+  /* Top-20 pharma companies of Pakistan — matched loosely against job.company
+     (case-insensitive substring), powering the homepage "Recommended" shelf. */
+  var TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami",
+    "searle", "martin dow", "hilton", "high-q", "ferozsons", "highnoon",
+    "ccl", "agp", "bosch", "obs pakistan", "barrett", "atco", "indus pharma",
+    "pharmevo", "macter", "nabiqasim"];
+  var RECOMMENDED_MAX = 6;
+  function isTop20(job) {
+    var c = String(job.company || "").toLowerCase();
+    return TOP20_KEYS.some(function (k) { return c.indexOf(k) !== -1; });
+  }
   var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
 
   // Newsletter backend (existing Google Apps Script)
@@ -111,9 +123,11 @@
       allJobs = dedupeJobs(
         (Array.isArray(data) ? data : []).filter(function (j) { return !isExpired(j); })
       );
+      allJobs.forEach(function (j) { j._top20 = isTop20(j); });
       await resolvePosters(allJobs);
       buildFilter(allJobs);
       buildTicker(allJobs);
+      renderRecommended(allJobs);
       if (!allJobs.length) { showEmptyBoard(); return; }
       renderJobs(allJobs);
     } catch (e) {
@@ -159,6 +173,16 @@
     return "jobs/" + job.id + "-" + slug + ".html";
   }
 
+  /* Homepage "Recommended" shelf: latest jobs from top-20 companies. */
+  function renderRecommended(jobs) {
+    var wrap = $("recommended"), grid = $("recommendedGrid");
+    if (!wrap || !grid) return;
+    var rec = jobs.filter(function (j) { return j._top20; }).slice(0, RECOMMENDED_MAX);
+    if (!rec.length) { wrap.hidden = true; return; }
+    grid.innerHTML = rec.map(cardHtml).join("");
+    wrap.hidden = false;
+  }
+
   function cardHtml(job, i) {
     var isNew = daysSince(job.timestamp) <= NEW_WITHIN_DAYS;
     var posted = fmtDate(job.timestamp);
@@ -176,6 +200,7 @@
         : '') +
       '<h3>' + escapeHtml(job.title) + '</h3>' +
       '<div class="job-meta"><i class="fas fa-building"></i><span>' + escapeHtml(job.company) + '</span></div>' +
+      (job._top20 ? '<div class="job-meta topco"><i class="fas fa-award"></i><span>Top 20 Pharma Company</span></div>' : '') +
       '<div class="job-meta"><i class="fas fa-map-marker-alt"></i><span>' + escapeHtml(job.location) + '</span></div>' +
       '<div class="job-meta"><i class="fas fa-money-bill-wave"></i><span>' +
         escapeHtml(job.salary || "Competitive Salary + Incentives") + '</span></div>' +
