@@ -1,1 +1,211 @@
-LyogTXJKb2JzIOKAlCBqb2IgYm9hcmQgbG9naWMuCiAgIEpvYnMgbGl2ZSBpbiAuL2pvYnMuanNvbiAoZWRpdGVkIGluIHRoZSByZXBvKS4KICAgT3B0aW9uYWwgcGVyLWpvYiBmaWVsZHM6IGltYWdlIChwYXRoIHVuZGVyIHBvc3RlcnMvKSwgc2FsYXJ5LCBmZWF0dXJlZC4gKi8KCihmdW5jdGlvbiAoKSB7CiAgInVzZSBzdHJpY3QiOwoKICB2YXIgSk9CX0RBVEFfVVJMID0gIi4vam9icy5qc29uIjsKICB2YXIgTkVXX1dJVEhJTl9EQVlTID0gMjE7ICAgICAgICAgIC8vICJORVciIGJhZGdlIGZvciByZWNlbnQgcG9zdGluZ3MKICB2YXIgU0NIRU1BX1ZBTElEX0RBWVMgPSA2MDsgICAgICAgIC8vIEpvYlBvc3RpbmcgdmFsaWRUaHJvdWdoIHdpbmRvdwoKICAvLyBOZXdzbGV0dGVyIGJhY2tlbmQgKGV4aXN0aW5nIEdvb2dsZSBBcHBzIFNjcmlwdCkKICB2YXIgU1VCX1VSTCA9ICJodHRwczovL3NjcmlwdC5nb29nbGUuY29tL21hY3Jvcy9zL0FLZnljYnhZMklhenJLckJIakVjbzhuS2JaZU5RTVp1TmlrTVRMUWlqaGxhQmU3N1VvaEhEME4zTXJodkxTLURaZVNDSXczazV3L2V4ZWMiOwoKICBmdW5jdGlvbiAkKGlkKSB7IHJldHVybiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChpZCk7IH0KCiAgdmFyIGdyaWQgPSAkKCJqb2JMaXN0aW5ncyIpOwogIHZhciBjb3VudEVsID0gJCgiam9iQ291bnQiKTsKICB2YXIgc2VhcmNoSW5wdXQgPSAkKCJzZWFyY2hJbnB1dCIpOwogIHZhciBsb2NhdGlvbkZpbHRlciA9ICQoImxvY2F0aW9uRmlsdGVyIik7CiAgdmFyIGFsbEpvYnMgPSBbXTsKCiAgLyogRXNjYXBlIHRleHQgYmVmb3JlIGluamVjdGluZyBpbnRvIEhUTUwgKGpvYiBkYXRhIGlzIGhhbmQtZWRpdGVkKS4gKi8KICBmdW5jdGlvbiBlc2NhcGVIdG1sKHMpIHsKICAgIHJldHVybiBTdHJpbmcocyA9PSBudWxsID8gIiIgOiBzKS5yZXBsYWNlKC9bJjw+IiddL2csIGZ1bmN0aW9uIChjKSB7CiAgICAgIHJldHVybiB7ICImIjogIiZhbXA7IiwgIjwiOiAiJmx0OyIsICI+IjogIiZndDsiLCAnIic6ICImcXVvdDsiLCAiJyI6ICImIzM5OyIgfVtjXTsKICAgIH0pOwogIH0KCiAgZnVuY3Rpb24gZGF5c1NpbmNlKGlzbykgewogICAgdmFyIHQgPSBEYXRlLnBhcnNlKGlzbyk7CiAgICBpZiAoaXNOYU4odCkpIHJldHVybiBJbmZpbml0eTsKICAgIHJldHVybiAoRGF0ZS5ub3coKSAtIHQpIC8gODY0ZTU7CiAgfQoKICBmdW5jdGlvbiBmbXREYXRlKGlzbykgewogICAgdmFyIHQgPSBEYXRlLnBhcnNlKGlzbyk7CiAgICBpZiAoaXNOYU4odCkpIHJldHVybiAiIjsKICAgIHJldHVybiBuZXcgRGF0ZSh0KS50b0xvY2FsZURhdGVTdHJpbmcoImVuLVBLIiwgeyBkYXk6ICJudW1lcmljIiwgbW9udGg6ICJzaG9ydCIsIHllYXI6ICJudW1lcmljIiB9KTsKICB9CgogIGZ1bmN0aW9uIHNob3dMb2FkaW5nKCkgewogICAgZ3JpZC5pbm5lckhUTUwgPSAnPGRpdiBjbGFzcz0ic3RhdGUiPjxpIGNsYXNzPSJmYXMgZmEtc3Bpbm5lciBmYS1zcGluIj48L2k+PHA+TG9hZGluZyBqb2JzJmhlbGxpcDs8L3A+PC9kaXY+JzsKICB9CgogIGZ1bmN0aW9uIHNob3dFcnJvcigpIHsKICAgIGdyaWQuaW5uZXJIVE1MID0KICAgICAgJzxkaXYgY2xhc3M9InN0YXRlIj48aSBjbGFzcz0iZmFzIGZhLWV4Y2xhbWF0aW9uLXRyaWFuZ2xlIj48L2k+JyArCiAgICAgICc8aDM+Q291bGRuXCd0IGxvYWQgam9iczwvaDM+PHA+UGxlYXNlIGNoZWNrIGJhY2sgaW4gYSBiaXQuPC9wPicgKwogICAgICAnPGJ1dHRvbiBjbGFzcz0iYXBwbHktYnRuIiBpZD0icmV0cnlCdG4iPjxpIGNsYXNzPSJmYXMgZmEtc3luYy1hbHQiPjwvaT4gUmV0cnk8L2J1dHRvbj48L2Rpdj4nOwogICAgY291bnRFbC50ZXh0Q29udGVudCA9ICIiOwogICAgJCgicmV0cnlCdG4iKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGxvYWRKb2JzKTsKICB9CgogIGFzeW5jIGZ1bmN0aW9uIGxvYWRKb2JzKCkgewogICAgc2hvd0xvYWRpbmcoKTsKICAgIHRyeSB7CiAgICAgIHZhciByZXMgPSBhd2FpdCBmZXRjaChKT0JfREFUQV9VUkwsIHsgY2FjaGU6ICJuby1zdG9yZSIgfSk7CiAgICAgIGlmICghcmVzLm9rKSB0aHJvdyBuZXcgRXJyb3IoIkhUVFAgIiArIHJlcy5zdGF0dXMpOwogICAgICB2YXIgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7CiAgICAgIGFsbEpvYnMgPSBBcnJheS5pc0FycmF5KGRhdGEpID8gZGF0YSA6IFtdOwogICAgICBidWlsZEZpbHRlcihhbGxKb2JzKTsKICAgICAgYnVpbGRUaWNrZXIoYWxsSm9icyk7CiAgICAgIHJlbmRlckpvYnMoYWxsSm9icyk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIGNvbnNvbGUuZXJyb3IoZSk7CiAgICAgIHNob3dFcnJvcigpOwogICAgfQogIH0KCiAgZnVuY3Rpb24gYnVpbGRGaWx0ZXIoam9icykgewogICAgbG9jYXRpb25GaWx0ZXIuaW5uZXJIVE1MID0gJzxvcHRpb24gdmFsdWU9IiI+QWxsIExvY2F0aW9uczwvb3B0aW9uPic7CiAgICB2YXIgbG9jcyA9IHt9OwogICAgam9icy5mb3JFYWNoKGZ1bmN0aW9uIChqKSB7IGlmIChqLmxvY2F0aW9uKSBsb2NzW2oubG9jYXRpb25dID0gdHJ1ZTsgfSk7CiAgICBPYmplY3Qua2V5cyhsb2NzKS5zb3J0KCkuZm9yRWFjaChmdW5jdGlvbiAobG9jKSB7CiAgICAgIGxvY2F0aW9uRmlsdGVyLmFwcGVuZENoaWxkKG5ldyBPcHRpb24obG9jLCBsb2MpKTsKICAgIH0pOwogIH0KCiAgLyogVGlja2VyIGlzIGdlbmVyYXRlZCBmcm9tIHRoZSBqb2IgZGF0YSDigJQgbm8gaWZyYW1lIG5lZWRlZC4gKi8KICBmdW5jdGlvbiBidWlsZFRpY2tlcihqb2JzKSB7CiAgICB2YXIgdGlja2VyID0gJCgidGlja2VyIik7CiAgICBpZiAoIXRpY2tlcikgcmV0dXJuOwogICAgaWYgKCFqb2JzLmxlbmd0aCkgeyB0aWNrZXIuaGlkZGVuID0gdHJ1ZTsgcmV0dXJuOyB9CiAgICB2YXIgbG9jcyA9IHt9OwogICAgam9icy5mb3JFYWNoKGZ1bmN0aW9uIChqKSB7IGlmIChqLmxvY2F0aW9uKSBsb2NzW2oubG9jYXRpb25dID0gdHJ1ZTsgfSk7CiAgICB2YXIgdG9wID0gT2JqZWN0LmtleXMobG9jcykuc29ydCgpLnNsaWNlKDAsIDYpLmpvaW4oIiAmbWlkZG90OyAiKTsKICAgIHZhciBtc2cgPQogICAgICAnPHNwYW4+JiMxMjgxMzg7ICcgKyBqb2JzLmxlbmd0aCArICcgb3BlbiBwb3NpdGlvbnM8L3NwYW4+JyArCiAgICAgICc8c3Bhbj4mIzEyODIwNTsgJyArIHRvcCArICc8L3NwYW4+JyArCiAgICAgICc8c3Bhbj5BcHBseSB2aWEgV2hhdHNBcHAgaW5zdGFudGx5ITwvc3Bhbj4nOwogICAgJCgidGlja2VyVHJhY2siKS5pbm5lckhUTUwgPSBtc2cgKyBtc2c7IC8vIGR1cGxpY2F0ZWQgZm9yIGEgc2VhbWxlc3MgbG9vcAogICAgdGlja2VyLmhpZGRlbiA9IGZhbHNlOwogIH0KCiAgZnVuY3Rpb24gY2FyZEh0bWwoam9iLCBpKSB7CiAgICB2YXIgaXNOZXcgPSBkYXlzU2luY2Uoam9iLnRpbWVzdGFtcCkgPD0gTkVXX1dJVEhJTl9EQVlTOwogICAgdmFyIHBvc3RlZCA9IGZtdERhdGUoam9iLnRpbWVzdGFtcCk7CiAgICB2YXIgYmFkZ2UgPSAiIjsKICAgIGlmIChqb2IuZmVhdHVyZWQpIHsKICAgICAgYmFkZ2UgPSAnPGRpdiBjbGFzcz0iYmFkZ2UgZmVhdHVyZWQiPjxpIGNsYXNzPSJmYXMgZmEtc3RhciI+PC9pPiBGZWF0dXJlZDwvZGl2Pic7CiAgICB9IGVsc2UgaWYgKGlzTmV3KSB7CiAgICAgIGJhZGdlID0gJzxkaXYgY2xhc3M9ImJhZGdlIG5ldyI+TkVXPC9kaXY+JzsKICAgIH0KICAgIHJldHVybiAnJyArCiAgICAgICc8YXJ0aWNsZSBjbGFzcz0iam9iLWNhcmQiPicgKyBiYWRnZSArCiAgICAgIChqb2IuaW1hZ2UKICAgICAgICA/ICc8aW1nIGNsYXNzPSJqb2ItcG9zdGVyIiBzcmM9IicgKyBlc2NhcGVIdG1sKGpvYi5pbWFnZSkgKyAnIiBhbHQ9IicgKwogICAgICAgICAgZXNjYXBlSHRtbChqb2IudGl0bGUpICsgJyAmbWRhc2g7IGpvYiBwb3N0ZXIiIGxvYWRpbmc9ImxhenkiPicKICAgICAgICA6ICcnKSArCiAgICAgICc8aDM+JyArIGVzY2FwZUh0bWwoam9iLnRpdGxlKSArICc8L2gzPicgKwogICAgICAnPGRpdiBjbGFzcz0iam9iLW1ldGEiPjxpIGNsYXNzPSJmYXMgZmEtYnVpbGRpbmciPjwvaT48c3Bhbj4nICsgZXNjYXBlSHRtbChqb2IuY29tcGFueSkgKyAnPC9zcGFuPjwvZGl2PicgKwogICAgICAnPGRpdiBjbGFzcz0iam9iLW1ldGEiPjxpIGNsYXNzPSJmYXMgZmEtbWFwLW1hcmtlci1hbHQiPjwvaT48c3Bhbj4nICsgZXNjYXBlSHRtbChqb2IubG9jYXRpb24pICsgJzwvc3Bhbj48L2Rpdj4nICsKICAgICAgJzxkaXYgY2xhc3M9ImpvYi1tZXRhIj48aSBjbGFzcz0iZmFzIGZhLW1vbmV5LWJpbGwtd2F2ZSI+PC9pPjxzcGFuPicgKwogICAgICAgIGVzY2FwZUh0bWwoam9iLnNhbGFyeSB8fCAiQ29tcGV0aXRpdmUgU2FsYXJ5ICsgSW5jZW50aXZlcyIpICsgJzwvc3Bhbj48L2Rpdj4nICsKICAgICAgKHBvc3RlZAogICAgICAgID8gJzxkaXYgY2xhc3M9ImpvYi1tZXRhIj48aSBjbGFzcz0iZmFyIGZhLWNhbGVuZGFyLWFsdCI+PC9pPjxzcGFuPlBvc3RlZCAnICsgZXNjYXBlSHRtbChwb3N0ZWQpICsgJzwvc3Bhbj48L2Rpdj4nCiAgICAgICAgOiAnJykgKwogICAgICAnPHAgY2xhc3M9ImpvYi1kZXNjIj4nICsgZXNjYXBlSHRtbChqb2IuZGVzY3JpcHRpb24pICsgJzwvcD4nICsKICAgICAgJzxhIGNsYXNzPSJhcHBseS1idG4iIGhyZWY9IicgKyBlc2NhcGVIdG1sKGpvYi5hcHBseUxpbmspICsgJyIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPicgKwogICAgICAnPGkgY2xhc3M9ImZhYiBmYS13aGF0c2FwcCI+PC9pPiBBcHBseSBOb3c8L2E+JyArCiAgICAgICc8L2FydGljbGU+JzsKICB9CgogIGZ1bmN0aW9uIHJlbmRlckpvYnMoam9icykgewogICAgaWYgKCFqb2JzLmxlbmd0aCkgewogICAgICBncmlkLmlubmVySFRNTCA9ICc8ZGl2IGNsYXNzPSJzdGF0ZSI+PGkgY2xhc3M9ImZhcyBmYS1zZWFyY2giPjwvaT48cD5ObyBtYXRjaGluZyBqb2JzIGZvdW5kLjwvcD48L2Rpdj4nOwogICAgICBjb3VudEVsLnRleHRDb250ZW50ID0gIjAgam9icyI7CiAgICAgIHJldHVybjsKICAgIH0KICAgIGdyaWQuaW5uZXJIVE1MID0gam9icy5tYXAoY2FyZEh0bWwpLmpvaW4oIiIpOwogICAgY291bnRFbC50ZXh0Q29udGVudCA9IGpvYnMubGVuZ3RoICsgIiBqb2IiICsgKGpvYnMubGVuZ3RoID4gMSA/ICJzIiA6ICIiKSArICIgZm91bmQiOwogICAgaW5qZWN0U2NoZW1hKGpvYnMpOwogIH0KCiAgZnVuY3Rpb24gaW5qZWN0U2NoZW1hKGpvYnMpIHsKICAgIHZhciBvbGQgPSAkKCJqb2JzLXNjaGVtYSIpOwogICAgaWYgKG9sZCkgb2xkLnJlbW92ZSgpOwogICAgdmFyIHZhbGlkVGhyb3VnaCA9IG5ldyBEYXRlKERhdGUubm93KCkgKyBTQ0hFTUFfVkFMSURfREFZUyAqIDg2NGU1KS50b0lTT1N0cmluZygpLnNwbGl0KCJUIilbMF07CiAgICB2YXIgYXJyID0gam9icy5tYXAoZnVuY3Rpb24gKGpvYiwgaSkgewogICAgICByZXR1cm4gewogICAgICAgICJAY29udGV4dCI6ICJodHRwczovL3NjaGVtYS5vcmciLAogICAgICAgICJAdHlwZSI6ICJKb2JQb3N0aW5nIiwKICAgICAgICAidGl0bGUiOiBqb2IudGl0bGUsCiAgICAgICAgImRlc2NyaXB0aW9uIjogam9iLmRlc2NyaXB0aW9uLAogICAgICAgICJkYXRlUG9zdGVkIjogam9iLnRpbWVzdGFtcCB8fCBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkuc3BsaXQoIlQiKVswXSwKICAgICAgICAidmFsaWRUaHJvdWdoIjogdmFsaWRUaHJvdWdoLAogICAgICAgICJlbXBsb3ltZW50VHlwZSI6ICJGVUxMX1RJTUUiLAogICAgICAgICJoaXJpbmdPcmdhbml6YXRpb24iOiB7ICJAdHlwZSI6ICJPcmdhbml6YXRpb24iLCAibmFtZSI6IGpvYi5jb21wYW55IH0sCiAgICAgICAgImpvYkxvY2F0aW9uIjogewogICAgICAgICAgIkB0eXBlIjogIlBsYWNlIiwKICAgICAgICAgICJhZGRyZXNzIjogeyAiQHR5cGUiOiAiUG9zdGFsQWRkcmVzcyIsICJhZGRyZXNzTG9jYWxpdHkiOiBqb2IubG9jYXRpb24sICJhZGRyZXNzQ291bnRyeSI6ICJQSyIgfQogICAgICAgIH0sCiAgICAgICAgImlkZW50aWZpZXIiOiB7ICJAdHlwZSI6ICJQcm9wZXJ0eVZhbHVlIiwgIm5hbWUiOiAiTXJKb2JzIiwgInZhbHVlIjogam9iLmlkIHx8ICgiTVJKLSIgKyAoMTAwMCArIGkpKSB9CiAgICAgIH07CiAgICB9KTsKICAgIHZhciBzID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7CiAgICBzLmlkID0gImpvYnMtc2NoZW1hIjsKICAgIHMudHlwZSA9ICJhcHBsaWNhdGlvbi9sZCtqc29uIjsKICAgIHMudGV4dCA9IEpTT04uc3RyaW5naWZ5KGFyci5sZW5ndGggPT09IDEgPyBhcnJbMF0gOiBhcnIpOwogICAgZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzKTsKICB9CgogIGZ1bmN0aW9uIGFwcGx5RmlsdGVycygpIHsKICAgIHZhciBxID0gc2VhcmNoSW5wdXQudmFsdWUudHJpbSgpLnRvTG93ZXJDYXNlKCk7CiAgICB2YXIgbG9jID0gbG9jYXRpb25GaWx0ZXIudmFsdWU7CiAgICByZW5kZXJKb2JzKGFsbEpvYnMuZmlsdGVyKGZ1bmN0aW9uIChqKSB7CiAgICAgIHZhciBoYXkgPSAoKGoudGl0bGUgfHwgIiIpICsgIiAiICsgKGouY29tcGFueSB8fCAiIikgKyAiICIgKyAoai5kZXNjcmlwdGlvbiB8fCAiIikpLnRvTG93ZXJDYXNlKCk7CiAgICAgIHJldHVybiBoYXkuaW5kZXhPZihxKSAhPT0gLTEgJiYgKCFsb2MgfHwgai5sb2NhdGlvbiA9PT0gbG9jKTsKICAgIH0pKTsKICB9CgogIGZ1bmN0aW9uIGluaXROZXdzbGV0dGVyKCkgewogICAgdmFyIGZvcm0gPSAkKCJzdWJzY3JpYmVGb3JtIik7CiAgICBpZiAoIWZvcm0pIHJldHVybjsKICAgIGZvcm0uYWRkRXZlbnRMaXN0ZW5lcigic3VibWl0IiwgYXN5bmMgZnVuY3Rpb24gKGUpIHsKICAgICAgZS5wcmV2ZW50RGVmYXVsdCgpOwogICAgICBbInN1Yk9LIiwgInN1YkR1cCIsICJzdWJFcnIiXS5mb3JFYWNoKGZ1bmN0aW9uIChpZCkgeyAkKGlkKS5zdHlsZS5kaXNwbGF5ID0gIm5vbmUiOyB9KTsKICAgICAgdHJ5IHsKICAgICAgICB2YXIgcmVzID0gYXdhaXQgZmV0Y2goU1VCX1VSTCwgeyBtZXRob2Q6ICJQT1NUIiwgYm9keTogbmV3IEZvcm1EYXRhKGZvcm0pIH0pOwogICAgICAgIHZhciB0eHQgPSAoYXdhaXQgcmVzLnRleHQoKSkudHJpbSgpOwogICAgICAgIGlmICh0eHQgPT09ICJPSyIpIHsgZm9ybS5yZXNldCgpOyAkKCJzdWJPSyIpLnN0eWxlLmRpc3BsYXkgPSAiYmxvY2siOyB9CiAgICAgICAgZWxzZSBpZiAodHh0ID09PSAiRFVQTElDQVRFIikgeyAkKCJzdWJEdXAiKS5zdHlsZS5kaXNwbGF5ID0gImJsb2NrIjsgfQogICAgICAgIGVsc2UgeyAkKCJzdWJFcnIiKS5zdHlsZS5kaXNwbGF5ID0gImJsb2NrIjsgfQogICAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgICBjb25zb2xlLmVycm9yKGVycik7CiAgICAgICAgJCgic3ViRXJyIikuc3R5bGUuZGlzcGxheSA9ICJibG9jayI7CiAgICAgIH0KICAgIH0pOwogIH0KCiAgZnVuY3Rpb24gaW5pdE5hdigpIHsKICAgIHZhciB0b2dnbGUgPSAkKCJuYXZUb2dnbGUiKTsKICAgIHZhciBsaW5rcyA9ICQoIm5hdkxpbmtzIik7CiAgICBpZiAodG9nZ2xlICYmIGxpbmtzKSB7CiAgICAgIHRvZ2dsZS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsIGZ1bmN0aW9uICgpIHsgbGlua3MuY2xhc3NMaXN0LnRvZ2dsZSgib3BlbiIpOyB9KTsKICAgIH0KICB9CgogIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoKSB7CiAgICBpbml0TmF2KCk7CiAgICBpbml0TmV3c2xldHRlcigpOwogICAgdmFyIHllYXIgPSAkKCJ5ZWFyIik7CiAgICBpZiAoeWVhcikgeWVhci50ZXh0Q29udGVudCA9IG5ldyBEYXRlKCkuZ2V0RnVsbFllYXIoKTsKICAgIGlmIChncmlkICYmIHNlYXJjaElucHV0ICYmIGxvY2F0aW9uRmlsdGVyKSB7CiAgICAgIHNlYXJjaElucHV0LmFkZEV2ZW50TGlzdGVuZXIoImlucHV0IiwgYXBwbHlGaWx0ZXJzKTsKICAgICAgbG9jYXRpb25GaWx0ZXIuYWRkRXZlbnRMaXN0ZW5lcigiY2hhbmdlIiwgYXBwbHlGaWx0ZXJzKTsKICAgICAgbG9hZEpvYnMoKTsKICAgIH0KICB9KTsKfSkoKTsK
+/* MrJobs — job board logic.
+   Jobs live in ./jobs.json (edited in the repo).
+   Optional per-job fields: image (path under posters/), salary, featured. */
+
+(function () {
+  "use strict";
+
+  var JOB_DATA_URL = "./jobs.json";
+  var NEW_WITHIN_DAYS = 21;          // "NEW" badge for recent postings
+  var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
+
+  // Newsletter backend (existing Google Apps Script)
+  var SUB_URL = "https://script.google.com/macros/s/AKfycbxY2IazrKrBHjEco8nKbZeNQMZuNikMTLQijhlaBe77UohHD0N3MrhvLS-DZeSCIw3k5w/exec";
+
+  function $(id) { return document.getElementById(id); }
+
+  var grid = $("jobListings");
+  var countEl = $("jobCount");
+  var searchInput = $("searchInput");
+  var locationFilter = $("locationFilter");
+  var allJobs = [];
+
+  /* Escape text before injecting into HTML (job data is hand-edited). */
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function daysSince(iso) {
+    var t = Date.parse(iso);
+    if (isNaN(t)) return Infinity;
+    return (Date.now() - t) / 864e5;
+  }
+
+  function fmtDate(iso) {
+    var t = Date.parse(iso);
+    if (isNaN(t)) return "";
+    return new Date(t).toLocaleDateString("en-PK", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  function showLoading() {
+    grid.innerHTML = '<div class="state"><i class="fas fa-spinner fa-spin"></i><p>Loading jobs&hellip;</p></div>';
+  }
+
+  function showError() {
+    grid.innerHTML =
+      '<div class="state"><i class="fas fa-exclamation-triangle"></i>' +
+      '<h3>Couldn\'t load jobs</h3><p>Please check back in a bit.</p>' +
+      '<button class="apply-btn" id="retryBtn"><i class="fas fa-sync-alt"></i> Retry</button></div>';
+    countEl.textContent = "";
+    $("retryBtn").addEventListener("click", loadJobs);
+  }
+
+  async function loadJobs() {
+    showLoading();
+    try {
+      var res = await fetch(JOB_DATA_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var data = await res.json();
+      allJobs = Array.isArray(data) ? data : [];
+      buildFilter(allJobs);
+      buildTicker(allJobs);
+      renderJobs(allJobs);
+    } catch (e) {
+      console.error(e);
+      showError();
+    }
+  }
+
+  function buildFilter(jobs) {
+    locationFilter.innerHTML = '<option value="">All Locations</option>';
+    var locs = {};
+    jobs.forEach(function (j) { if (j.location) locs[j.location] = true; });
+    Object.keys(locs).sort().forEach(function (loc) {
+      locationFilter.appendChild(new Option(loc, loc));
+    });
+  }
+
+  /* Ticker is generated from the job data — no iframe needed. */
+  function buildTicker(jobs) {
+    var ticker = $("ticker");
+    if (!ticker) return;
+    if (!jobs.length) { ticker.hidden = true; return; }
+    var locs = {};
+    jobs.forEach(function (j) { if (j.location) locs[j.location] = true; });
+    var top = Object.keys(locs).sort().slice(0, 6).join(" &middot; ");
+    var msg =
+      '<span>&#128138; ' + jobs.length + ' open positions</span>' +
+      '<span>&#128205; ' + top + '</span>' +
+      '<span>Apply via WhatsApp instantly!</span>';
+    $("tickerTrack").innerHTML = msg + msg; // duplicated for a seamless loop
+    ticker.hidden = false;
+  }
+
+  function cardHtml(job, i) {
+    var isNew = daysSince(job.timestamp) <= NEW_WITHIN_DAYS;
+    var posted = fmtDate(job.timestamp);
+    var badge = "";
+    if (job.featured) {
+      badge = '<div class="badge featured"><i class="fas fa-star"></i> Featured</div>';
+    } else if (isNew) {
+      badge = '<div class="badge new">NEW</div>';
+    }
+    return '' +
+      '<article class="job-card">' + badge +
+      (job.image
+        ? '<img class="job-poster" src="' + escapeHtml(job.image) + '" alt="' +
+          escapeHtml(job.title) + ' &mdash; job poster" loading="lazy">'
+        : '') +
+      '<h3>' + escapeHtml(job.title) + '</h3>' +
+      '<div class="job-meta"><i class="fas fa-building"></i><span>' + escapeHtml(job.company) + '</span></div>' +
+      '<div class="job-meta"><i class="fas fa-map-marker-alt"></i><span>' + escapeHtml(job.location) + '</span></div>' +
+      '<div class="job-meta"><i class="fas fa-money-bill-wave"></i><span>' +
+        escapeHtml(job.salary || "Competitive Salary + Incentives") + '</span></div>' +
+      (posted
+        ? '<div class="job-meta"><i class="far fa-calendar-alt"></i><span>Posted ' + escapeHtml(posted) + '</span></div>'
+        : '') +
+      '<p class="job-desc">' + escapeHtml(job.description) + '</p>' +
+      '<a class="apply-btn" href="' + escapeHtml(job.applyLink) + '" target="_blank" rel="noopener">' +
+      '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
+      '</article>';
+  }
+
+  function renderJobs(jobs) {
+    if (!jobs.length) {
+      grid.innerHTML = '<div class="state"><i class="fas fa-search"></i><p>No matching jobs found.</p></div>';
+      countEl.textContent = "0 jobs";
+      return;
+    }
+    grid.innerHTML = jobs.map(cardHtml).join("");
+    countEl.textContent = jobs.length + " job" + (jobs.length > 1 ? "s" : "") + " found";
+    injectSchema(jobs);
+  }
+
+  function injectSchema(jobs) {
+    var old = $("jobs-schema");
+    if (old) old.remove();
+    var validThrough = new Date(Date.now() + SCHEMA_VALID_DAYS * 864e5).toISOString().split("T")[0];
+    var arr = jobs.map(function (job, i) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": job.title,
+        "description": job.description,
+        "datePosted": job.timestamp || new Date().toISOString().split("T")[0],
+        "validThrough": validThrough,
+        "employmentType": "FULL_TIME",
+        "hiringOrganization": { "@type": "Organization", "name": job.company },
+        "jobLocation": {
+          "@type": "Place",
+          "address": { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": "PK" }
+        },
+        "identifier": { "@type": "PropertyValue", "name": "MrJobs", "value": job.id || ("MRJ-" + (1000 + i)) }
+      };
+    });
+    var s = document.createElement("script");
+    s.id = "jobs-schema";
+    s.type = "application/ld+json";
+    s.text = JSON.stringify(arr.length === 1 ? arr[0] : arr);
+    document.head.appendChild(s);
+  }
+
+  function applyFilters() {
+    var q = searchInput.value.trim().toLowerCase();
+    var loc = locationFilter.value;
+    renderJobs(allJobs.filter(function (j) {
+      var hay = ((j.title || "") + " " + (j.company || "") + " " + (j.description || "")).toLowerCase();
+      return hay.indexOf(q) !== -1 && (!loc || j.location === loc);
+    }));
+  }
+
+  function initNewsletter() {
+    var form = $("subscribeForm");
+    if (!form) return;
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      ["subOK", "subDup", "subErr"].forEach(function (id) { $(id).style.display = "none"; });
+      try {
+        var res = await fetch(SUB_URL, { method: "POST", body: new FormData(form) });
+        var txt = (await res.text()).trim();
+        if (txt === "OK") { form.reset(); $("subOK").style.display = "block"; }
+        else if (txt === "DUPLICATE") { $("subDup").style.display = "block"; }
+        else { $("subErr").style.display = "block"; }
+      } catch (err) {
+        console.error(err);
+        $("subErr").style.display = "block";
+      }
+    });
+  }
+
+  function initNav() {
+    var toggle = $("navToggle");
+    var links = $("navLinks");
+    if (toggle && links) {
+      toggle.addEventListener("click", function () { links.classList.toggle("open"); });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initNav();
+    initNewsletter();
+    var year = $("year");
+    if (year) year.textContent = new Date().getFullYear();
+    if (grid && searchInput && locationFilter) {
+      searchInput.addEventListener("input", applyFilters);
+      locationFilter.addEventListener("change", applyFilters);
+      loadJobs();
+    }
+  });
+})();
