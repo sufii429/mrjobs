@@ -20,6 +20,12 @@ import os
 import re
 import sys
 from datetime import date, datetime, timedelta
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from guide_content import ARTICLES as GUIDE_ARTICLES
+except ImportError:
+    GUIDE_ARTICLES = []  # guide content not present — skip guide pages
+
 
 # ---------------------------------------------------------------- config
 SITE_URL = "https://mrjobs.netlify.app"   # no trailing slash
@@ -142,6 +148,7 @@ PAGE_TMPL = """<!DOCTYPE html>
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
         <li><a href="../all-jobs.html">All Jobs</a></li>
+        <li><a href="../guide/">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
       </ul>
@@ -292,6 +299,244 @@ def minimal_sitemap():
     ])
 
 
+
+# ------------------------------------------------------ career guide
+GUIDE_DIR = os.path.join(ROOT, "guide")
+
+GUIDE_NAV = """
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../">Home</a></li>
+        <li><a href="../all-jobs.html">All Jobs</a></li>
+        <li><a href="../guide/" aria-current="page">Guide</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+"""
+
+GUIDE_FOOTER = """
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>MrJobs</h4>
+        <p>Connecting medical sales professionals with Pakistan&rsquo;s pharmaceutical industry &mdash; a free job board for Medical Representative, TM &amp; AM openings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../guide/">Career Guide</a></li>
+          <li><a href="../blog/">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry</div>
+  </footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function () {{
+      document.getElementById('navLinks').classList.toggle('open');
+    }});
+  </script>
+"""
+
+ARTICLE_TMPL = """<!DOCTYPE html>
+<html lang="{lang}"{dir_attr}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{page_title}</title>
+  <meta name="description" content="{meta_desc}" />
+  <link rel="canonical" href="{canonical}" />
+  <link rel="alternate" hreflang="{alt_lang}" href="{alt_url}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{og_title}" />
+  <meta property="og:description" content="{meta_desc}" />
+  <meta property="og:url" content="{canonical}" />
+  <meta property="og:site_name" content="MrJobs" />
+  <meta name="theme-color" content="#2d849e" />
+  <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
+{font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script type="application/ld+json">
+{json_ld}
+  </script>
+</head>
+<body>
+{g_nav}
+  <main class="wrap">
+    <p class="crumbs"><a href="../">Home</a> &rsaquo; <a href="../guide/">{crumb_guide}</a> &rsaquo; {crumb}</p>
+    <article class="article">
+      <a class="lang-toggle" href="{alt_page}"><i class="fas fa-language"></i> {toggle_label}</a>
+      <h1>{h1}</h1>
+      <p class="article-meta">{meta_line}</p>
+      <p class="article-intro">{intro}</p>
+{sections}
+      <div class="cta-box">
+        <p>{cta_text}</p>
+        <a class="apply-btn" href="../all-jobs.html"><i class="fas fa-briefcase"></i> {cta_btn}</a>
+      </div>
+    </article>
+  </main>
+{g_footer}
+</body>
+</html>
+"""
+
+GUIDE_INDEX_TMPL = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Guide for Medical Representatives in Pakistan | MrJobs</title>
+  <meta name="description" content="Free career guide for Medical Representatives in Pakistan — how to become an MR, interview questions, salary & incentives, CV tips. English and Urdu." />
+  <link rel="canonical" href="{site}/guide/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Career Guide for Medical Representatives | MrJobs" />
+  <meta property="og:description" content="How to become an MR in Pakistan, interview tips, salary guide and CV advice — in English and Urdu." />
+  <meta property="og:url" content="{site}/guide/" />
+  <meta property="og:site_name" content="MrJobs" />
+  <meta name="theme-color" content="#2d849e" />
+  <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+{g_nav}
+  <main class="wrap">
+    <p class="crumbs"><a href="../">Home</a> &rsaquo; Career Guide</p>
+    <div class="guide-hero">
+      <h1>Career Guide for Medical Representatives</h1>
+      <p>To-the-point guides for fresh candidates entering pharma sales in Pakistan — in English and اردو.</p>
+    </div>
+    <div class="guide-grid">
+{cards}
+    </div>
+  </main>
+{g_footer}
+</body>
+</html>
+"""
+
+
+def guide_url(slug, lang):
+    return "guide/%s%s.html" % (slug, "-urdu" if lang == "ur" else "")
+
+
+def build_article_page(art, lang):
+    other = "ur" if lang == "en" else "en"
+    c = art[lang]
+    slug = art["slug"]
+    canonical = SITE_URL + "/" + guide_url(slug, lang)
+    alt_url = SITE_URL + "/" + guide_url(slug, other)
+    is_ur = lang == "ur"
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": c["title"],
+        "description": c["desc"],
+        "inLanguage": lang,
+        "author": {"@type": "Organization", "name": "MrJobs",
+                   "url": SITE_URL + "/"},
+        "publisher": {"@type": "Organization", "name": "MrJobs",
+                      "url": SITE_URL + "/"},
+        "mainEntityOfPage": canonical,
+    }
+
+    secs = []
+    for heading, bullets in c["sections"]:
+        lis = "\n".join("          <li>%s</li>" % esc(b) for b in bullets)
+        secs.append("      <h2>%s</h2>\n      <ul>\n%s\n      </ul>"
+                    % (esc(heading), lis))
+    font_link = ('  <link rel="preconnect" href="https://fonts.googleapis.com" />\n'
+                 '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n'
+                 '  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />\n') if is_ur else ""
+
+    return ARTICLE_TMPL.format(
+        lang=lang,
+        dir_attr=' dir="rtl"' if is_ur else "",
+        page_title=esc(c["title"] + " | MrJobs Career Guide"),
+        meta_desc=esc(c["desc"]),
+        canonical=esc(canonical),
+        alt_lang=other,
+        alt_url=esc(alt_url),
+        og_title=esc(c["title"]),
+        font_link=font_link,
+        json_ld=json.dumps(schema, ensure_ascii=False, indent=2),
+        g_nav=GUIDE_NAV,
+        crumb_guide=esc("Career Guide" if lang == "en" else "کیریئر گائیڈ"),
+        crumb=esc(c["title"]),
+        alt_page=esc(guide_url(slug, other)),
+        toggle_label=esc("اردو میں پڑھیں" if lang == "en" else "Read in English"),
+        h1=esc(c["title"]),
+        meta_line=esc("MrJobs Career Guide" if lang == "en" else "MrJobs کیریئر گائیڈ"),
+        intro=esc(c["intro"]),
+        sections="\n".join(secs),
+        cta_text=esc("Looking for openings? Browse the latest Medical Representative jobs."
+                     if lang == "en" else "نوکریاں تلاش کر رہے ہیں؟ تازہ ترین میڈیکل ریپریزنٹیٹو آسامیاں دیکھیں۔"),
+        cta_btn=esc("View all jobs" if lang == "en" else "تمام نوکریاں دیکھیں"),
+        g_footer=GUIDE_FOOTER.format(year=date.today().year),
+    )
+
+
+def build_guide_index():
+    cards = []
+    for art in GUIDE_ARTICLES:
+        en, ur = art["en"], art["ur"]
+        cards.append(
+            '      <div class="guide-card">\n'
+            '        <h3>%s</h3>\n'
+            '        <p class="ur-title" dir="rtl" lang="ur">%s</p>\n'
+            '        <p>%s</p>\n'
+            '        <div class="guide-links">\n'
+            '          <a href="%s">Read in English</a>\n'
+            '          <a href="%s" lang="ur">اردو میں پڑھیں</a>\n'
+            '        </div>\n'
+            '      </div>'
+            % (esc(en["title"]), esc(ur["title"]), esc(en["desc"]),
+               esc(art["slug"] + ".html"), esc(art["slug"] + "-urdu.html")))
+    return GUIDE_INDEX_TMPL.format(
+        site=SITE_URL,
+        g_nav=GUIDE_NAV,
+        cards="\n".join(cards),
+        g_footer=GUIDE_FOOTER.format(year=date.today().year),
+    )
+
+
+def build_guide(pages):
+    """Render guide pages; append their URLs to the sitemap page list."""
+    if not GUIDE_ARTICLES:
+        print("  guide: no articles, skipping")
+        return
+    os.makedirs(GUIDE_DIR, exist_ok=True)
+    with open(os.path.join(GUIDE_DIR, "index.html"), "w", encoding="utf-8") as f:
+        f.write(build_guide_index())
+    pages.append((SITE_URL + "/guide/", None, "monthly", "0.7"))
+    n = 0
+    for art in GUIDE_ARTICLES:
+        for lang in ("en", "ur"):
+            rel = guide_url(art["slug"], lang)
+            try:
+                html_page = build_article_page(art, lang)
+            except Exception as e:  # noqa: BLE001
+                print("  warn: guide page failed %s/%s: %s" % (art["slug"], lang, e),
+                      file=sys.stderr)
+                continue
+            with open(os.path.join(ROOT, rel), "w", encoding="utf-8") as f:
+                f.write(html_page)
+            pages.append((SITE_URL + "/" + rel, None, "monthly", "0.7"))
+            n += 1
+    print("  guide: wrote index + %d article pages" % n)
+
+
 # ----------------------------------------------------------------- main
 def main():
     try:
@@ -328,9 +573,11 @@ def main():
                       posted.isoformat() if posted else None,
                       "weekly", "0.8"))
 
+    build_guide(pages)
+
     with open(SITEMAP, "w", encoding="utf-8") as f:
         f.write(build_sitemap(pages))
-    print("wrote %d job pages + sitemap.xml" % (len(pages) - 3))
+    print("wrote sitemap.xml with %d urls" % len(pages))
     return 0
 
 
