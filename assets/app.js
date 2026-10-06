@@ -41,6 +41,40 @@
     return !isNaN(t) && (Date.now() - t) / 864e5 > EXPIRE_AFTER_DAYS;
   }
 
+  /* Defensive dedupe: same id, or same company+title+location+contact → keep first. */
+  function dedupeJobs(jobs) {
+    var seen = {}, out = [];
+    jobs.forEach(function (j) {
+      var key = [j.id, j.company, j.title, j.location, j.applyLink]
+        .map(function (v) { return String(v == null ? "" : v).trim().toLowerCase(); })
+        .join("|");
+      if (!seen[key]) { seen[key] = true; out.push(j); }
+    });
+    return out;
+  }
+
+  /* Posters are stored as base64 text (.b64) — decode to blob URLs before render. */
+  var posterCache = {};
+  async function resolvePosters(jobs) {
+    var pending = jobs.filter(function (j) {
+      return j.image && /\.b64$/i.test(j.image) && !posterCache[j.image];
+    });
+    await Promise.all(pending.map(async function (j) {
+      try {
+        var res = await fetch(j.image, { cache: "force-cache" });
+        var b64 = (await res.text()).replace(/\s+/g, "");
+        var bin = atob(b64);
+        var bytes = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        posterCache[j.image] = URL.createObjectURL(new Blob([bytes], { type: "image/jpeg" }));
+      } catch (e) { console.error("poster failed:", j.image, e); }
+    }));
+    jobs.forEach(function (j) {
+      if (j.image && posterCache[j.image]) j._posterUrl = posterCache[j.image];
+    });
+  }
+  function posterSrc(j) { return j._posterUrl || j.image || ""; }
+
   function fmtDate(iso) {
     var t = Date.parse(iso);
     if (isNaN(t)) return "";
@@ -74,7 +108,10 @@
       var res = await fetch(JOB_DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       var data = await res.json();
-      allJobs = (Array.isArray(data) ? data : []).filter(function (j) { return !isExpired(j); });
+      allJobs = dedupeJobs(
+        (Array.isArray(data) ? data : []).filter(function (j) { return !isExpired(j); })
+      );
+      await resolvePosters(allJobs);
       buildFilter(allJobs);
       buildTicker(allJobs);
       if (!allJobs.length) { showEmptyBoard(); return; }
@@ -122,7 +159,7 @@
     return '' +
       '<article class="job-card">' + badge +
       (job.image
-        ? '<img class="job-poster" src="' + escapeHtml(job.image) + '" alt="' +
+        ? '<img class="job-poster" src="' + escapeHtml(posterSrc(job)) + '" alt="' +
           escapeHtml(job.title) + ' &mdash; job poster" loading="lazy">'
         : '') +
       '<h3>' + escapeHtml(job.title) + '</h3>' +
