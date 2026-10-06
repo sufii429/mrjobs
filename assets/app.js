@@ -1,12 +1,14 @@
 /* MrJobs — job board logic.
    Jobs live in ./jobs.json (edited in the repo).
-   Optional per-job fields: image (path under posters/), salary, featured. */
+   Optional per-job fields: image (path under posters/), salary, featured.
+   timestamp drives the NEW badge (first 14 days) and auto-expiry (after 28 days). */
 
 (function () {
   "use strict";
 
   var JOB_DATA_URL = "./jobs.json";
-  var NEW_WITHIN_DAYS = 21;          // "NEW" badge for recent postings
+  var NEW_WITHIN_DAYS = 14;          // "NEW" badge for recent postings
+  var EXPIRE_AFTER_DAYS = 28;        // listings auto-expire this many days after posting
   var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
 
   // Newsletter backend (existing Google Apps Script)
@@ -33,6 +35,12 @@
     return (Date.now() - t) / 864e5;
   }
 
+  /* A listing expires EXPIRE_AFTER_DAYS after its timestamp (missing date = stays). */
+  function isExpired(job) {
+    var t = Date.parse(job.timestamp);
+    return !isNaN(t) && (Date.now() - t) / 864e5 > EXPIRE_AFTER_DAYS;
+  }
+
   function fmtDate(iso) {
     var t = Date.parse(iso);
     if (isNaN(t)) return "";
@@ -52,15 +60,24 @@
     $("retryBtn").addEventListener("click", loadJobs);
   }
 
+  function showEmptyBoard() {
+    grid.innerHTML =
+      '<div class="state"><i class="fas fa-briefcase"></i>' +
+      '<h3>No open positions right now</h3>' +
+      '<p>New medical-rep jobs are added regularly &mdash; check back soon or subscribe below for weekly alerts.</p></div>';
+    countEl.textContent = "0 jobs";
+  }
+
   async function loadJobs() {
     showLoading();
     try {
       var res = await fetch(JOB_DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       var data = await res.json();
-      allJobs = Array.isArray(data) ? data : [];
+      allJobs = (Array.isArray(data) ? data : []).filter(function (j) { return !isExpired(j); });
       buildFilter(allJobs);
       buildTicker(allJobs);
+      if (!allJobs.length) { showEmptyBoard(); return; }
       renderJobs(allJobs);
     } catch (e) {
       console.error(e);
