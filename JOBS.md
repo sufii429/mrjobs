@@ -52,3 +52,22 @@ When unsure, keep the listing and flag it to Mazeen instead of discarding.
 
 The site also dedupes defensively at render time (first occurrence wins), so a
 duplicate that slips into `jobs.json` can never show twice.
+
+## SEO build (automatic on every deploy)
+
+`scripts/build.py` runs as the Netlify build command (see `netlify.toml`):
+
+- Generates one static page per **active** listing: `jobs/<id>-<slug>.html`
+  (same 28-day expiry + defensive dedupe rules as the site, so expired jobs
+  get no page and vanish from the sitemap automatically).
+- Each page carries **JobPosting JSON-LD** (Google for Jobs eligibility),
+  canonical URL, and Open Graph tags; poster images are inlined as data
+  URIs so the pages need no JavaScript.
+- Regenerates `sitemap.xml`: home + `all-jobs.html` + `about.html` + every
+  job page with `lastmod`.
+- Job cards link to their detail page via `slugify()`/`jobPageUrl()` in
+  `assets/app.js` — these MUST stay identical to the Python versions in
+  `scripts/build.py`, or card links will 404.
+
+`jobs/*.html` is git-ignored: pages are build artifacts, regenerated from
+`jobs.json` on every deploy. Nothing extra to do when posting a job.
