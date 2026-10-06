@@ -458,3 +458,24 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
   .guide-promo h2 { font-size: 1.2rem; }
   .guide-promo::after { font-size: 6rem; }
 }
+
+/* ---- Recommended: Top 20 pharma companies shelf ---- */
+.recommended-section {
+  margin: 4px 0 34px;
+  padding: 26px 24px 28px;
+  background: linear-gradient(180deg, #fffdf4 0%, #ffffff 100%);
+  border: 1px solid #f0e2b6;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(180, 140, 40, .09);
+}
+.rec-head { text-align: center; max-width: 760px; margin: 0 auto 20px; }
+.rec-head h2 { font-size: 1.45rem; margin: 0 0 10px; color: var(--ink); }
+.rec-head h2 i { color: #d9a419; margin-right: 6px; }
+.rec-msg { color: var(--muted); line-height: 1.65; margin: 0; font-size: .98rem; }
+.rec-msg strong { color: var(--teal-dark); }
+.job-meta.topco { color: #9a7414; font-weight: 600; }
+.job-meta.topco i { color: #d9a419; }
+@media (max-width: 640px) {
+  .recommended-section { padding: 20px 14px 22px; }
+  .rec-head h2 { font-size: 1.2rem; }
+}
