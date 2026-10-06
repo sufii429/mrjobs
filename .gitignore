@@ -1,0 +1,2 @@
+# Generated at deploy time by scripts/build.py — do not commit
+jobs/*.html
