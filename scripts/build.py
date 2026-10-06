@@ -135,7 +135,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/style.css?v=2" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -363,7 +363,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
 {font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/style.css?v=2" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -406,7 +406,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/style.css?v=2" />
 </head>
 <body>
 {g_nav}
