@@ -177,7 +177,9 @@
   function renderRecommended(jobs) {
     var wrap = $("recommended"), grid = $("recommendedGrid");
     if (!wrap || !grid) return;
-    var rec = jobs.filter(function (j) { return j._top20; }).slice(0, RECOMMENDED_MAX);
+    var rec = jobs.filter(function (j) { return j._top20; })
+      .sort(function (a, b) { return String(b.timestamp || "").localeCompare(String(a.timestamp || "")); })
+      .slice(0, RECOMMENDED_MAX);
     if (!rec.length) { wrap.hidden = true; return; }
     grid.innerHTML = rec.map(cardHtml).join("");
     wrap.hidden = false;
