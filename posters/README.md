@@ -1,1 +1,16 @@
-IyBwb3N0ZXJzLwoKSm9iIGFkdmVydGlzZW1lbnQgcG9zdGVyIGltYWdlcyBsaXZlIGhlcmUuCgpXaGVuIGFkZGluZyBhIGpvYiB3aXRoIGEgcG9zdGVyLCBzYXZlIHRoZSBpbWFnZSBpbiB0aGlzIGZvbGRlciBhbmQgcmVmZXJlbmNlIGl0CmZyb20gYGpvYnMuanNvbmAgd2l0aCB0aGUgYGltYWdlYCBmaWVsZCwgZS5nLjoKCmBgYGpzb24KewogICJpZCI6ICJqb2ItMTkiLAogICJpbWFnZSI6ICJwb3N0ZXJzLzIwMjYtMTAtMDYtZ2V0ei1waGFybWEuanBnIiwKICAuLi4KfQpgYGAKClVzZSBkZXNjcmlwdGl2ZSBmaWxlbmFtZXM6IGBZWVlZLU1NLURELWNvbXBhbnktc2hvcnQtdGl0bGUuanBnYC4K
+# posters/
+
+Job advertisement poster images live here.
+
+When adding a job with a poster, save the image in this folder and reference it
+from `jobs.json` with the `image` field, e.g.:
+
+```json
+{
+  "id": "job-19",
+  "image": "posters/2026-10-06-getz-pharma.jpg",
+  ...
+}
+```
+
+Use descriptive filenames: `YYYY-MM-DD-company-short-title.jpg`.
