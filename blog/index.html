@@ -2,35 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pharma News & Hiring Updates - MrJobs Blog</title>
-  <meta name="description" content="Latest hiring updates and pharma company news in Pakistan. Stay informed with MrJobs Blog." />
-  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharma News &amp; Hiring Updates | MrJobs Blog</title>
+  <meta name="description" content="Latest hiring updates and pharma company news in Pakistan. Stay informed with the MrJobs Blog." />
+  <link rel="canonical" href=" https://mrjobs.netlify.app/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MrJobs Blog — Pharma News &amp; Hiring Updates" />
+  <meta property="og:description" content="Hiring updates and news from Pakistan's pharmaceutical industry." />
+  <meta property="og:url" content=" https://mrjobs.netlify.app/blog/" />
+  <meta property="og:site_name" content="MrJobs" />
+  <meta name="theme-color" content="#2d849e" />
+  <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/style.css?v=3" />
 </head>
 <body>
-  <header>
-    <h1>📰 Pharma News & Hiring Updates</h1>
-    <p>Stay updated with the latest news from Pakistan’s pharmaceutical industry.</p>
-  </header>
-
-  <main style="max-width: 900px; margin: auto; padding: 30px;">
-    <article>
-      <h2><a href="getz-pharma-hiring-2025.html">Getz Pharma Hiring Spree in 2025</a></h2>
-      <p><strong>Getz Pharma</strong> is expanding its field force across Pakistan in 2025. New product launches, increased market penetration, and aggressive targets have resulted in dozens of MR job openings.</p>
-      <p><a href="getz-pharma-hiring-2025.html">Read full update →</a></p>
-    </article>
-
-    <hr>
-
-    <article>
-      <h2><a href="hilton-pharma-promotions.html">Hilton Pharma Announces New Team Promotions</a></h2>
-      <p>Hilton Pharma has internally promoted 50+ field professionals in Q2 2025. The move aims to reward long-term reps and boost motivation among new hires.</p>
-      <p><a href="hilton-pharma-promotions.html">Read full story →</a></p>
-    </article>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../">Home</a></li>
+        <li><a href="../all-jobs.html">All Jobs</a></li>
+        <li><a href="../guide/">Guide</a></li>
+        <li><a href="../blog/" aria-current="page">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="wrap">
+    <p class="crumbs"><a href="../">Home</a> &rsaquo; Blog</p>
+    <div class="guide-hero">
+      <h1><i class="fas fa-newspaper"></i> MrJobs Blog</h1>
+      <p>Hiring updates and news from Pakistan&rsquo;s pharmaceutical industry.</p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>Getz Pharma Hiring Medical Representatives in 2025</h3>
+        <p>Getz Pharma is hiring Medical Representatives across Pakistan in 2025. Learn about new openings, city-wise MR jobs and how to apply.</p>
+        <div class="guide-links">
+          <a href="getz-pharma-hiring-2025.html">Read article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="guide-card">
+        <h3>Hilton Pharma Hiring Medical Representatives — July 2025</h3>
+        <p>Hilton Pharma is hiring Medical Representatives in Pakistan. Field force vacancies in Lahore, Multan, Rawalpindi and more.</p>
+        <div class="guide-links">
+          <a href="hilton-pharma-promotions.html">Read article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
   </main>
-
-  <footer style="text-align:center; margin-top:40px; padding:20px; color:gray;">
-    <p>© 2025 MrJobs Blog | All pharma news for Pakistani jobseekers</p>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>MrJobs</h4>
+        <p>Connecting medical sales professionals with Pakistan&rsquo;s pharmaceutical industry &mdash; a free job board for Medical Representative, TM &amp; AM openings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../guide/">Career Guide</a></li>
+          <li><a href="../blog/">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry</div>
   </footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function () {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
