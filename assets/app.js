@@ -147,6 +147,18 @@
     ticker.hidden = false;
   }
 
+  /* Detail-page slug + URL — MUST stay identical to slugify()/job_url_path()
+     in scripts/build.py, which generates jobs/<id>-<slug>.html at deploy. */
+  function slugify(s) {
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "").slice(0, 80).replace(/-+$/, "");
+  }
+  function jobPageUrl(job) {
+    var slug = slugify((job.title || "") + "-" + (job.company || "") + "-" +
+                       (job.location || "")) || job.id;
+    return "jobs/" + job.id + "-" + slug + ".html";
+  }
+
   function cardHtml(job, i) {
     var isNew = daysSince(job.timestamp) <= NEW_WITHIN_DAYS;
     var posted = fmtDate(job.timestamp);
@@ -173,6 +185,8 @@
       '<p class="job-desc">' + escapeHtml(job.description) + '</p>' +
       '<a class="apply-btn" href="' + escapeHtml(job.applyLink) + '" target="_blank" rel="noopener">' +
       '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
+      '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '">' +
+      'View details <i class="fas fa-arrow-right"></i></a>' +
       '</article>';
   }
 
@@ -205,7 +219,8 @@
           "@type": "Place",
           "address": { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": "PK" }
         },
-        "identifier": { "@type": "PropertyValue", "name": "MrJobs", "value": job.id || ("MRJ-" + (1000 + i)) }
+        "identifier": { "@type": "PropertyValue", "name": "MrJobs", "value": job.id || ("MRJ-" + (1000 + i)) },
+        "url": location.origin + "/" + jobPageUrl(job)
       };
     });
     var s = document.createElement("script");
