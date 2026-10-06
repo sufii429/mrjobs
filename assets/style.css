@@ -387,3 +387,74 @@ html[lang="ur"] .article .article-intro, html[lang="ur"] .article li { line-heig
 html[lang="ur"] .article ul { margin: 0 22px 6px 0; }
 html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height: 2; }
 @media (max-width: 640px) { .article { padding: 22px; } .article h1 { font-size: 1.45rem; } }
+
+/* ---- Homepage career-guide promo banner ---- */
+.guide-promo {
+  position: relative;
+  margin: 24px 0 28px;
+  padding: 28px 30px;
+  border-radius: var(--radius);
+  background: linear-gradient(120deg, var(--teal-deep) 0%, var(--teal) 55%, #2f9e6e 100%);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(20, 80, 90, .28);
+  overflow: hidden;
+}
+.guide-promo::after {
+  content: "\f19d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 24px;
+  bottom: -24px;
+  font-size: 9rem;
+  opacity: .1;
+  pointer-events: none;
+}
+.guide-promo-badge {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: var(--amber);
+  color: #4a3200;
+  font-weight: 800;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  padding: 5px 15px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+@keyframes badge-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.guide-promo h2 { margin: 0 70px 8px 0; font-size: 1.4rem; color: #fff; line-height: 1.35; }
+.guide-promo p { margin: 0 0 16px; opacity: .95; line-height: 1.6; }
+.guide-promo-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.guide-promo-links a {
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .4);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 17px;
+  border-radius: 999px;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+.guide-promo-links a:hover { background: rgba(255, 255, 255, .3); }
+.guide-promo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--teal-deep);
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.guide-promo-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, .25); }
+@media (max-width: 640px) {
+  .guide-promo { padding: 22px 20px; }
+  .guide-promo h2 { font-size: 1.2rem; }
+  .guide-promo::after { font-size: 6rem; }
+}
