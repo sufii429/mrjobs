@@ -500,3 +500,8 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
   .hiring-card { flex-direction: column; text-align: center; padding: 26px 22px; gap: 20px; }
   .hiring-art { max-width: 72%; width: 240px; }
 }
+/* ---- Top-20 companies ranked list (guide page) ---- */
+.top20-list { list-style: none; margin: 6px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.top20-list li { background: #fff; border: 1px solid #cfe4ea; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #1d6a80; box-shadow: 0 3px 10px rgba(6,20,23,.06); }
+.top20-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #2d849e; color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; }
+.top20-list .fa-award { color: #f5a623; }
