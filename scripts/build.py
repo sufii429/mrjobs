@@ -419,7 +419,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
     <div class="guide-grid">
 {cards}
     </div>
-  </main>
+{recommended}  </main>
 {g_footer}
 </body>
 </html>
@@ -487,7 +487,72 @@ def build_article_page(art, lang):
     )
 
 
-def build_guide_index():
+
+TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami", "searle",
+              "martin dow", "hilton", "high-q", "ferozsons", "highnoon",
+              "ccl", "agp", "bosch", "obs pakistan", "barrett", "atco",
+              "indus pharma", "pharmevo", "macter", "nabiqasim"]
+RECOMMENDED_MAX = 6
+
+
+def is_top20(job):
+    c = str(job.get("company") or "").lower()
+    return any(k in c for k in TOP20_KEYS)
+
+
+def job_id_num(job):
+    m = re.search(r"(\d+)", str(job.get("id") or ""))
+    return int(m.group(1)) if m else 0
+
+
+def build_recommended_html(active):
+    """Static Top-20 shelf for the guide index (rebuilt on every deploy)."""
+    rec = [j for j in active if is_top20(j)]
+    rec.sort(key=lambda j: (str(j.get("timestamp") or ""),
+                            job_id_num(j)), reverse=True)
+    rec = rec[:RECOMMENDED_MAX]
+    if not rec:
+        return ""
+    cards = []
+    for j in rec:
+        d = parse_date(j.get("timestamp"))
+        badge = '<div class="badge new">NEW</div>' \
+            if (d is not None and (date.today() - d).days <= 14) else ""
+        posted = ('<div class="job-meta"><i class="fas fa-calendar"></i>'
+                  '<span>%s</span></div>' % d.strftime("%b %d, %Y")) if d else ""
+        cards.append(
+            '      <article class="job-card">\n'
+            '        %s\n'
+            '        <h3>%s</h3>\n'
+            '        <div class="job-meta"><i class="fas fa-building"></i>'
+            '<span>%s</span></div>\n'
+            '        <div class="job-meta topco"><i class="fas fa-award"></i>'
+            '<span>Top 20 Pharma Company</span></div>\n'
+            '        <div class="job-meta"><i class="fas fa-map-marker-alt"></i>'
+            '<span>%s</span></div>\n'
+            '        %s\n'
+            '        <a class="details-link" href="../%s">'
+            'View details <i class="fas fa-arrow-right"></i></a>\n'
+            '      </article>'
+            % (badge, esc(j.get("title", "")), esc(j.get("company", "")),
+               esc(j.get("location", "")), posted, esc(job_url_path(j))))
+    return (
+        '    <section class="recommended-section" '
+        'aria-label="Recommended jobs from top pharma companies">\n'
+        '      <div class="rec-head">\n'
+        '        <h2><i class="fas fa-star"></i> Recommended — '
+        'Top 20 Pharma Companies</h2>\n'
+        '        <p class="rec-msg">Fresh science graduate? Apply to these '
+        'top 20 pharmaceutical companies of Pakistan on '
+        '<strong>priority</strong> — they offer the best training, salary '
+        'packages, and long-term career growth.</p>\n'
+        '      </div>\n'
+        '      <div class="job-grid">\n' + "\n".join(cards) +
+        '\n      </div>\n'
+        '    </section>\n')
+
+
+def build_guide_index(active):
     cards = []
     for art in GUIDE_ARTICLES:
         en, ur = art["en"], art["ur"]
@@ -507,18 +572,19 @@ def build_guide_index():
         site=SITE_URL,
         g_nav=GUIDE_NAV,
         cards="\n".join(cards),
+        recommended=build_recommended_html(active),
         g_footer=GUIDE_FOOTER.format(year=date.today().year),
     )
 
 
-def build_guide(pages):
+def build_guide(pages, active):
     """Render guide pages; append their URLs to the sitemap page list."""
     if not GUIDE_ARTICLES:
         print("  guide: no articles, skipping")
         return
     os.makedirs(GUIDE_DIR, exist_ok=True)
     with open(os.path.join(GUIDE_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(build_guide_index())
+        f.write(build_guide_index(active))
     pages.append((SITE_URL + "/guide/", None, "monthly", "0.7"))
     n = 0
     for art in GUIDE_ARTICLES:
@@ -573,7 +639,7 @@ def main():
                       posted.isoformat() if posted else None,
                       "weekly", "0.8"))
 
-    build_guide(pages)
+    build_guide(pages, active)
 
     with open(SITEMAP, "w", encoding="utf-8") as f:
         f.write(build_sitemap(pages))
