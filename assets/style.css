@@ -487,3 +487,16 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
 .partner-promo a:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(6,20,23,.30); }
 .partner-promo img { display: block; width: 100%; height: auto; }
 @media (max-width: 640px) { .partner-promo { margin: 30px 0 4px; } }
+
+/* ---- Are You Hiring? employer CTA ---- */
+.hiring-cta { margin: 44px 0; }
+.hiring-card { display: flex; align-items: center; gap: 34px; background: linear-gradient(135deg, #eef7f9, #d5e9ee); border-radius: 18px; padding: 34px 36px; box-shadow: 0 10px 30px rgba(6,20,23,.12); }
+.hiring-art { width: 290px; max-width: 38%; height: auto; flex-shrink: 0; }
+.hiring-text h2 { color: #1d6a80; margin: 0 0 10px; font-size: 1.75rem; }
+.hiring-text p { color: #33565c; margin: 0 0 18px; line-height: 1.55; }
+.hiring-btn { display: inline-block; }
+.hiring-note { font-size: .85rem; color: #5b6b68; margin: 14px 0 0 !important; }
+@media (max-width: 640px) {
+  .hiring-card { flex-direction: column; text-align: center; padding: 26px 22px; gap: 20px; }
+  .hiring-art { max-width: 72%; width: 240px; }
+}
