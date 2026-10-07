@@ -16,7 +16,6 @@
     "searle", "martin dow", "hilton", "high-q", "ferozsons", "highnoon",
     "ccl", "agp", "bosch", "obs pakistan", "barrett", "atco", "indus pharma",
     "pharmevo", "macter", "nabiqasim"];
-  var RECOMMENDED_MAX = 6;
   function isTop20(job) {
     var c = String(job.company || "").toLowerCase();
     return TOP20_KEYS.some(function (k) { return c.indexOf(k) !== -1; });
@@ -127,7 +126,6 @@
       await resolvePosters(allJobs);
       buildFilter(allJobs);
       buildTicker(allJobs);
-      renderRecommended(allJobs);
       if (!allJobs.length) { showEmptyBoard(); return; }
       renderJobs(allJobs);
     } catch (e) {
@@ -171,18 +169,6 @@
     var slug = slugify((job.title || "") + "-" + (job.company || "") + "-" +
                        (job.location || "")) || job.id;
     return "jobs/" + job.id + "-" + slug + ".html";
-  }
-
-  /* Homepage "Recommended" shelf: latest jobs from top-20 companies. */
-  function renderRecommended(jobs) {
-    var wrap = $("recommended"), grid = $("recommendedGrid");
-    if (!wrap || !grid) return;
-    var rec = jobs.filter(function (j) { return j._top20; })
-      .sort(function (a, b) { return String(b.timestamp || "").localeCompare(String(a.timestamp || "")); })
-      .slice(0, RECOMMENDED_MAX);
-    if (!rec.length) { wrap.hidden = true; return; }
-    grid.innerHTML = rec.map(cardHtml).join("");
-    wrap.hidden = false;
   }
 
   function cardHtml(job, i) {
