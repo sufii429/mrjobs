@@ -1,3 +1,12 @@
 [build]
   command = "python3 scripts/build.py"
   publish = "."
+
+# Security headers for every response (static site hardening)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
