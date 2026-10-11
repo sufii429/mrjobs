@@ -22,7 +22,7 @@
   }
   var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
 
-  // Newsletter backend: Netlify Forms (form "subscribe" in index.html)
+  // Newsletter backend: FormSubmit (no signup; first submission needs email confirmation)
 
   function $(id) { return document.getElementById(id); }
 
@@ -258,8 +258,15 @@
       e.preventDefault();
       ["subOK", "subDup", "subErr"].forEach(function (id) { $(id).style.display = "none"; });
       try {
-        var body = new URLSearchParams(new FormData(form)).toString();
-        var res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body });
+        var fd = new FormData(form);
+        var res = await fetch("https://formsubmit.co/ajax/sufyanbarret@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            name: fd.get("name"), email: fd.get("email"), area: fd.get("area") || "-",
+            _subject: "New MrJobs Weekly subscriber", _template: "table"
+          })
+        });
         if (res.ok) { form.reset(); $("subOK").style.display = "block"; }
         else { $("subErr").style.display = "block"; }
       } catch (err) {
