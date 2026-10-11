@@ -22,8 +22,7 @@
   }
   var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
 
-  // Newsletter backend (existing Google Apps Script)
-  var SUB_URL = "https://script.google.com/macros/s/AKfycbxY2IazrKrBHjEco8nKbZeNQMZuNikMTLQijhlaBe77UohHD0N3MrhvLS-DZeSCIw3k5w/exec";
+  // Newsletter backend: Netlify Forms (form "subscribe" in index.html)
 
   function $(id) { return document.getElementById(id); }
 
@@ -259,10 +258,9 @@
       e.preventDefault();
       ["subOK", "subDup", "subErr"].forEach(function (id) { $(id).style.display = "none"; });
       try {
-        var res = await fetch(SUB_URL, { method: "POST", body: new FormData(form) });
-        var txt = (await res.text()).trim();
-        if (txt === "OK") { form.reset(); $("subOK").style.display = "block"; }
-        else if (txt === "DUPLICATE") { $("subDup").style.display = "block"; }
+        var body = new URLSearchParams(new FormData(form)).toString();
+        var res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body });
+        if (res.ok) { form.reset(); $("subOK").style.display = "block"; }
         else { $("subErr").style.display = "block"; }
       } catch (err) {
         console.error(err);
