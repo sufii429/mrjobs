@@ -108,10 +108,7 @@
     <section class="newsletter" id="newsletter" aria-label="Newsletter signup">
       <h2>Subscribe to MrJobs Weekly</h2>
       <p class="nl-sub">New medical-rep openings in your inbox, every week.</p>
-      <!-- Netlify Forms: submissions appear in Netlify dashboard + email alerts -->
-      <form id="subscribeForm" name="subscribe" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="subscribe" />
-        <p style="position:absolute;left:-9999px" aria-hidden="true"><input name="bot-field" type="text" tabindex="-1" autocomplete="off" /></p>
+      <form id="subscribeForm">
         <input name="name" type="text" placeholder="Your name" required autocomplete="name" />
         <input name="email" type="email" placeholder="Your email" required autocomplete="email" />
         <select name="area" aria-label="Preferred city">
@@ -126,7 +123,7 @@
         </select>
         <button class="apply-btn" type="submit">Subscribe</button>
       </form>
-      <p class="form-msg ok" id="subOK">&#9989; You&rsquo;re subscribed! Check your email.</p>
+      <p class="form-msg ok" id="subOK">&#9989; You&rsquo;re subscribed! Watch your inbox for weekly openings.</p>
       <p class="form-msg warn" id="subDup">&#9888;&#65039; You already subscribed recently. Please wait a few minutes.</p>
       <p class="form-msg err" id="subErr">&#10060; Something went wrong &mdash; please try again later.</p>
     </section>
