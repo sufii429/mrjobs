@@ -148,6 +148,7 @@ PAGE_TMPL = """<!DOCTYPE html>
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
         <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../expired-jobs.html">Expired Jobs</a></li>
         <li><a href="../guide/">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
@@ -186,6 +187,7 @@ PAGE_TMPL = """<!DOCTYPE html>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../about.html">About</a></li>
         </ul>
@@ -295,6 +297,7 @@ def minimal_sitemap():
     return build_sitemap([
         (SITE_URL + "/", None, "daily", "1.0"),
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
+        (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
     ])
 
@@ -311,6 +314,7 @@ GUIDE_NAV = """
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
         <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../expired-jobs.html">Expired Jobs</a></li>
         <li><a href="../guide/" aria-current="page">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
@@ -331,6 +335,7 @@ GUIDE_FOOTER = """
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../guide/">Career Guide</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../about.html">About</a></li>
@@ -606,6 +611,7 @@ def main():
     pages = [
         (SITE_URL + "/", None, "daily", "1.0"),
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
+        (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
     ]
     for job in active:
