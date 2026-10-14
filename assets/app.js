@@ -9,6 +9,8 @@
   var JOB_DATA_URL = "./jobs.json";
   var NEW_WITHIN_DAYS = 14;          // "NEW" badge for recent postings
   var EXPIRE_AFTER_DAYS = 28;        // listings auto-expire this many days after posting
+  var ARCHIVE_MAX_DAYS = 90;         // expired listings stay on the archive page this long
+  var ARCHIVE_MODE = !!(document.body && document.body.getAttribute("data-mode") === "expired");
 
   /* Top-20 pharma companies of Pakistan — matched loosely against job.company
      (case-insensitive substring), powering the homepage "Recommended" shelf. */
@@ -112,20 +114,33 @@
     countEl.textContent = "0 jobs";
   }
 
+  function showEmptyArchive() {
+    grid.innerHTML =
+      '<div class="state"><i class="fas fa-history"></i>' +
+      '<h3>No expired listings right now</h3>' +
+      '<p>Jobs move here 28 days after posting and stay for 90 days &mdash; nothing has aged out at the moment.</p></div>';
+    countEl.textContent = "0 jobs";
+  }
+
   async function loadJobs() {
     showLoading();
     try {
       var res = await fetch(JOB_DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       var data = await res.json();
-      allJobs = dedupeJobs(
-        (Array.isArray(data) ? data : []).filter(function (j) { return !isExpired(j); })
-      );
+      var rawJobs = Array.isArray(data) ? data : [];
+      allJobs = dedupeJobs(rawJobs.filter(function (j) {
+        if (ARCHIVE_MODE) return isExpired(j) && daysSince(j.timestamp) <= ARCHIVE_MAX_DAYS;
+        return !isExpired(j);
+      }));
+      if (ARCHIVE_MODE) {
+        allJobs.sort(function (a, b) { return Date.parse(b.timestamp) - Date.parse(a.timestamp); });
+      }
       allJobs.forEach(function (j) { j._top20 = isTop20(j); });
       await resolvePosters(allJobs);
       buildFilter(allJobs);
       buildTicker(allJobs);
-      if (!allJobs.length) { showEmptyBoard(); return; }
+      if (!allJobs.length) { if (ARCHIVE_MODE) { showEmptyArchive(); } else { showEmptyBoard(); } return; }
       renderJobs(allJobs);
     } catch (e) {
       console.error(e);
@@ -174,7 +189,9 @@
     var isNew = daysSince(job.timestamp) <= NEW_WITHIN_DAYS;
     var posted = fmtDate(job.timestamp);
     var badge = "";
-    if (job.featured) {
+    if (ARCHIVE_MODE) {
+      badge = '<div class="badge expired"><i class="fas fa-clock"></i> EXPIRED</div>';
+    } else if (job.featured) {
       badge = '<div class="badge featured"><i class="fas fa-star"></i> Featured</div>';
     } else if (isNew) {
       badge = '<div class="badge new">NEW</div>';
@@ -192,13 +209,19 @@
       '<div class="job-meta"><i class="fas fa-money-bill-wave"></i><span>' +
         escapeHtml(job.salary || "Competitive Salary + Incentives") + '</span></div>' +
       (posted
-        ? '<div class="job-meta"><i class="far fa-calendar-alt"></i><span>Posted ' + escapeHtml(posted) + '</span></div>'
+        ? '<div class="job-meta"><i class="far fa-calendar-alt"></i><span>Posted ' + escapeHtml(posted) +
+          (ARCHIVE_MODE ? ' &middot; ' + Math.floor(daysSince(job.timestamp)) + ' days ago' : '') + '</span></div>'
         : '') +
       '<p class="job-desc">' + escapeHtml(job.description) + '</p>' +
+      (ARCHIVE_MODE
+        ? '<p class="job-note"><i class="fas fa-info-circle"></i> This ad has expired &mdash; the vacancy may already be filled, but many positions stay open longer. It is worth contacting the employer to confirm the position is still open before applying.</p>'
+        : '') +
       '<a class="apply-btn" href="' + escapeHtml(job.applyLink) + '" target="_blank" rel="noopener">' +
       '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
-      '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '">' +
-      'View details <i class="fas fa-arrow-right"></i></a>' +
+      (ARCHIVE_MODE
+        ? ''
+        : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '">' +
+          'View details <i class="fas fa-arrow-right"></i></a>') +
       '</article>';
   }
 
@@ -210,7 +233,7 @@
     }
     grid.innerHTML = jobs.map(cardHtml).join("");
     countEl.textContent = jobs.length + " job" + (jobs.length > 1 ? "s" : "") + " found";
-    injectSchema(jobs);
+    if (!ARCHIVE_MODE) injectSchema(jobs);
   }
 
   function injectSchema(jobs) {
