@@ -36,6 +36,17 @@ multi-city splits.
   Archive cards keep the apply button but have no detail page / JobPosting schema.
 - Nothing is ever deleted from `jobs.json` by the site — expiry only hides.
 
+## Locations
+
+- `location` is the base city in UPPERCASE (FAISALABAD, JHANG, ...). The site's
+  location filter is built from whatever values appear in `jobs.json`.
+- If an ad/poster names **no city**, use `OTHER` (Mazeen's rule, 2026-10-14) —
+  e.g. the Xenrise training-program poster (job-76).
+- International listings (Kenya expected via Mazeen's connection, 2026-10-14)
+  go under their own city name; when the first one lands, add country support
+  to the JobPosting schema (addressCountry is currently hardcoded PK in
+  assets/app.js and scripts/build.py).
+
 ## Duplicate rule
 
 A newly sent ad is a **DUPLICATE → discard it** when an existing listing has
