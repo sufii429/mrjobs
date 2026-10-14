@@ -193,7 +193,7 @@ PAGE_TMPL = """<!DOCTYPE html>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry</div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -342,7 +342,7 @@ GUIDE_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry</div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
