@@ -29,7 +29,11 @@ multi-city splits.
 ## Lifespan (automatic)
 
 - **NEW badge:** first 14 days after `timestamp`.
-- **Auto-expire:** listings disappear from the site 28 days after `timestamp`.
+- **Auto-expire:** listings leave the main board 28 days after `timestamp`.
+- **Archive:** expired listings move to `expired-jobs.html` (app.js archive mode),
+  where they stay visible for up to 90 days after `timestamp` with an EXPIRED
+  badge, a "days ago" count and a note that the vacancy may already be filled.
+  Archive cards keep the apply button but have no detail page / JobPosting schema.
 - Nothing is ever deleted from `jobs.json` by the site — expiry only hides.
 
 ## Duplicate rule
