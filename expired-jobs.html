@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expired Jobs – MrJobs</title>
+  <meta name="description" content="Recently expired Medical Representative, TM and AM job listings on MrJobs. Many vacancies stay open longer than the posting — contact the employer to confirm." />
+  <meta name="theme-color" content="#2d849e" />
+  <link rel="icon" href="assets/logo-icon.svg" type="image/svg+xml" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4VMP7HF0K3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-4VMP7HF0K3');
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/style.css?v=3" />
+  <style>
+    .badge.expired { background: #6c757d; color: #fff; }
+    .archive-note { display: flex; gap: 12px; align-items: flex-start; background: #fdf6e3; border: 1px solid #e8d48b; border-radius: 10px; padding: 14px 16px; margin: 18px 0 6px; }
+    .archive-note i { color: #8a6d3b; font-size: 1.15rem; margin-top: 2px; }
+    .archive-note p { margin: 0; font-size: .95rem; line-height: 1.55; }
+    .job-note { background: #f4f6f7; border-left: 3px solid #6c757d; border-radius: 6px; padding: 9px 11px; font-size: .88rem; line-height: 1.5; color: #444; }
+    .job-note i { color: #6c757d; margin-right: 4px; }
+  </style>
+</head>
+<body data-mode="expired">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="./"><img src="assets/logo.svg" alt="MrJobs logo" /></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./">Home</a></li>
+        <li><a href="all-jobs.html">All Jobs</a></li>
+        <li><a href="guide/">Guide</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="./#newsletter">Subscribe</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Expired Jobs</h1>
+    <p>Listings that have passed their 28 days on the main board &mdash; many are still open.</p>
+  </header>
+
+  <main class="wrap">
+    <div class="archive-note">
+      <i class="fas fa-info-circle"></i>
+      <p>Jobs move to this page 28 days after posting and stay here for 90 days. An expired ad does <strong>not</strong> always mean the vacancy is filled &mdash; many positions stay open longer. Each card shows how many days ago the ad was posted; contact the employer on WhatsApp to confirm the position is still open before applying.</p>
+    </div>
+    <section class="job-section" id="jobs" aria-label="Expired job listings">
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Search by title, company&hellip;" aria-label="Search jobs" />
+        <select id="locationFilter" aria-label="Filter by location">
+          <option value="">All Locations</option>
+        </select>
+      </div>
+      <div id="jobCount" role="status"></div>
+      <div class="job-grid" id="jobListings"></div>
+    </section>
+
+    <section class="newsletter" id="newsletter" aria-label="Newsletter signup">
+      <h2>Subscribe to MrJobs Weekly</h2>
+      <p class="nl-sub">New medical-rep openings in your inbox, every week.</p>
+      <form id="subscribeForm">
+        <input name="name" type="text" placeholder="Your name" required autocomplete="name" />
+        <input name="email" type="email" placeholder="Your email" required autocomplete="email" />
+        <select name="area" aria-label="Preferred city">
+          <option value="">Preferred city (optional)</option>
+          <option>Lahore</option>
+          <option>Karachi</option>
+          <option>Islamabad</option>
+          <option>Faisalabad</option>
+          <option>Multan</option>
+          <option>Peshawar</option>
+          <option>Quetta</option>
+        </select>
+        <button class="apply-btn" type="submit">Subscribe</button>
+      </form>
+      <p class="form-msg ok" id="subOK">&#9989; You&rsquo;re subscribed! Check your email.</p>
+      <p class="form-msg warn" id="subDup">&#9888;&#65039; You already subscribed recently. Please wait a few minutes.</p>
+      <p class="form-msg err" id="subErr">&#10060; Something went wrong &mdash; please try again later.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>MrJobs</h4>
+        <p>Connecting medical sales professionals with Pakistan&rsquo;s pharmaceutical industry &mdash; a free job board for Medical Representative, TM &amp; AM openings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="./">Home</a></li>
+          <li><a href="all-jobs.html">All Jobs</a></li>
+          <li><a href="expired-jobs.html">Expired Jobs</a></li>
+          <li><a href="blog/">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay updated</h4>
+        <ul class="footer-links">
+          <li><a href="./#newsletter">Weekly job alerts</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="year">2026</span> MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry</div>
+  </footer>
+
+  <script src="assets/app.js?v=3"></script>
+</body>
+</html>
