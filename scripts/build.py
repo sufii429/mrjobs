@@ -238,7 +238,7 @@ def build_job_page(job):
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": location,
-                "addressCountry": "PK",
+                "addressCountry": job.get("country") or "PK",
             },
         },
         "directApply": True,
