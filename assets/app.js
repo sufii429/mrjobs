@@ -252,7 +252,7 @@
         "hiringOrganization": { "@type": "Organization", "name": job.company },
         "jobLocation": {
           "@type": "Place",
-          "address": { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": "PK" }
+          "address": { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": job.country || "PK" }
         },
         "identifier": { "@type": "PropertyValue", "name": "MrJobs", "value": job.id || ("MRJ-" + (1000 + i)) },
         "url": location.origin + "/" + jobPageUrl(job)
