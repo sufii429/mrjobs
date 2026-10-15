@@ -42,10 +42,12 @@ multi-city splits.
   location filter is built from whatever values appear in `jobs.json`.
 - If an ad/poster names **no city**, use `OTHER` (Mazeen's rule, 2026-10-14) —
   e.g. the Xenrise training-program poster (job-76).
-- International listings (Kenya expected via Mazeen's connection, 2026-10-14)
-  go under their own city name; when the first one lands, add country support
-  to the JobPosting schema (addressCountry is currently hardcoded PK in
-  assets/app.js and scripts/build.py).
+- International listings go under their own city name (or the country name if
+  the ad names no city, e.g. Integra = KENYA). Set the optional `country`
+  field (ISO code, e.g. "KE") — both schema generators (assets/app.js and
+  scripts/build.py) use it for addressCountry and default to "PK".
+  First international listings: job-79 Innoccia (Nairobi) + job-80 Integra
+  (Kenya), 2026-10-15.
 
 ## Duplicate rule
 
