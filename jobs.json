@@ -1028,5 +1028,16 @@
     "applyLink": "mailto:ali.abdullah@alliedschools.edu.pk",
     "salary": "Daily Wages",
     "image": "posters/2026-10-16-allied-schools-data-entry.jpg.b64"
+  },
+  {
+    "id": "job-92",
+    "timestamp": "2026-10-16",
+    "company": "DeMont Pharmaceuticals",
+    "title": "Product Specialist",
+    "location": "JHANG",
+    "description": "DeMont Pharmaceuticals requires the services of motivated and energetic candidates for the post of Product Specialist, based at Jhang.\nCompany offers: attractive salary package, monthly incentives, attractive allowances, friendly working environment, annual increments, annual excursion, internal promotions, learning environment, provident fund.\nHow to apply: contact and send your CV — Asad Ayub, Area Sales Manager.",
+    "contact": 923237623983,
+    "featured": false,
+    "applyLink": "https://wa.me/923237623983"
   }
 ]
