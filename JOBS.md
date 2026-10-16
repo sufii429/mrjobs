@@ -3,6 +3,13 @@
 How listings get on the site, and the duplicate rule. Muse follows this every
 time Mazeen forwards a job ad on WhatsApp.
 
+## Scope
+
+Originally pharma / medical-representative roles only. Broadened by Mazeen on
+2026-10-16: sales roles outside pharma are accepted too (first one: Toyota
+Faisalabad Motors — Sales Executive, Faisalabad, job-87, submitted through the
+homepage vacancy form).
+
 ## Adding a job
 
 Jobs live in `jobs.json` (newest first is not required — any order works).
