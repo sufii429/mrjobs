@@ -219,11 +219,13 @@
       (ARCHIVE_MODE
         ? ''
         : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '">' +
-          'View details <i class="fas fa-arrow-right"></i></a>') +
+          'View details <i class="fas fa-arrow-right"></i></a>' +
+          '<button class="share-btn" data-idx="' + i + '"><i class="fas fa-share-alt"></i> Share</button>') +
       '</article>';
   }
 
   function renderJobs(jobs) {
+    lastJobs = jobs;
     if (!jobs.length) {
       grid.innerHTML = '<div class="state"><i class="fas fa-search"></i><p>No matching jobs found.</p></div>';
       countEl.textContent = "0 jobs";
@@ -234,11 +236,34 @@
     if (!ARCHIVE_MODE) injectSchema(jobs);
   }
 
+  /* Share-card button → MrJobsShareCard (assets/share-card.js). */
+  var lastJobs = [];
+  function initShare() {
+    if (!grid) return;
+    grid.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest(".share-btn") : null;
+      if (!b || !window.MrJobsShareCard) return;
+      var job = lastJobs[parseInt(b.getAttribute("data-idx"), 10)];
+      if (!job) return;
+      window.MrJobsShareCard.shareJob({
+        id: job.id,
+        title: job.title,
+        company: job.company,
+        location: job.location,
+        experience: job.experience || "",
+        top20: !!job._top20,
+        isNew: daysSince(job.timestamp) <= NEW_WITHIN_DAYS
+      });
+    });
+  }
+
   function injectSchema(jobs) {
     var old = $("jobs-schema");
     if (old) old.remove();
     var validThrough = new Date(Date.now() + SCHEMA_VALID_DAYS * 864e5).toISOString().split("T")[0];
     var arr = jobs.map(function (job, i) {
+      var addr = { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": job.country || "PK" };
+      if ((job.country || "PK") === "PK") addr.addressRegion = "Punjab"; // every PK listing is in Punjab (verified 2026-10-19)
       return {
         "@context": "https://schema.org",
         "@type": "JobPosting",
@@ -250,7 +275,7 @@
         "hiringOrganization": { "@type": "Organization", "name": job.company },
         "jobLocation": {
           "@type": "Place",
-          "address": { "@type": "PostalAddress", "addressLocality": job.location, "addressCountry": job.country || "PK" }
+          "address": addr
         },
         "identifier": { "@type": "PropertyValue", "name": "MrJobs", "value": job.id || ("MRJ-" + (1000 + i)) },
         "url": location.origin + "/" + jobPageUrl(job)
@@ -308,6 +333,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initNewsletter();
+    initShare();
     var year = $("year");
     if (year) year.textContent = new Date().getFullYear();
     if (grid && searchInput && locationFilter) {

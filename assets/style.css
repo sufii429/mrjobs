@@ -505,3 +505,21 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
 .top20-list li { background: #fff; border: 1px solid #cfe4ea; border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #1d6a80; box-shadow: 0 3px 10px rgba(6,20,23,.06); }
 .top20-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #2d849e; color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; }
 .top20-list .fa-award { color: #f5a623; }
+
+/* ---- Share button + city landing pages ---- */
+.share-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 1rem;
+  border: 2px solid var(--teal); color: var(--teal); background: #fff;
+  margin-top: 14px; margin-left: 10px; cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+.share-btn:hover { background: var(--teal); color: #fff; }
+.job-cta .share-btn { margin-top: 14px; margin-left: 10px; }
+.city-intro { color: var(--muted); font-size: 1.05rem; margin: 6px 0 22px; }
+.city-jobs { display: grid; gap: 16px; }
+.city-job { background: #fff; border: 1px solid #cfe4ea; border-radius: 12px; padding: 18px 20px; box-shadow: 0 3px 10px rgba(6,20,23,.06); }
+.city-job h3 { margin: 8px 0 10px; font-size: 1.15rem; }
+.city-job h3 a { color: var(--teal-dark); text-decoration: none; }
+.city-job h3 a:hover { text-decoration: underline; }
+.city-more { margin: 26px 0 40px; color: var(--muted); }
