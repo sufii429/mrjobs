@@ -1,6 +1,6 @@
 [build]
-  command = "python3 scripts/build.py"
-  publish = "."
+  command = "python3 scripts/build.py && python3 scripts/package_site.py"
+  publish = "dist"
 
 # Security headers for every response (static site hardening)
 [[headers]]
@@ -10,3 +10,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

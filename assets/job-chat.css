@@ -52,3 +52,12 @@
 
 /* Keep source cards visible beneath the sticky navigation. */
 .job-card[id^="listing-"] { scroll-margin-top: 100px; }
+
+/* Conversation v2: keep sources and next questions distinct from listing cards. */
+.job-chat-sources { display: flex; flex-direction: column; gap: 5px; padding: 10px 0; font-size: 12px; border-top: 1px solid #b9cfd6; }
+.job-chat-followups { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 0; }
+.job-chat-search-toggle { border: 0; background: none; padding: 0; color: #185568; text-decoration: underline; cursor: pointer; }
+.job-chat-answer { line-height: 1.65; }
+.job-chat-suggestions { flex-wrap: nowrap; overflow-x: auto; flex-shrink: 0; }
+.job-chat-suggestions button { white-space: nowrap; }
+.job-chat-privacy { line-height: 1.5; }

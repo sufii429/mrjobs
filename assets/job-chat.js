@@ -1,11 +1,11 @@
-/* MrJobs job finder. Local, read-only, no API key, cookies or chat persistence. */
+/* MrJobs conversational assistant. Credentials stay server-side; chat history is memory-only. */
 (function () {
   'use strict';
   var script = document.currentScript;
   var base = new URL('../', script.src);
   var engine = window.MrJobsSearch;
   if (!engine || document.getElementById('jobChatLauncher')) return;
-  var jobs = null, loading = false, lastQuery = '';
+  var jobs = null, guides = [], loading = false, lastQuery = '', history = [], requesting = false, generation = 0, controller = null;
   function node(tag, cls, text) {
     var el = document.createElement(tag);
     if (cls) el.className = cls;
@@ -17,17 +17,17 @@
     if (fn) el.addEventListener('click', fn);
     return el;
   }
-  var launcher = button('Find a job', 'job-chat-launcher', function () { setOpen(panel.hidden); });
+  var launcher = button('Ask MrJobs', 'job-chat-launcher', function () { setOpen(panel.hidden); });
   launcher.id = 'jobChatLauncher'; launcher.setAttribute('aria-controls', 'jobChatPanel');
   launcher.setAttribute('aria-expanded', 'false'); launcher.setAttribute('aria-haspopup', 'dialog');
   var panel = node('section', 'job-chat-panel'); panel.id = 'jobChatPanel'; panel.hidden = true;
   panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-labelledby', 'jobChatTitle');
   var header = node('div', 'job-chat-header');
-  var heading = node('div'); heading.append(node('h2', '', 'MrJobs job finder'));
-  heading.firstChild.id = 'jobChatTitle'; heading.append(node('p', '', 'Published listings. Clear answers.'));
+  var heading = node('div'); heading.append(node('h2', '', 'MrJobs assistant'));
+  heading.firstChild.id = 'jobChatTitle'; heading.append(node('p', '', 'Jobs, career advice and your next step.'));
   var close = button('Close', 'job-chat-close', function () { setOpen(false); });
   close.setAttribute('aria-label', 'Close job finder'); header.append(heading, close);
-  var intro = node('p', 'job-chat-intro', 'Search every role, employer and country on this board. Published listings only; I cannot apply or contact employers.');
+  var intro = node('p', 'job-chat-intro', 'Tell me about your goals, ask about a listing, or get help from our career guides. I cannot apply or contact employers.');
   var controls = node('div', 'job-chat-controls');
   var modeLabel = node('label', '', 'Search in'); modeLabel.htmlFor = 'jobChatMode';
   var mode = node('select'); mode.id = 'jobChatMode';
@@ -36,7 +36,7 @@
   });
   controls.append(modeLabel, mode);
   var suggestions = node('div', 'job-chat-suggestions');
-  ['Latest jobs', 'Jobs in Kenya', 'Data entry jobs', 'Archived jobs'].forEach(function (query) {
+  ['Latest jobs', 'Jobs in Kenya', 'Data entry jobs', 'Archived jobs', 'How should I prepare for an MR interview?'].forEach(function (query) {
     suggestions.append(button(query, 'job-chat-chip', function () {
       mode.value = query === 'Archived jobs' ? 'archived' : 'active';
       input.value = query; submitQuery();
@@ -45,18 +45,27 @@
   var transcript = node('div', 'job-chat-transcript'); transcript.setAttribute('role', 'log');
   transcript.setAttribute('aria-label', 'Job search conversation'); transcript.setAttribute('aria-live', 'polite');
   transcript.setAttribute('aria-relevant', 'additions');
-  var welcome = node('div', 'job-chat-message', 'Start with “jobs in Kenya”, “data entry in Sahiwal”, or a company name. Current listings appear first.');
+  var welcome = node('div', 'job-chat-message', 'Hi, I’m the MrJobs assistant. Tell me the role or career question you have in mind. For example: “I’m a fresh graduate in Faisalabad. What could suit me?” I’ll use the published listings and career guides, and tell you when a detail is missing.');
   transcript.append(welcome);
   var form = node('form', 'job-chat-form');
   var inputLabel = node('label', 'job-chat-sr', 'Ask about jobs'); inputLabel.htmlFor = 'jobChatInput';
-  var input = node('input'); input.id = 'jobChatInput'; input.type = 'text'; input.maxLength = 400;
-  input.autocomplete = 'off'; input.placeholder = 'Role, company, city or country…';
-  var send = node('button', 'job-chat-send', 'Search'); send.type = 'submit';
+  var input = node('input'); input.id = 'jobChatInput'; input.type = 'text'; input.maxLength = 1200;
+  input.autocomplete = 'off'; input.placeholder = 'Ask a question or tell me your goals…';
+  var send = node('button', 'job-chat-send', 'Ask'); send.type = 'submit';
   form.append(inputLabel, input, send);
   var privacy = node('div', 'job-chat-privacy');
-  privacy.append(node('span', '', 'Search runs in your browser. No chat is saved. '));
+  var searchOnly = false;
+  var searchToggle = button('Use listing search', 'job-chat-search-toggle', function () {
+    searchOnly = !searchOnly; searchToggle.textContent = searchOnly ? 'Use AI conversation' : 'Use listing search';
+    send.textContent = searchOnly ? 'Search' : 'Ask';
+    say(searchOnly ? 'Listing search mode: searches run locally, without sending your question to AI.' : 'Conversation mode: questions and recent chat are sent to the AI provider with published sources.');
+    input.focus();
+  });
+  privacy.append(node('span', '', 'AI mode sends messages to our AI provider. No chat is saved by MrJobs. Avoid sensitive information. '));
+  privacy.append(searchToggle, document.createTextNode(' · '));
   privacy.append(button('Clear chat', 'job-chat-clear', function () {
-    transcript.replaceChildren(welcome); lastQuery = ''; input.value = ''; input.focus();
+    generation++; if (controller) controller.abort();
+    transcript.replaceChildren(welcome); lastQuery = ''; history = []; input.value = ''; input.focus();
   }));
   panel.append(header, intro, controls, suggestions, transcript, form, privacy);
   document.body.append(launcher, panel);
@@ -82,7 +91,12 @@
       if (!response.ok) throw new Error('Listing request failed');
       var data = await response.json();
       if (!Array.isArray(data)) throw new Error('Invalid listing data');
-      jobs = data; pending.remove(); return true;
+      jobs = data;
+      try {
+        var guideResponse = await fetch(new URL('assistant-guides.json', base), { cache: 'no-store', credentials: 'omit' });
+        if (guideResponse.ok) { var guideData = await guideResponse.json(); if (Array.isArray(guideData)) guides = guideData; }
+      } catch (_) { /* Listing search remains available if guides cannot load. */ }
+      pending.remove(); return true;
     } catch (error) {
       pending.textContent = 'The listings could not be loaded. Check your connection and retry.';
       pending.append(button('Retry loading', 'job-chat-chip', function () { pending.remove(); ensureJobs(); }));
@@ -123,6 +137,14 @@
   }
   function showResults(answer) {
     var group = node('div', 'job-chat-response'); group.append(node('p', 'job-chat-answer', answer.text));
+    if (Array.isArray(answer.guideIds) && answer.guideIds.length) {
+      var sources = node('div', 'job-chat-sources'); sources.append(node('strong', '', 'Career guide sources'));
+      answer.guideIds.forEach(function (id) {
+        var guide = guides.find(function (item) { return item.id === id; });
+        if (guide && /^\/guide\/[a-z0-9-]+\.html$/.test(guide.url)) sources.append(publishedLink(guide.title, new URL(guide.url, base).href));
+      });
+      group.append(sources);
+    }
     var list = Array.isArray(answer.jobs) ? answer.jobs : [], shown = 0;
     function more() {
       var end = Math.min(shown + 5, list.length);
@@ -132,23 +154,73 @@
         group.append(next);
       }
     }
-    more(); transcript.append(group);
+    more();
+    if (Array.isArray(answer.followUps) && answer.followUps.length) {
+      var followUps = node('div', 'job-chat-followups');
+      answer.followUps.slice(0, 3).forEach(function (question) {
+        followUps.append(button(question, 'job-chat-chip', function () { input.value = question; submitQuery(); }));
+      });
+      group.append(followUps);
+    }
+    transcript.append(group);
     transcript.scrollTop += group.getBoundingClientRect().top - transcript.getBoundingClientRect().top - 12;
   }
   async function submitQuery() {
-    var query = input.value.trim(); if (!query || loading) return;
+    var query = input.value.trim(); if (!query || loading || requesting) return;
     if (!(await ensureJobs())) return;
     say(query, true); input.value = '';
+    var currentGeneration = generation;
     var effectiveQuery = query;
     if (lastQuery && /^(?:what (?:is|are) (?:the )?)?(?:salary|pay|requirements?|qualifications?|experience|how (?:do i |to )?apply|application (?:link|email))\??$/i.test(query)) {
       effectiveQuery = query + ' ' + lastQuery;
     } else lastQuery = query;
+    if (searchOnly) {
+      var localAnswer = engine.answer(jobs, effectiveQuery, { mode: mode.value });
+      if (['active', 'archived', 'all'].indexOf(localAnswer.mode) !== -1) mode.value = localAnswer.mode;
+      showResults(localAnswer); input.focus({ preventScroll: true }); return;
+    }
+    requesting = true; send.disabled = true; send.textContent = 'Thinking…';
+    var pending = say('Reading the published listings and career guides…');
+    pending.setAttribute('aria-busy', 'true');
+    transcript.scrollTop = transcript.scrollHeight;
+    controller = new AbortController();
+    var timeout = setTimeout(function () { controller.abort(); }, 40000);
     try {
-      var answer = engine.answer(jobs, effectiveQuery, { mode: mode.value });
-      if (['active', 'archived', 'all'].indexOf(answer.mode) !== -1) mode.value = answer.mode;
+      var response = await fetch(new URL('.netlify/functions/job-assistant', base), {
+        method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: query, history: history.slice(-6), scope: mode.value }),
+        signal: controller.signal
+      });
+      var answer;
+      try { answer = await response.json(); } catch (_) { answer = {}; }
+      if (!response.ok || typeof answer.text !== 'string') throw new Error(response.status === 429 ? 'RATE_LIMIT' : answer.code || 'AI_UNAVAILABLE');
+      if (generation !== currentGeneration) return;
+      pending.remove();
+      var chosenMode = ['active', 'archived', 'all'].indexOf(answer.mode) !== -1 ? answer.mode : mode.value;
+      mode.value = chosenMode;
+      // Never trust model-generated records or links: resolve IDs to the fetched board.
+      answer.jobs = (Array.isArray(answer.jobIds) ? answer.jobIds : []).slice(0, 6).map(function (id) {
+        return jobs.find(function (job) { return job.id === id; });
+      }).filter(function (job) {
+        if (!job) return false;
+        var state = engine.status(job);
+        return chosenMode === 'all' ? state !== 'hidden' : state === chosenMode;
+      });
       showResults(answer);
-    } catch (error) { say('Search could not finish. Try a role, city, country or employer name.'); }
-    input.focus({ preventScroll: true });
+      history.push({ role: 'user', content: query }, { role: 'assistant', content: answer.text.slice(0, 2000) });
+      history = history.slice(-6);
+    } catch (error) {
+      if (generation !== currentGeneration) return;
+      pending.remove();
+      var failure = say(error.message === 'RATE_LIMIT' ? 'Too many questions at once. Please wait a minute and try again, or use local listing search.' : error.message === 'AI_NOT_CONFIGURED' ? 'AI replies have not been enabled in this preview yet. You can still use local listing search.' : 'AI replies are unavailable right now. Try again or use local listing search.');
+      failure.append(button('Search published listings instead', 'job-chat-chip', function () {
+        var fallback = engine.answer(jobs, effectiveQuery, { mode: mode.value });
+        showResults(fallback);
+      }));
+    } finally {
+      clearTimeout(timeout); requesting = false; send.disabled = false; send.textContent = searchOnly ? 'Search' : 'Ask';
+      input.focus({ preventScroll: true });
+    }
   }
   form.addEventListener('submit', function (event) { event.preventDefault(); submitQuery(); });
   mode.addEventListener('change', function () {
