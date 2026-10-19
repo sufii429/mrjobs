@@ -44,6 +44,18 @@ def esc(s):
     return html.escape("" if s is None else str(s), quote=True)
 
 
+TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami", "searle",
+              "martin dow", "hilton", "high-q", "ferozsons", "highnoon", "ccl",
+              "agp", "bosch", "obs pakistan", "barrett", "atco", "indus pharma",
+              "pharmevo", "macter", "nabiqasim"]
+"""Mirrors isTop20() in assets/app.js (case-insensitive substring)."""
+
+
+def is_top20(job):
+    c = str(job.get("company", "")).lower()
+    return any(k in c for k in TOP20_KEYS)
+
+
 def slugify(s):
     """Must stay identical to slugify() in assets/app.js."""
     s = re.sub(r"[^a-z0-9]+", "-", str(s).lower())
@@ -129,13 +141,15 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta property="og:description" content="{meta_desc}" />
   <meta property="og:url" content="{canonical}" />
   <meta property="og:site_name" content="MrJobs" />
+  <meta property="og:image" content="https://mrjobs.top/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{og_title}" />
   <meta name="twitter:description" content="{meta_desc}" />
+  <meta name="twitter:image" content="https://mrjobs.top/logo.png" />
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=6" />
+  <link rel="stylesheet" href="../assets/style.css?v=7" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -170,6 +184,7 @@ PAGE_TMPL = """<!DOCTYPE html>
       </div>
       <div class="job-cta">
         <a class="apply-btn" href="{apply}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Apply Now on WhatsApp</a>
+        <button class="share-btn" id="shareBtn" data-id="{job_id}" data-title="{title_attr}" data-company="{company_attr}" data-location="{location_attr}" data-top20="{top20_attr}" data-isnew="{isnew_attr}"><i class="fas fa-share-alt"></i> Share</button>
         <a class="ghost-btn" href="../all-jobs.html"><i class="fas fa-arrow-left"></i> Back to all jobs</a>
       </div>
       <p class="job-note">This listing expires automatically {expiry_note}. Always verify details with the employer before applying.</p>
@@ -180,25 +195,45 @@ PAGE_TMPL = """<!DOCTYPE html>
     <div class="footer-inner">
       <div>
         <h4>MrJobs</h4>
-        <p>Connecting medical sales professionals with Pakistan&rsquo;s pharmaceutical industry &mdash; a free job board for Medical Representative, TM &amp; AM openings.</p>
+        <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
       </div>
       <div>
         <h4>Explore</h4>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../cities/faisalabad.html">Pharma Jobs in Faisalabad</a></li>
+          <li><a href="../cities/jhang.html">Pharma Jobs in Jhang</a></li>
           <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../about.html">About</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
   </footer>
+  <script src="../assets/share-card.js?v=1"></script>
   <script>
-    document.getElementById('navToggle').addEventListener('click', function () {{
-      document.getElementById('navLinks').classList.toggle('open');
-    }});
+    (function () {{
+      var navToggle = document.getElementById('navToggle');
+      if (navToggle) navToggle.addEventListener('click', function () {{
+        document.getElementById('navLinks').classList.toggle('open');
+      }});
+      var btn = document.getElementById('shareBtn');
+      if (btn && btn.addEventListener) {{
+        btn.addEventListener('click', function () {{
+          if (window.MrJobsShareCard) window.MrJobsShareCard.shareJob({{
+            id: btn.getAttribute('data-id'),
+            title: btn.getAttribute('data-title'),
+            company: btn.getAttribute('data-company'),
+            location: btn.getAttribute('data-location'),
+            experience: '',
+            top20: btn.getAttribute('data-top20') === '1',
+            isNew: btn.getAttribute('data-isnew') === '1'
+          }});
+        }});
+      }}
+    }})();
   </script>
 </body>
 </html>
@@ -219,8 +254,10 @@ def build_job_page(job):
     apply = str(job.get("applyLink", "")).strip() or "#"
 
     page_title = "%s — %s, %s | MrJobs" % (title, company, location)
-    meta_desc = (desc[:155] + "…") if len(desc) > 157 else desc
-    meta_desc = " ".join(meta_desc.split())
+    desc_snippet = " ".join(desc.split())
+    meta_desc = "%s at %s in %s — %s" % (title, company, location, desc_snippet)
+    if len(meta_desc) > 157:
+        meta_desc = meta_desc[:155].rstrip() + "…"
     canonical = SITE_URL + "/" + job_url_path(job)
 
     schema = {
@@ -248,6 +285,10 @@ def build_job_page(job):
         schema["datePosted"] = posted_iso
     if valid_through:
         schema["validThrough"] = valid_through
+    if (job.get("country") or "PK") == "PK":
+        # every Pakistan listing on the board is in a Punjab city (verified
+        # 2026-10-19) — quiets the Rich Results Test "addressRegion" warning
+        schema["jobLocation"]["address"]["addressRegion"] = "Punjab"
 
     badge = ('<div class="badge new">NEW</div>' if is_new else "")
     data_uri = poster_data_uri(job)
@@ -277,6 +318,12 @@ def build_job_page(job):
                         .strftime("%d %b %Y") if posted
                         else "28 days after posting"),
         year=date.today().year,
+        job_id=esc(job.get("id", "")),
+        title_attr=esc(title),
+        company_attr=esc(company),
+        location_attr=esc(location),
+        top20_attr="1" if is_top20(job) else "0",
+        isnew_attr="1" if is_new else "0",
     )
 
 
@@ -297,6 +344,8 @@ def minimal_sitemap():
     return build_sitemap([
         (SITE_URL + "/", None, "daily", "1.0"),
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
+        (SITE_URL + "/cities/faisalabad.html", None, "daily", "0.9"),
+        (SITE_URL + "/cities/jhang.html", None, "daily", "0.9"),
         (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
     ])
@@ -328,13 +377,15 @@ GUIDE_FOOTER = """
     <div class="footer-inner">
       <div>
         <h4>MrJobs</h4>
-        <p>Connecting medical sales professionals with Pakistan&rsquo;s pharmaceutical industry &mdash; a free job board for Medical Representative, TM &amp; AM openings.</p>
+        <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
       </div>
       <div>
         <h4>Explore</h4>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
+          <li><a href="../cities/faisalabad.html">Pharma Jobs in Faisalabad</a></li>
+          <li><a href="../cities/jhang.html">Pharma Jobs in Jhang</a></li>
           <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../guide/">Career Guide</a></li>
           <li><a href="../blog/">Blog</a></li>
@@ -342,7 +393,7 @@ GUIDE_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -368,7 +419,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
 {font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=6" />
+  <link rel="stylesheet" href="../assets/style.css?v=7" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -411,7 +462,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=6" />
+  <link rel="stylesheet" href="../assets/style.css?v=7" />
 </head>
 <body>
 {g_nav}
@@ -592,6 +643,204 @@ def build_guide(pages):
     print("  guide: wrote index + %d article pages" % n)
 
 
+# ------------------------------------------------------ city landing pages
+# Pharmajobs.pk-style city hubs, generated from jobs.json.
+CITIES = [("Faisalabad", "faisalabad"), ("Jhang", "jhang")]
+
+CITY_NAV = """
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../">Home</a></li>
+        <li><a href="../all-jobs.html">All Jobs</a></li>
+        <li><a href="../expired-jobs.html">Expired Jobs</a></li>
+        <li><a href="../guide/">Guide</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+"""
+
+CITY_FOOTER = """
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h4>MrJobs</h4>
+        <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../all-jobs.html">All Jobs</a></li>
+{cities_links}          <li><a href="../expired-jobs.html">Expired Jobs</a></li>
+          <li><a href="../guide/">Career Guide</a></li>
+          <li><a href="../blog/">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+  </footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function () {{
+      document.getElementById('navLinks').classList.toggle('open');
+    }});
+  </script>
+"""
+
+CITY_PAGE_TMPL = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{page_title}</title>
+  <meta name="description" content="{meta_desc}" />
+  <link rel="canonical" href="{canonical}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{og_title}" />
+  <meta property="og:description" content="{meta_desc}" />
+  <meta property="og:url" content="{canonical}" />
+  <meta property="og:site_name" content="MrJobs" />
+  <meta property="og:image" content="https://mrjobs.top/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{og_title}" />
+  <meta name="twitter:description" content="{meta_desc}" />
+  <meta name="twitter:image" content="https://mrjobs.top/logo.png" />
+  <meta name="theme-color" content="#2d849e" />
+  <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <script type="application/ld+json">
+{json_ld}
+  </script>
+</head>
+<body>
+{c_nav}
+  <main class="wrap">
+    <p class="crumbs"><a href="../">Home</a> &rsaquo; {h1}</p>
+    <h1>{h1}</h1>
+    <p class="city-intro">{intro}</p>
+    <div class="city-jobs">
+{job_rows}
+    </div>
+    <p class="city-more">Looking beyond {city}? <a href="../all-jobs.html">Browse all jobs across Pakistan</a>{other_city_link}.</p>
+  </main>
+{c_footer}
+</body>
+</html>
+"""
+
+
+def build_city_page(city, slug, city_jobs_list):
+    canonical = SITE_URL + "/cities/%s.html" % slug
+    og_title = "Pharma Jobs in %s – MrJobs" % city
+    meta_desc = ("Latest pharma jobs in %s: Medical Representative, TM, AM "
+                 "and more openings across Pakistan's top pharmaceutical "
+                 "companies. New listings daily — apply via WhatsApp on "
+                 "MrJobs." % city)
+    today = date.today()
+
+    rows = []
+    for job in city_jobs_list:
+        posted = parse_date(job.get("timestamp"))
+        is_new = posted is not None and (today - posted).days <= NEW_WITHIN_DAYS
+        rows.append(
+            '      <div class="city-job">'
+            + ('<span class="badge new">NEW</span>' if is_new else "")
+            + '<h3><a href="../%s">%s</a></h3>' % (esc(job_url_path(job)),
+                                                  esc(job.get("title", "")))
+            + '<div class="job-meta"><i class="fas fa-building"></i><span>%s</span></div>'
+              % esc(job.get("company", ""))
+            + '<div class="job-meta"><i class="fas fa-map-marker-alt"></i><span>%s</span></div>'
+              % esc(title_case_city(job.get("location", "")))
+            + ('<div class="job-meta"><i class="far fa-calendar-alt"></i><span>Posted %s</span></div>'
+               % esc(posted.strftime("%d %b %Y")) if posted else "")
+            + "</div>")
+    if not rows:
+        rows.append('      <div class="state"><p>No open positions in %s right now — check back soon.</p></div>' % esc(city))
+
+    items = []
+    for i, job in enumerate(city_jobs_list, 1):
+        posted = parse_date(job.get("timestamp"))
+        addr = {"@type": "PostalAddress",
+                "addressLocality": title_case_city(job.get("location", "")),
+                "addressCountry": job.get("country") or "PK"}
+        if (job.get("country") or "PK") == "PK":
+            addr["addressRegion"] = "Punjab"
+        item = {
+            "@type": "ListItem",
+            "position": i,
+            "item": {
+                "@type": "JobPosting",
+                "title": str(job.get("title", "")),
+                "hiringOrganization": {"@type": "Organization",
+                                       "name": str(job.get("company", ""))},
+                "jobLocation": {"@type": "Place", "address": addr},
+                "url": SITE_URL + "/" + job_url_path(job),
+            },
+        }
+        if posted:
+            item["item"]["datePosted"] = posted.isoformat()
+        items.append(item)
+    json_ld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": og_title,
+        "url": canonical,
+        "itemListElement": items,
+    }, ensure_ascii=False, indent=2)
+
+    other = [c for c in CITIES if c[0] != city]
+    other_link = (' or see <a href="%s.html">pharma jobs in %s</a>'
+                  % (other[0][1], other[0][0])) if other else ""
+
+    return CITY_PAGE_TMPL.format(
+        page_title=esc(og_title),
+        meta_desc=esc(meta_desc),
+        canonical=esc(canonical),
+        og_title=esc(og_title),
+        json_ld=json_ld,
+        c_nav=CITY_NAV,
+        h1=esc("Pharma Jobs in %s" % city),
+        intro=esc("All open pharma jobs in %s — Medical Representative, TM, "
+                 "AM and more, newest first. Apply directly with a single "
+                 "WhatsApp click, free for job seekers." % city),
+        city=esc(city),
+        other_city_link=other_link,
+        job_rows="\n".join(rows),
+        c_footer=CITY_FOOTER.format(
+            year=today.year,
+            cities_links="\n".join(
+                '          <li><a href="../cities/%s.html">Pharma Jobs in %s</a></li>'
+                % (s, c) for c, s in CITIES)),
+    )
+
+
+def build_cities(active_jobs, pages):
+    """Write cities/<slug>.html for each city; append URLs to the sitemap."""
+    out = os.path.join(ROOT, "cities")
+    os.makedirs(out, exist_ok=True)
+    for city, slug in CITIES:
+        matched = [j for j in active_jobs
+                   if city.lower() in str(j.get("location", "")).lower()]
+        matched.sort(key=lambda j: str(j.get("timestamp", "")), reverse=True)
+        try:
+            page_html = build_city_page(city, slug, matched)
+        except Exception as e:  # noqa: BLE001
+            print("  warn: city page failed %s: %s" % (city, e), file=sys.stderr)
+            continue
+        with open(os.path.join(out, slug + ".html"), "w", encoding="utf-8") as f:
+            f.write(page_html)
+        pages.append((SITE_URL + "/cities/%s.html" % slug,
+                      date.today().isoformat(), "daily", "0.9"))
+        print("  city: %s — %d jobs" % (slug, len(matched)))
+
+
+
 # ----------------------------------------------------------------- main
 def main():
     try:
@@ -630,6 +879,8 @@ def main():
                       "weekly", "0.8"))
 
     build_guide(pages)
+
+    build_cities(active, pages)
 
     with open(SITEMAP, "w", encoding="utf-8") as f:
         f.write(build_sitemap(pages))
