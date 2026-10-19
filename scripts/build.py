@@ -139,6 +139,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
+  <link rel="stylesheet" href="../assets/job-chat.css?v=1" />
 </head>
 <body>
   <nav class="navbar">
@@ -200,6 +201,8 @@ PAGE_TMPL = """<!DOCTYPE html>
       document.getElementById('navLinks').classList.toggle('open');
     }});
   </script>
+  <script src="../assets/job-search.js?v=1"></script>
+  <script src="../assets/job-chat.js?v=1"></script>
 </body>
 </html>
 """
@@ -372,6 +375,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
+  <link rel="stylesheet" href="../assets/job-chat.css?v=1" />
 </head>
 <body>
 {g_nav}
@@ -390,6 +394,8 @@ ARTICLE_TMPL = """<!DOCTYPE html>
     </article>
   </main>
 {g_footer}
+  <script src="../assets/job-search.js?v=1"></script>
+  <script src="../assets/job-chat.js?v=1"></script>
 </body>
 </html>
 """
@@ -412,6 +418,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../assets/style.css?v=6" />
+  <link rel="stylesheet" href="../assets/job-chat.css?v=1" />
 </head>
 <body>
 {g_nav}
@@ -426,6 +433,8 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
     </div>
 {recommended}  </main>
 {g_footer}
+  <script src="../assets/job-search.js?v=1"></script>
+  <script src="../assets/job-chat.js?v=1"></script>
 </body>
 </html>
 """

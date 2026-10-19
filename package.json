@@ -1,0 +1,11 @@
+{
+  "name": "mrjobs-static-board",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/job-search.test.cjs",
+    "test:browser": "node tests/job-chat.browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}
