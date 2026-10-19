@@ -40,7 +40,7 @@
   </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="assets/style.css?v=7" />
+  <link rel="stylesheet" href="assets/style.css?v=8" />
 </head>
 <body>
 
@@ -93,10 +93,47 @@
         <img class="hiring-art" src="assets/hiring.svg" alt="Are you hiring? — megaphone illustration" loading="lazy" />
         <div class="hiring-text">
           <h2>Are You Hiring?</h2>
-          <p>Pharma company or hiring manager? Email us your vacancy — Medical Representative, TM, AM and field-force roles — and we&rsquo;ll publish it on MrJobs <strong>free</strong>, in front of thousands of jobseekers across Pakistan.</p>
-          <a class="apply-btn hiring-btn" href="mailto:sufyanbarret@gmail.com?subject=Vacancy%20Submission%20%E2%80%94%20%5BCompany%20Name%5D&body=Company%20name%3A%0ATitle/designation%3A%0ALocation%20%28city%29%3A%0ATerritory/area%3A%0ARequirements%3A%0AHow%20to%20apply%20%28contact/WhatsApp%29%3A%0A%0A%28Attach%20the%20job%20poster%20if%20you%20have%20one%29"><i class="fas fa-paper-plane"></i> Submit a Vacancy</a>
-          <p class="hiring-note">Just send the job ad or poster — we take care of the rest.</p>
+          <p>Pharma company or hiring manager? Send us your vacancy — Medical Representative, TM, AM and field-force roles — and we&rsquo;ll publish it on MrJobs <strong>free</strong>, in front of thousands of jobseekers across Pakistan.</p>
+          <p class="hiring-urdu" lang="ur" dir="rtl">نوٹ: یہ فارم صرف کمپنیوں اور مالکان کے لیے ہے۔ نوکری تلاش کرنے والے حضرات یہ فارم نہ بھریں اور نہ یہاں CV بھیجیں — آپ کے لیے نیچے تمام جابز موجود ہیں، اپنی پسند کی جاب پر Apply دبائیں۔</p>
+          <form id="vacancyForm" class="vacancy-form">
+            <label>Company name *<input type="text" name="Company" required placeholder="e.g. ABC Pharmaceuticals" /></label>
+            <label>Job title / designation *<input type="text" name="Title" required placeholder="e.g. Medical Representative" /></label>
+            <label>City / location *<input type="text" name="City" required placeholder="e.g. Faisalabad" /></label>
+            <label>Territory / area<input type="text" name="Territory" placeholder="Optional" /></label>
+            <label>Applicants apply on (WhatsApp / contact) *<input type="text" name="Apply contact" required placeholder="e.g. 03xx-xxxxxxx" /></label>
+            <label class="vacancy-wide">Vacancy details &amp; requirements *<textarea name="Details" rows="4" required placeholder="Experience, qualification, deadline — anything applicants should know"></textarea></label>
+            <label class="vacancy-check"><input type="checkbox" name="Employer confirmation" value="Yes" required /> <span>I confirm I am an employer / hiring manager posting a real vacancy. <span lang="ur" dir="rtl">(تصدیق: میں مالک یا کمپنی کی طرف سے اصل خالی آسامی بھیج رہا ہوں)</span></span></label>
+            <button type="submit" class="apply-btn hiring-btn"><i class="fas fa-paper-plane"></i> Submit Vacancy — it&rsquo;s free</button>
+            <p class="hiring-note" id="vacancyStatus" role="status"></p>
+          </form>
+          <p class="hiring-note">Have a poster instead? Email it to sufyanbarret@gmail.com with your company name — we take care of the rest.</p>
           <p class="hiring-note"><strong>Employers only:</strong> This form is for employers posting vacancies — job seekers, please apply directly on the board.</p>
+          <script>
+          (function () {
+            var form = document.getElementById('vacancyForm');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+              e.preventDefault();
+              var status = document.getElementById('vacancyStatus');
+              var btn = form.querySelector('button[type="submit"]');
+              var data = new FormData(form);
+              data.append('_subject', 'Vacancy Submission — ' + (data.get('Company') || ''));
+              data.append('_template', 'table');
+              btn.disabled = true;
+              status.textContent = 'Sending…';
+              fetch('https://formsubmit.co/ajax/sufyanbarret@gmail.com', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+                .then(function (r) { if (!r.ok) throw new Error('send failed'); return r.json(); })
+                .then(function () {
+                  form.reset();
+                  status.textContent = 'Thank you! Your vacancy has been received — it will appear on the board after a quick review. (شکریہ! آپ کی آسامی موصول ہو گئی ہے)';
+                })
+                .catch(function () {
+                  status.textContent = 'Could not send just now. Please email your vacancy to sufyanbarret@gmail.com instead.';
+                })
+                .finally(function () { btn.disabled = false; });
+            });
+          })();
+          </script>
         </div>
       </div>
     </section>

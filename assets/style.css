@@ -496,6 +496,16 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
 .hiring-text p { color: #33565c; margin: 0 0 18px; line-height: 1.55; }
 .hiring-btn { display: inline-block; }
 .hiring-note { font-size: .85rem; color: #5b6b68; margin: 14px 0 0 !important; }
+.hiring-urdu { background: #fff7e0; border: 1.5px solid #e3a008; border-radius: 10px; padding: 12px 16px; font-size: 1.12rem !important; line-height: 2 !important; color: #6b4e00 !important; text-align: right; }
+.vacancy-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 6px; text-align: left; }
+.vacancy-form label { display: flex; flex-direction: column; gap: 5px; font-size: .85rem; font-weight: 600; color: #1d6a80; }
+.vacancy-form input[type="text"], .vacancy-form textarea { font: inherit; font-weight: 400; padding: 10px 12px; border: 1.5px solid #b8d2da; border-radius: 9px; background: #fff; color: #20302f; }
+.vacancy-form input[type="text"]:focus, .vacancy-form textarea:focus { outline: none; border-color: #2d849e; box-shadow: 0 0 0 3px rgba(45,132,158,.18); }
+.vacancy-wide { grid-column: 1 / -1; }
+.vacancy-check { grid-column: 1 / -1; flex-direction: row !important; align-items: flex-start; gap: 8px !important; font-weight: 500 !important; color: #33565c !important; line-height: 1.5; }
+.vacancy-check input { margin-top: 3px; width: 17px; height: 17px; flex-shrink: 0; }
+.vacancy-form button { grid-column: 1 / -1; justify-self: start; border: none; cursor: pointer; font: inherit; }
+@media (max-width: 640px) { .vacancy-form { grid-template-columns: 1fr; } .vacancy-form button { justify-self: stretch; } }
 @media (max-width: 640px) {
   .hiring-card { flex-direction: column; text-align: center; padding: 26px 22px; gap: 20px; }
   .hiring-art { max-width: 72%; width: 240px; }
