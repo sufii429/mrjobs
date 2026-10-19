@@ -28,7 +28,7 @@ except ImportError:
 
 
 # ---------------------------------------------------------------- config
-SITE_URL = "https://mrjobs.netlify.app"   # no trailing slash
+SITE_URL = "https://mrjobs.top"   # no trailing slash
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JOBS_JSON = os.path.join(ROOT, "jobs.json")
 POSTERS_DIR = os.path.join(ROOT, "posters")

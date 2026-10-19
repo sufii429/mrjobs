@@ -133,9 +133,7 @@
         if (ARCHIVE_MODE) return isExpired(j) && daysSince(j.timestamp) <= ARCHIVE_MAX_DAYS;
         return !isExpired(j);
       }));
-      if (ARCHIVE_MODE) {
-        allJobs.sort(function (a, b) { return Date.parse(b.timestamp) - Date.parse(a.timestamp); });
-      }
+      allJobs.sort(function (a, b) { return Date.parse(b.timestamp) - Date.parse(a.timestamp); });
       allJobs.forEach(function (j) { j._top20 = isTop20(j); });
       await resolvePosters(allJobs);
       buildFilter(allJobs);
