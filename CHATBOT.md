@@ -12,9 +12,9 @@ Date rules use UTC calendar days: current through day 28, archived after day 28 
 
 ## Credentials and privacy
 
-A dedicated `MRJOBS_OPENAI_API_KEY` is required. Configure it as a secret, with **Functions** scope and **deploy-preview** context only. Do not copy the saved portfolio Q&A credential or any development sandbox credential. `MRJOBS_OPENAI_MODEL` can optionally select a supported OpenAI model; the default is `gpt-4.1-mini`.
+A dedicated `MRJOBS_OPENAI_API_KEY` is required. Configure it as a secret, with **Functions** scope and **deploy-preview** context only. Use only a provider credential explicitly authorized for MrJobs. An existing credential may be reused only with explicit user approval for this preview; never copy a development sandbox credential. `MRJOBS_OPENAI_MODEL` can optionally select a supported OpenAI model; the default is `gpt-4.1-mini`.
 
-The endpoint explicitly refuses production context, reads only the MrJobs-specific key, and calls the official OpenAI API server-side. No key is placed in source, static assets or browser requests. The credential must be configured before deploying/redeploying the function; a missing key produces an explicit `AI_NOT_CONFIGURED` response, not a pretend AI answer.
+The endpoint explicitly refuses production context, reads only the MrJobs-specific key, and calls the official OpenAI API server-side. No key is placed in source, static assets or browser requests. The credential must be configured before deploying/redeploying the function; Node functions read the scoped runtime environment, and published source URLs are derived from trusted deployment context; a missing key produces an explicit `AI_NOT_CONFIGURED` response, not a pretend AI answer.
 
 In conversation mode, questions and the last few chat messages are sent to the server and OpenAI with the published context. MrJobs does not persist chat history or log prompts/provider responses in this implementation. Provider processing is separate. The UI discloses this and asks visitors not to share sensitive information. Clear chat removes in-memory context and cancels an outstanding request.
 
