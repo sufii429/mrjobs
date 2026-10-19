@@ -1,0 +1,14 @@
+{
+  "name": "mrjobs-static-board",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/job-search.test.cjs tests/assistant-core.test.mjs tests/assistant-endpoint.test.mjs",
+    "test:browser": "node tests/job-chat.browser.cjs && node tests/assistant.browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  },
+  "dependencies": {
+    "openai": "^7.39.0"
+  }
+}

@@ -9,7 +9,7 @@
   var JOB_DATA_URL = "./jobs.json";
   var NEW_WITHIN_DAYS = 14;          // "NEW" badge for recent postings
   var EXPIRE_AFTER_DAYS = 28;        // listings auto-expire this many days after posting
-  var ARCHIVE_MAX_DAYS = 90;         // expired listings stay on the archive page this long
+  var ARCHIVE_MAX_DAYS = 90;         // archive retention measured from posting, not expiry
   var ARCHIVE_MODE = !!(document.body && document.body.getAttribute("data-mode") === "expired");
 
   /* Top-20 pharma companies of Pakistan — matched loosely against job.company
@@ -44,13 +44,13 @@
   function daysSince(iso) {
     var t = Date.parse(iso);
     if (isNaN(t)) return Infinity;
-    return (Date.now() - t) / 864e5;
+    return Math.floor(Date.now() / 864e5) - Math.floor(t / 864e5);
   }
 
   /* A listing expires EXPIRE_AFTER_DAYS after its timestamp (missing date = stays). */
   function isExpired(job) {
     var t = Date.parse(job.timestamp);
-    return !isNaN(t) && (Date.now() - t) / 864e5 > EXPIRE_AFTER_DAYS;
+    return !isNaN(t) && daysSince(job.timestamp) > EXPIRE_AFTER_DAYS;
   }
 
   /* Defensive dedupe: same id, or same company+title+location+contact → keep first. */
@@ -118,7 +118,7 @@
     grid.innerHTML =
       '<div class="state"><i class="fas fa-history"></i>' +
       '<h3>No expired listings right now</h3>' +
-      '<p>Jobs move here 28 days after posting and stay for 90 days &mdash; nothing has aged out at the moment.</p></div>';
+      '<p>Jobs move here after 28 days and remain until 90 days after posting &mdash; nothing has aged out at the moment.</p></div>';
     countEl.textContent = "0 jobs";
   }
 
@@ -130,6 +130,9 @@
       var data = await res.json();
       var rawJobs = Array.isArray(data) ? data : [];
       allJobs = dedupeJobs(rawJobs.filter(function (j) {
+        if (window.MrJobsSearch) {
+          return window.MrJobsSearch.status(j) === (ARCHIVE_MODE ? 'archived' : 'active');
+        }
         if (ARCHIVE_MODE) return isExpired(j) && daysSince(j.timestamp) <= ARCHIVE_MAX_DAYS;
         return !isExpired(j);
       }));
@@ -197,7 +200,7 @@
       badge = '<div class="badge new">NEW</div>';
     }
     return '' +
-      '<article class="job-card">' + badge +
+      '<article class="job-card" id="' + escapeHtml('listing-' + job.id) + '">' + badge +
       (job.image
         ? '<img class="job-poster" src="' + escapeHtml(posterSrc(job)) + '" alt="' +
           escapeHtml(job.title) + ' &mdash; job poster" loading="lazy">'
@@ -234,6 +237,10 @@
     grid.innerHTML = jobs.map(cardHtml).join("");
     countEl.textContent = jobs.length + " job" + (jobs.length > 1 ? "s" : "") + " found";
     if (!ARCHIVE_MODE) injectSchema(jobs);
+    if (location.hash.indexOf('#listing-') === 0) {
+      var linkedListing = document.getElementById(location.hash.slice(1));
+      if (linkedListing) linkedListing.scrollIntoView({ block: 'start' });
+    }
   }
 
   function injectSchema(jobs) {
