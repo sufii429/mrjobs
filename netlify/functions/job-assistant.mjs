@@ -4,7 +4,8 @@ import { converse } from '../../server/assistant-core.mjs';
 const HEADERS = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'referrer-policy': 'strict-origin-when-cross-origin' };
 const MAX_BYTES = 16000;
 let contentCache;
-function env(name) { return globalThis.Netlify?.env?.get(name); }
+// Node Functions expose scoped runtime variables through process.env.
+function env(name) { return globalThis.Netlify?.env?.get(name) ?? process.env[name]; }
 function json(value, status = 200) { return new Response(JSON.stringify(value), { status, headers: HEADERS }); }
 
 export async function handle(request, context = {}, dependencies = {}) {
@@ -39,8 +40,11 @@ export async function handle(request, context = {}, dependencies = {}) {
   try {
     let content = dependencies.content;
     if (!content) {
-      const deployUrl = env('DEPLOY_URL');
-      if (!deployUrl || !/^https:\/\/[a-z0-9-]+\.netlify\.app$/i.test(deployUrl)) throw new Error('Invalid deployment origin');
+      const deployId = context.deploy?.id;
+      const siteName = context.site?.name || env('SITE_NAME');
+      if (!/^[a-f0-9]{24}$/i.test(deployId || '') || !/^[a-z0-9][a-z0-9-]{0,62}$/i.test(siteName || '')) throw new Error('Invalid deployment identity');
+      // DEPLOY_URL is build-only; use trusted runtime context, never user input.
+      const deployUrl = `https://${deployId}--${siteName}.netlify.app`;
       if (!contentCache || contentCache.origin !== deployUrl || Date.now() - contentCache.at > 30000) {
         const fetcher = dependencies.fetch || fetch;
         const responses = await Promise.all(['jobs.json', 'assistant-guides.json'].map(path => fetcher(`${deployUrl}/${path}`, { signal: AbortSignal.timeout(6000) })));
@@ -51,7 +55,8 @@ export async function handle(request, context = {}, dependencies = {}) {
       }
       content = contentCache;
     }
-    const client = dependencies.client || new OpenAI({ apiKey, baseURL: 'https://api.openai.com/v1', timeout: 24000, maxRetries: 0 });
+    const createClient = dependencies.createClient || (options => new OpenAI(options));
+    const client = dependencies.client || createClient({ apiKey, baseURL: 'https://api.openai.com/v1', timeout: 24000, maxRetries: 0 });
     const result = await converse(payload, { client, jobs: content.jobs, guides: content.guides, model: env('MRJOBS_OPENAI_MODEL') || 'gpt-4.1-mini', now: dependencies.now });
     return json({ ...result, engine: 'ai', disclaimer: 'AI answers use published sources and can make mistakes. Confirm vacancy details with the employer.' });
   } catch (_) {

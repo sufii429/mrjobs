@@ -39,3 +39,33 @@ test('provider failures return a generic error and platform IP throttling is ena
   assert.ok(config.rateLimit.aggregateBy.includes('ip'));
   assert.equal(config.rateLimit.windowLimit, 8);
 });
+
+test('Node runtime reads only the MrJobs-scoped process environment credential', async () => {
+  const previous = process.env.MRJOBS_OPENAI_API_KEY;
+  try {
+    process.env.MRJOBS_OPENAI_API_KEY = 'test-only-not-a-real-credential';
+    let options;
+    const response = await handle(request({ message: 'Show roles' }), preview, {
+      createClient: value => { options = value; return client; }, content, now: '2026-10-19T12:00:00Z'
+    });
+    assert.equal(response.status, 200);
+    assert.equal(options.apiKey, process.env.MRJOBS_OPENAI_API_KEY);
+    assert.equal(options.baseURL, 'https://api.openai.com/v1');
+    assert.doesNotMatch(await response.text(), /test-only-not-a-real-credential/);
+  } finally {
+    if (previous === undefined) delete process.env.MRJOBS_OPENAI_API_KEY;
+    else process.env.MRJOBS_OPENAI_API_KEY = previous;
+  }
+});
+test('runtime deployment identity resolves same-deploy sources without a build-only DEPLOY_URL', async () => {
+  const urls = [];
+  const context = { deploy: { context: 'deploy-preview', id: '1234567890abcdef12345678' }, site: { name: 'mrjobs' } };
+  const response = await handle(request({ message: 'Show roles' }), context, {
+    client, now: '2026-10-19T12:00:00Z',
+    fetch: async url => { urls.push(url); return Response.json(url.endsWith('jobs.json') ? content.jobs : content.guides); }
+  });
+  assert.equal(response.status, 200);
+  assert.deepEqual(urls, ['https://1234567890abcdef12345678--mrjobs.netlify.app/jobs.json', 'https://1234567890abcdef12345678--mrjobs.netlify.app/assistant-guides.json']);
+  const invalid = await handle(request({ message: 'Show roles' }), { ...context, site: { name: 'evil.example/path' } }, { client });
+  assert.equal(invalid.status, 503);
+});
