@@ -16,7 +16,7 @@
      (case-insensitive substring), powering the homepage "Recommended" shelf. */
   var TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami",
     "searle", "martin dow", "hilton", "high-q", "ferozsons", "highnoon",
-    "ccl", "agp", "bosch", "obs pakistan", "barrett", "atco", "indus pharma",
+    "ccl", "agp", "bosch", "obs pakistan", "obs pharma", "barrett", "atco", "indus pharma",
     "pharmevo", "macter", "nabiqasim"];
   function isTop20(job) {
     var c = String(job.company || "").toLowerCase();

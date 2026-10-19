@@ -46,7 +46,7 @@ def esc(s):
 
 TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami", "searle",
               "martin dow", "hilton", "high-q", "ferozsons", "highnoon", "ccl",
-              "agp", "bosch", "obs pakistan", "barrett", "atco", "indus pharma",
+              "agp", "bosch", "obs pakistan", "obs pharma", "barrett", "atco", "indus pharma",
               "pharmevo", "macter", "nabiqasim"]
 """Mirrors isTop20() in assets/app.js (case-insensitive substring)."""
 
