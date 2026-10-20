@@ -489,6 +489,16 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
 .partner-promo img { display: block; width: 100%; height: auto; }
 @media (max-width: 640px) { .partner-promo { margin: 30px 0 4px; } }
 
+/* ---- WhatsApp Channel follow strip (added 2026-10-20) ---- */
+.wa-follow { display: flex; align-items: center; gap: 16px; background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--green); border-radius: var(--radius); padding: 14px 18px; margin: 26px 0 4px; }
+.wa-follow img { width: 72px; height: 72px; flex-shrink: 0; border-radius: 8px; }
+.wa-follow p { margin: 0; flex: 1; font-size: .95rem; color: var(--ink); }
+.wa-follow p strong { color: var(--teal-dark); }
+.wa-follow-btn { background: var(--green); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.wa-follow-btn:hover { filter: brightness(0.93); }
+.job-detail + .wa-follow { margin: 18px 0 26px; }
+@media (max-width: 640px) { .wa-follow { flex-wrap: wrap; gap: 12px; padding: 12px 14px; } .wa-follow img { width: 56px; height: 56px; } .wa-follow-btn { width: 100%; text-align: center; } }
+
 /* ---- Are You Hiring? employer CTA ---- */
 .hiring-cta { margin: 44px 0; }
 .hiring-card { display: flex; align-items: center; gap: 34px; background: linear-gradient(135deg, #eef7f9, #d5e9ee); border-radius: 18px; padding: 34px 36px; box-shadow: 0 10px 30px rgba(6,20,23,.12); }

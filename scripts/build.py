@@ -150,7 +150,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <link rel="stylesheet" href="../assets/style.css?v=11" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -190,6 +190,10 @@ PAGE_TMPL = """<!DOCTYPE html>
       </div>
       <p class="job-note">This listing expires automatically {expiry_note}. Always verify details with the employer before applying.</p>
     </article>
+    <div class="wa-follow">
+      <p><strong>Follow MrJobs on WhatsApp</strong> — roz ki nayi pharma jobs seedha aap ke WhatsApp mein. Koi group nahi, koi shor nahi — sirf jobs.</p>
+      <a class="wa-follow-btn" href="https://whatsapp.com/channel/0029Vb92IZa1XquUiwYhOX27" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Follow Channel</a>
+    </div>
   </main>
 
   <footer>
