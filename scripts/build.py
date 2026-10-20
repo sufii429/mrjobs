@@ -150,7 +150,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=11" />
+  <link rel="stylesheet" href="../assets/style.css?v=7" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -190,10 +190,6 @@ PAGE_TMPL = """<!DOCTYPE html>
       </div>
       <p class="job-note">This listing expires automatically {expiry_note}. Always verify details with the employer before applying.</p>
     </article>
-    <div class="wa-follow">
-      <p><strong>Follow MrJobs on WhatsApp</strong> — roz ki nayi pharma jobs seedha aap ke WhatsApp mein. Koi group nahi, koi shor nahi — sirf jobs.</p>
-      <a class="wa-follow-btn" href="https://whatsapp.com/channel/0029Vb92IZa1XquUiwYhOX27" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Follow Channel</a>
-    </div>
   </main>
 
   <footer>
@@ -777,29 +773,19 @@ def build_city_page(city, slug, city_jobs_list):
     if not rows:
         rows.append('      <div class="state"><p>No open positions in %s right now — check back soon.</p></div>' % esc(city))
 
+    # ItemList entries are plain name+url ListItems on purpose: typing them as
+    # JobPosting made Google validate each as a full job posting and flag
+    # missing description/validThrough etc. (Search Console, 2026-10-20).
+    # The canonical JobPosting lives on each job's own page.
     items = []
     for i, job in enumerate(city_jobs_list, 1):
-        posted = parse_date(job.get("timestamp"))
-        addr = {"@type": "PostalAddress",
-                "addressLocality": title_case_city(job.get("location", "")),
-                "addressCountry": job.get("country") or "PK"}
-        if (job.get("country") or "PK") == "PK":
-            addr["addressRegion"] = "Punjab"
-        item = {
+        items.append({
             "@type": "ListItem",
             "position": i,
-            "item": {
-                "@type": "JobPosting",
-                "title": str(job.get("title", "")),
-                "hiringOrganization": {"@type": "Organization",
-                                       "name": str(job.get("company", ""))},
-                "jobLocation": {"@type": "Place", "address": addr},
-                "url": SITE_URL + "/" + job_url_path(job),
-            },
-        }
-        if posted:
-            item["item"]["datePosted"] = posted.isoformat()
-        items.append(item)
+            "name": "%s — %s" % (str(job.get("title", "")),
+                                 str(job.get("company", ""))),
+            "url": SITE_URL + "/" + job_url_path(job),
+        })
     json_ld = json.dumps({
         "@context": "https://schema.org",
         "@type": "ItemList",
