@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 from datetime import date, datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -259,6 +260,15 @@ def build_job_page(job):
     if len(meta_desc) > 157:
         meta_desc = meta_desc[:155].rstrip() + "…"
     canonical = SITE_URL + "/" + job_url_path(job)
+
+    # WhatsApp apply links carry a pre-filled Roman-Urdu message naming the
+    # company/title and linking back to this page (owner-approved template,
+    # 2026-10-20). Mirrors applyHref() in assets/app.js.
+    if apply.startswith("https://wa.me/") and "?" not in apply:
+        wa_msg = ("Assalam-o-Alaikum! Mein ne MrJobs par *%s* ki *%s* wali vacancy (%s) "
+                  "dekhi hai aur apply karna chahta hoon: %s. Shukriya."
+                  % (company, title, location, canonical))
+        apply = apply + "?text=" + urllib.parse.quote(wa_msg, safe="")
 
     schema = {
         "@context": "https://schema.org",

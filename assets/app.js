@@ -23,6 +23,7 @@
     return TOP20_KEYS.some(function (k) { return c.indexOf(k) !== -1; });
   }
   var SCHEMA_VALID_DAYS = 60;        // JobPosting validThrough window
+  var SITE_URL = "https://mrjobs.top";  // no trailing slash
 
   // Newsletter backend: FormSubmit (no signup; first submission needs email confirmation)
 
@@ -183,6 +184,25 @@
     return "jobs/" + job.id + "-" + slug + ".html";
   }
 
+  function titleCaseCity(s) {
+    return String(s || "").split(/\s+/).map(function (w) {
+      return w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w;
+    }).join(" ");
+  }
+
+  /* WhatsApp apply links carry a pre-filled Roman-Urdu message naming the
+     company/title and linking back to the job's MrJobs page (owner-approved
+     template, 2026-10-20). Mirrors apply_with_text() in scripts/build.py.
+     mailto: and already-parametrised links pass through untouched. */
+  function applyHref(job) {
+    var link = String(job.applyLink || "");
+    if (link.indexOf("https://wa.me/") !== 0 || link.indexOf("?") !== -1) return link;
+    var msg = "Assalam-o-Alaikum! Mein ne MrJobs par *" + (job.company || "") +
+      "* ki *" + (job.title || "") + "* wali vacancy (" + titleCaseCity(job.location) +
+      ") dekhi hai aur apply karna chahta hoon: " + SITE_URL + "/" + jobPageUrl(job) + ". Shukriya.";
+    return link + "?text=" + encodeURIComponent(msg);
+  }
+
   function cardHtml(job, i) {
     var isNew = daysSince(job.timestamp) <= NEW_WITHIN_DAYS;
     var posted = fmtDate(job.timestamp);
@@ -214,7 +234,7 @@
       (ARCHIVE_MODE
         ? '<p class="job-note"><i class="fas fa-info-circle"></i> This ad has expired &mdash; the vacancy may already be filled, but many positions stay open longer. It is worth contacting the employer to confirm the position is still open before applying.</p>'
         : '') +
-      '<a class="apply-btn" href="' + escapeHtml(job.applyLink) + '" target="_blank" rel="noopener">' +
+      '<a class="apply-btn" href="' + escapeHtml(applyHref(job)) + '" target="_blank" rel="noopener">' +
       '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
       (ARCHIVE_MODE
         ? ''
