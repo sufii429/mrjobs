@@ -128,6 +128,17 @@ def poster_data_uri(job):
         return None
 
 
+# Google Analytics 4 (owner property, added 2026-10-21)
+GA_SNIPPET = (
+    '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPQCFWE9EP"></script>\n'
+    '  <script>\n'
+    '    window.dataLayer = window.dataLayer || [];\n'
+    '    function gtag() { dataLayer.push(arguments); }\n'
+    "    gtag('js', new Date());\n"
+    "    gtag('config', 'G-QPQCFWE9EP');\n"
+    '  </script>\n'
+)
+
 # ------------------------------------------------------------ templates
 PAGE_TMPL = """<!DOCTYPE html>
 <html lang="en">
@@ -154,6 +165,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
+{ga_snippet}
 </head>
 <body>
   <nav class="navbar">
@@ -310,6 +322,7 @@ def build_job_page(job):
                       for p in desc.split("\n") if p.strip())
 
     return PAGE_TMPL.format(
+        ga_snippet=GA_SNIPPET,
         page_title=esc(page_title),
         meta_desc=esc(meta_desc or page_title),
         canonical=esc(canonical),
@@ -433,6 +446,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
+{ga_snippet}
 </head>
 <body>
 {g_nav}
@@ -473,6 +487,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../assets/style.css?v=7" />
+{ga_snippet}
 </head>
 <body>
 {g_nav}
@@ -527,6 +542,7 @@ def build_article_page(art, lang):
                  '  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />\n') if is_ur else ""
 
     return ARTICLE_TMPL.format(
+        ga_snippet=GA_SNIPPET,
         lang=lang,
         dir_attr=' dir="rtl"' if is_ur else "",
         page_title=esc(c["title"] + " | MrJobs Career Guide"),
@@ -619,6 +635,7 @@ def build_guide_index():
             % (esc(en["title"]), esc(ur["title"]), esc(en["desc"]),
                esc(art["slug"] + ".html"), esc(art["slug"] + "-urdu.html")))
     return GUIDE_INDEX_TMPL.format(
+        ga_snippet=GA_SNIPPET,
         site=SITE_URL,
         g_nav=GUIDE_NAV,
         cards="\n".join(cards),
@@ -727,6 +744,7 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
   <script type="application/ld+json">
 {json_ld}
   </script>
+{ga_snippet}
 </head>
 <body>
 {c_nav}
@@ -799,6 +817,7 @@ def build_city_page(city, slug, city_jobs_list):
                   % (other[0][1], other[0][0])) if other else ""
 
     return CITY_PAGE_TMPL.format(
+        ga_snippet=GA_SNIPPET,
         page_title=esc(og_title),
         meta_desc=esc(meta_desc),
         canonical=esc(canonical),
