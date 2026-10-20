@@ -244,6 +244,7 @@ img { max-width: 100%; }
 }
 .state i { font-size: 2.4rem; color: var(--teal); margin-bottom: 12px; }
 .state h3 { color: var(--ink); }
+.state-urdu { font-size: 1.05rem; line-height: 2; color: var(--ink); margin-top: 2px; }
 
 /* ---------- newsletter ---------- */
 .newsletter {

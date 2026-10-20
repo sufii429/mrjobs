@@ -95,7 +95,7 @@
   }
 
   function showLoading() {
-    grid.innerHTML = '<div class="state"><i class="fas fa-spinner fa-spin"></i><p>Loading jobs&hellip;</p></div>';
+    grid.innerHTML = '<div class="state"><i class="fas fa-spinner fa-spin"></i><p>Loading jobs&hellip;</p><p class="state-urdu" lang="ur">نوکریوں کے اشتہار لوڈ ہو رہے ہیں۔</p></div>';
   }
 
   function showError() {
