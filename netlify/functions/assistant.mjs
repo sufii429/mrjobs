@@ -14,7 +14,7 @@ const RATE_MAX = 20; // requests per IP per hour (soft limit)
 const EXPIRE_AFTER_DAYS = 28; // must match assets/app.js + scripts/build.py
 // Tried in order: a 404 means that model is not available to this API
 // key, so the handler falls through to the next candidate.
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"];
+const GEMINI_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"];
 
 let cache = { at: 0, jobs: null };
 const rate = new Map(); // ip -> { count, reset }
@@ -68,7 +68,7 @@ function buildContext(jobs) {
       if (deadline) bits.push(`Apply by: ${deadline}`);
       if (j.description) {
         const d = String(j.description).replace(/\s+/g, " ").trim();
-        if (d) bits.push(`Details: ${d.slice(0, 220)}${d.length > 220 ? "…" : ""}`);
+        if (d) bits.push(`Details: ${d.slice(0, 120)}${d.length > 120 ? "…" : ""}`);
       }
       bits.push(`Link: ${jobUrl(j)}`);
       return "- " + bits.join(" | ");
@@ -182,20 +182,34 @@ export async function handler(event) {
   let lastStatus = 0;
   for (const model of GEMINI_MODELS) {
     let gres;
+    const genCfg = { maxOutputTokens: 400, temperature: 0.3 };
+    // 2.5-class models think by default, which is slow for simple Q&A.
+    if (model.includes("2.5") || model.includes("flash-latest")) {
+      genCfg.thinkingConfig = { thinkingBudget: 0 };
+    }
+    const ctrl = new AbortController();
+    const killer = setTimeout(() => ctrl.abort(), 9000);
     try {
       gres = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-goog-api-key": key },
+          signal: ctrl.signal,
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
             contents: [{ role: "user", parts: [{ text: prompt }] }],
-            generationConfig: { maxOutputTokens: 400, temperature: 0.3 },
+            generationConfig: genCfg,
           }),
         }
       );
     } catch (err) {
+      clearTimeout(killer);
+      if (err && err.name === "AbortError") {
+        console.error("assistant: model timed out:", model);
+        lastStatus = "timeout";
+        continue;
+      }
       console.error("assistant: gemini fetch failed:", err && err.message ? err.message : err);
       return json(200, {
         status: "error",
@@ -203,6 +217,7 @@ export async function handler(event) {
         reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
       });
     }
+    clearTimeout(killer);
     if (!gres.ok) {
       lastStatus = gres.status;
       const gerrText = await gres.text().catch(() => "");
