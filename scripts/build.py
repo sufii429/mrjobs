@@ -247,7 +247,7 @@ PAGE_TMPL = """<!DOCTYPE html>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a></div>
   </footer>
   <script src="../assets/share-card.js?v=1"></script>
   <script>
@@ -399,6 +399,7 @@ def minimal_sitemap():
         (SITE_URL + "/cities/jhang.html", None, "daily", "0.9"),
         (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
+        (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
     ])
 
 
@@ -444,7 +445,7 @@ GUIDE_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -737,7 +738,7 @@ CITY_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -906,6 +907,7 @@ def main():
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
         (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
+        (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
     ]
     for job in active:
         rel = job_url_path(job)
