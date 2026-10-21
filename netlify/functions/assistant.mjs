@@ -190,7 +190,15 @@ export async function handler(event) {
         }),
       }
     );
-    if (!gres.ok) throw new Error("gemini http " + gres.status);
+    if (!gres.ok) {
+      const gerrText = await gres.text().catch(() => "");
+      console.error("assistant: gemini http", gres.status, gerrText.slice(0, 300));
+      return json(200, {
+        status: "error",
+        debug: "gemini_http_" + gres.status,
+        reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
+      });
+    }
     const gdata = await gres.json();
     const reply =
       gdata.candidates &&
@@ -202,8 +210,10 @@ export async function handler(event) {
     if (!reply || !String(reply).trim()) throw new Error("empty gemini reply");
     return json(200, { status: "ok", reply: String(reply).trim() });
   } catch (err) {
+    console.error("assistant: gemini call failed:", err && err.message ? err.message : err);
     return json(200, {
       status: "error",
+      debug: "exception: " + String(err && err.message ? err.message : err).slice(0, 120),
       reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
     });
   }
