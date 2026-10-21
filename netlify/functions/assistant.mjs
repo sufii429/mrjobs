@@ -14,7 +14,7 @@ const RATE_MAX = 20; // requests per IP per hour (soft limit)
 const EXPIRE_AFTER_DAYS = 28; // must match assets/app.js + scripts/build.py
 // Tried in order: a 404 means that model is not available to this API
 // key, so the handler falls through to the next candidate.
-const GEMINI_ATTEMPTS = [["v1", "gemini-flash-latest"], ["v1", "gemini-2.5-flash"], ["v1", "gemini-2.0-flash"], ["v1beta", "gemini-2.0-flash"]];
+const GEMINI_ATTEMPTS = [["v1beta", "gemini-3.8-flash"], ["v1", "gemini-3.8-flash"]];
 
 let cache = { at: 0, jobs: null };
 const rate = new Map(); // ip -> { count, reset }
@@ -184,7 +184,7 @@ export async function handler(event) {
     let gres;
     const genCfg = { maxOutputTokens: 400, temperature: 0.3 };
     // 2.5-class models think by default, which is slow for simple Q&A.
-    if (model.includes("2.5") || model.includes("flash-latest")) {
+    if (model.includes("2.5") || model.includes("flash-latest") || model.includes("3.8")) {
       genCfg.thinkingConfig = { thinkingBudget: 0 };
     }
     const ctrl = new AbortController();
