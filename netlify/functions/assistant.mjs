@@ -213,7 +213,6 @@ export async function handler(event) {
       console.error("assistant: gemini fetch failed:", err && err.message ? err.message : err);
       return json(200, {
         status: "error",
-        debug: "exception: " + String(err && err.message ? err.message : err).slice(0, 120),
         reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
       });
     }
@@ -226,7 +225,6 @@ export async function handler(event) {
       if (gres.status === 503 || gres.status === 429) continue; // transient - try next attempt
       return json(200, {
         status: "error",
-        debug: "gemini_http_" + gres.status,
         reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
       });
     }
@@ -243,15 +241,13 @@ export async function handler(event) {
       console.error("assistant: empty gemini reply, model", model);
       return json(200, {
         status: "error",
-        debug: "empty_reply",
         reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
       });
     }
-    return json(200, { status: "ok", model: base + "/" + model, reply: String(reply).trim() });
+    return json(200, { status: "ok", reply: String(reply).trim() });
   }
   return json(200, {
     status: "error",
-    debug: "all_attempts_unavailable_" + lastStatus,
     reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
   });
 }
