@@ -14,7 +14,7 @@ const RATE_MAX = 20; // requests per IP per hour (soft limit)
 const EXPIRE_AFTER_DAYS = 28; // must match assets/app.js + scripts/build.py
 // Tried in order: a 404 means that model is not available to this API
 // key, so the handler falls through to the next candidate.
-const GEMINI_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"];
+const GEMINI_ATTEMPTS = [["v1", "gemini-flash-latest"], ["v1", "gemini-2.5-flash"], ["v1", "gemini-2.0-flash"], ["v1beta", "gemini-2.0-flash"]];
 
 let cache = { at: 0, jobs: null };
 const rate = new Map(); // ip -> { count, reset }
@@ -180,7 +180,7 @@ export async function handler(event) {
     `\n\nVisitor question: ${message}`;
 
   let lastStatus = 0;
-  for (const model of GEMINI_MODELS) {
+  for (const [base, model] of GEMINI_ATTEMPTS) {
     let gres;
     const genCfg = { maxOutputTokens: 400, temperature: 0.3 };
     // 2.5-class models think by default, which is slow for simple Q&A.
@@ -191,7 +191,7 @@ export async function handler(event) {
     const killer = setTimeout(() => ctrl.abort(), 9000);
     try {
       gres = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+        `https://generativelanguage.googleapis.com/${base}/models/${model}:generateContent`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json", "x-goog-api-key": key },
@@ -246,11 +246,11 @@ export async function handler(event) {
         reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
       });
     }
-    return json(200, { status: "ok", model, reply: String(reply).trim() });
+    return json(200, { status: "ok", model: base + "/" + model, reply: String(reply).trim() });
   }
   return json(200, {
     status: "error",
-    debug: "all_models_unavailable_" + lastStatus,
+    debug: "all_attempts_unavailable_" + lastStatus,
     reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
   });
 }
