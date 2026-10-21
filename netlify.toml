@@ -10,6 +10,16 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    # REPORT-ONLY first (added 2026-10-21): observe violations before any
+    # enforcement. Covers: inline GA4 gtag snippet + inline form handlers
+    # ('unsafe-inline'), gtag.js, Font Awesome (cdnjs), Google Fonts (guide
+    # pages), FormSubmit AJAX, GA beacons, blob:/data: poster images.
+    # Do NOT switch to enforcing without Mazeen's explicit go.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://formsubmit.co https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; img-src 'self' data: blob: https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co"
+
+# Netlify Functions directory (Job Assistant backend)
+[functions]
+  directory = "netlify/functions"
 
 # Internal files must not be publicly downloadable (security audit
 # 2026-10-21): build scripts and the internal listings log return 404.
