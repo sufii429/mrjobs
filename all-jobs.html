@@ -121,10 +121,103 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; <span id="year">2026</span> MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a></div>
+    <div class="footer-bottom">&copy; <span id="year">2026</span> MrJobs &ndash; Connecting Medical Sales Professionals with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="privacy.html">Privacy</a></div>
   </footer>
 
   <script src="assets/share-card.js?v=1"></script>
   <script src="assets/app.js?v=10"></script>
+<!-- MrJobs Job Assistant widget (inline: no external hosts; covered by CSP 'self'/'unsafe-inline' report-only) -->
+<style>
+#jaFab{position:fixed;right:18px;bottom:18px;z-index:9990;background:#2d849e;color:#fff;border:none;border-radius:999px;padding:13px 20px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);font-family:inherit}
+#jaFab:hover{background:#236b80}
+#jaPanel{position:fixed;right:18px;bottom:78px;z-index:9990;width:min(370px,calc(100vw - 36px));max-height:min(540px,calc(100dvh - 130px));display:none;flex-direction:column;background:#fff;border-radius:14px;box-shadow:0 10px 34px rgba(0,0,0,.3);overflow:hidden;font-family:inherit}
+#jaPanel.ja-open{display:flex}
+#jaHead{background:#2d849e;color:#fff;padding:12px 14px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+#jaHead button{background:none;border:none;color:#fff;font-size:20px;line-height:1;cursor:pointer;padding:0 2px}
+#jaMsgs{padding:12px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:8px;min-height:140px;background:#fbfdfd}
+.ja-msg{max-width:88%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.5;overflow-wrap:break-word}
+.ja-user{align-self:flex-end;background:#2d849e;color:#fff;border-bottom-right-radius:4px}
+.ja-bot{align-self:flex-start;background:#eef3f4;color:#17323c;border-bottom-left-radius:4px}
+.ja-bot a{color:#1c6e85;text-decoration:underline;overflow-wrap:break-word}
+.ja-typing{font-style:italic;opacity:.65}
+#jaForm{display:flex;border-top:1px solid #e2eaeb;background:#fff}
+#jaInput{flex:1;border:none;padding:13px 12px;font-size:14px;outline:none;font-family:inherit;min-width:0}
+#jaSend{background:#2d849e;color:#fff;border:none;padding:0 18px;font-size:15px;font-weight:700;cursor:pointer}
+#jaSend:disabled{opacity:.55;cursor:default}
+</style>
+<div id="jaPanel" role="dialog" aria-label="MrJobs Job Assistant" aria-hidden="true">
+  <div id="jaHead"><span>💬 Job Assistant</span><button id="jaClose" aria-label="Close chat">&times;</button></div>
+  <div id="jaMsgs"></div>
+  <form id="jaForm"><input id="jaInput" type="text" maxlength="500" placeholder="Ask about jobs… / نوکری کے بارے میں پوچھیں" autocomplete="off" /><button id="jaSend" type="submit">Send</button></form>
+</div>
+<button id="jaFab" aria-label="Open Job Assistant">💬 Job Assistant</button>
+<script>
+(function () {
+  var fab = document.getElementById('jaFab'),
+      panel = document.getElementById('jaPanel'),
+      msgs = document.getElementById('jaMsgs'),
+      form = document.getElementById('jaForm'),
+      input = document.getElementById('jaInput'),
+      send = document.getElementById('jaSend'),
+      closeBtn = document.getElementById('jaClose'),
+      greeted = false;
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function linkify(s) {
+    return esc(s).replace(/(https:\/\/mrjobs\.top\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  }
+  function addMsg(text, who, typing) {
+    var d = document.createElement('div');
+    d.className = 'ja-msg ja-' + who + (typing ? ' ja-typing' : '');
+    d.innerHTML = who === 'bot' ? linkify(text) : esc(text);
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+    return d;
+  }
+  function toggle(open) {
+    var willOpen = typeof open === 'boolean' ? open : !panel.classList.contains('ja-open');
+    panel.classList.toggle('ja-open', willOpen);
+    panel.setAttribute('aria-hidden', willOpen ? 'false' : 'true');
+    if (willOpen && !greeted) {
+      greeted = true;
+      addMsg('Assalam-o-Alaikum! 👋 Main MrJobs Job Assistant hoon. Ask me about open jobs — e.g. "Faisalabad mein pharma jobs?"', 'bot');
+    }
+    if (willOpen) { try { input.focus(); } catch (e) {} }
+  }
+  fab.addEventListener('click', function () { toggle(); });
+  closeBtn.addEventListener('click', function () { toggle(false); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) return;
+    if (q.length > 500) { addMsg('Please keep your question under 500 characters.', 'bot'); return; }
+    addMsg(q, 'user');
+    input.value = '';
+    send.disabled = true;
+    var t = addMsg('…', 'bot', true);
+    fetch('/.netlify/functions/assistant', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: q })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      t.parentNode.removeChild(t);
+      if (d && d.status === 'pending') {
+        addMsg('🤖 Assistant jald aa raha hai! / The Job Assistant is being set up — tab tak, please browse the latest listings on the All Jobs page. (اسسٹنٹ جلد آ رہا ہے — تب تک تازہ آسامیاں All Jobs پر دیکھیں۔)', 'bot');
+      } else if (d && d.reply) {
+        addMsg(d.reply, 'bot');
+      } else {
+        addMsg('Sorry, something went wrong. Please try again.', 'bot');
+      }
+    }).catch(function () {
+      t.parentNode.removeChild(t);
+      addMsg('Network error — please check your connection and try again.', 'bot');
+    }).finally(function () { send.disabled = false; });
+  });
+})();
+</script>
+
 </body>
 </html>
