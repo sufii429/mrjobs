@@ -45,6 +45,25 @@ def esc(s):
     return html.escape("" if s is None else str(s), quote=True)
 
 
+def safe_json_ld(obj):
+    """json.dumps made safe for an HTML <script> block: escape <, >, &
+    as unicode escapes so job text can never break out of the JSON-LD
+    block (security audit 2026-10-21, finding 1)."""
+    return (json.dumps(obj, ensure_ascii=False, indent=2)
+            .replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e"))
+
+
+def write_page(rel, content):
+    """Write a generated page, refusing any destination outside ROOT
+    (security audit 2026-10-21, finding 3)."""
+    dest = os.path.realpath(os.path.join(ROOT, rel))
+    if os.path.commonpath([dest, ROOT]) != ROOT:
+        raise ValueError("refusing to write outside site root: %s" % rel)
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    with open(dest, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
 TOP20_KEYS = ["getz", "glaxosmithkline", "gsk", "abbott", "sami", "searle",
               "martin dow", "hilton", "high-q", "ferozsons", "highnoon", "ccl",
               "agp", "bosch", "obs pakistan", "obs pharma", "barrett", "atco", "indus pharma",
@@ -71,7 +90,10 @@ def job_slug(job):
 
 
 def job_url_path(job):
-    return "jobs/%s-%s.html" % (job.get("id"), job_slug(job))
+    jid = str(job.get("id", ""))
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", jid):
+        raise ValueError("unsafe job id: %r" % jid)
+    return "jobs/%s-%s.html" % (jid, job_slug(job))
 
 
 def parse_date(s):
@@ -108,8 +130,10 @@ def poster_data_uri(job):
     img = job.get("image")
     if not img or not str(img).lower().endswith(".b64"):
         return None
-    path = os.path.join(ROOT, str(img).lstrip("/"))
-    if not os.path.isfile(path):
+    path = os.path.realpath(os.path.join(ROOT, str(img).lstrip("/")))
+    if os.path.commonpath([path, ROOT]) != ROOT:
+        path = None  # poster path escapes the site root - ignore it
+    if not path or not os.path.isfile(path):
         # also try relative to posters dir by basename
         alt = os.path.join(POSTERS_DIR, os.path.basename(str(img)))
         path = alt if os.path.isfile(alt) else None
@@ -265,6 +289,10 @@ def build_job_page(job):
     location = title_case_city(job.get("location", ""))
     desc = str(job.get("description", "")).strip()
     apply = str(job.get("applyLink", "")).strip() or "#"
+    # Only web/mail apply destinations are allowed (security audit
+    # 2026-10-21, finding 2) - javascript:/data:/etc. become "#".
+    if apply != "#" and not apply.lower().startswith(("https://", "mailto:")):
+        apply = "#"
 
     page_title = "%s — %s, %s | MrJobs" % (title, company, location)
     desc_snippet = " ".join(desc.split())
@@ -327,7 +355,7 @@ def build_job_page(job):
         meta_desc=esc(meta_desc or page_title),
         canonical=esc(canonical),
         og_title=esc("%s at %s (%s)" % (title, company, location)),
-        json_ld=json.dumps(schema, ensure_ascii=False, indent=2),
+        json_ld=safe_json_ld(schema),
         crumb=esc(title),
         badge=badge,
         poster_img=poster_img,
@@ -552,7 +580,7 @@ def build_article_page(art, lang):
         alt_url=esc(alt_url),
         og_title=esc(c["title"]),
         font_link=font_link,
-        json_ld=json.dumps(schema, ensure_ascii=False, indent=2),
+        json_ld=safe_json_ld(schema),
         g_nav=GUIDE_NAV,
         crumb_guide=esc("Career Guide" if lang == "en" else "کیریئر گائیڈ"),
         crumb=esc(c["title"]),
@@ -663,8 +691,7 @@ def build_guide(pages):
                 print("  warn: guide page failed %s/%s: %s" % (art["slug"], lang, e),
                       file=sys.stderr)
                 continue
-            with open(os.path.join(ROOT, rel), "w", encoding="utf-8") as f:
-                f.write(html_page)
+            write_page(rel, html_page)
             pages.append((SITE_URL + "/" + rel, None, "monthly", "0.7"))
             n += 1
     print("  guide: wrote index + %d article pages" % n)
@@ -804,13 +831,13 @@ def build_city_page(city, slug, city_jobs_list):
                                  str(job.get("company", ""))),
             "url": SITE_URL + "/" + job_url_path(job),
         })
-    json_ld = json.dumps({
+    json_ld = safe_json_ld({
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": og_title,
         "url": canonical,
         "itemListElement": items,
-    }, ensure_ascii=False, indent=2)
+    })
 
     other = [c for c in CITIES if c[0] != city]
     other_link = (' or see <a href="%s.html">pharma jobs in %s</a>'
@@ -852,8 +879,7 @@ def build_cities(active_jobs, pages):
         except Exception as e:  # noqa: BLE001
             print("  warn: city page failed %s: %s" % (city, e), file=sys.stderr)
             continue
-        with open(os.path.join(out, slug + ".html"), "w", encoding="utf-8") as f:
-            f.write(page_html)
+        write_page("cities/" + slug + ".html", page_html)
         pages.append((SITE_URL + "/cities/%s.html" % slug,
                       date.today().isoformat(), "daily", "0.9"))
         print("  city: %s — %d jobs" % (slug, len(matched)))
@@ -866,11 +892,10 @@ def main():
         with open(JOBS_JSON, encoding="utf-8") as f:
             jobs = json.load(f)
     except Exception as e:  # noqa: BLE001
-        print("ERROR reading jobs.json: %s — writing minimal sitemap" % e,
+        print("ERROR reading jobs.json: %s - failing the build so a broken "
+              "dataset can never publish a gutted site" % e,
               file=sys.stderr)
-        with open(SITEMAP, "w", encoding="utf-8") as f:
-            f.write(minimal_sitemap())
-        return 0
+        return 1
 
     active = [j for j in dedupe(jobs) if not is_expired(j)]
     print("jobs.json: %d entries, %d active" % (len(jobs), len(active)))
@@ -890,8 +915,7 @@ def main():
             print("  warn: skipping %s: %s" % (job.get("id"), e),
                   file=sys.stderr)
             continue
-        with open(os.path.join(ROOT, rel), "w", encoding="utf-8") as f:
-            f.write(page_html)
+        write_page(rel, page_html)
         posted = parse_date(job.get("timestamp"))
         pages.append((SITE_URL + "/" + rel,
                       posted.isoformat() if posted else None,
