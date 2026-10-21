@@ -163,7 +163,7 @@
     if (!jobs.length) { ticker.hidden = true; return; }
     var locs = {};
     jobs.forEach(function (j) { if (j.location) locs[j.location] = true; });
-    var top = Object.keys(locs).sort().slice(0, 6).join(" &middot; ");
+    var top = Object.keys(locs).sort().slice(0, 6).map(escapeHtml).join(" &middot; ");
     var msg =
       '<span>&#128138; ' + jobs.length + ' open positions</span>' +
       '<span>&#128205; ' + top + '</span>' +
@@ -196,6 +196,9 @@
      mailto: and already-parametrised links pass through untouched. */
   function applyHref(job) {
     var link = String(job.applyLink || "");
+    // Only web/mail destinations may reach the Apply button (security
+    // audit 2026-10-21) - anything else renders as a dead link.
+    if (!/^(https:\/\/|mailto:)/i.test(link)) return "#";
     if (link.indexOf("https://wa.me/") !== 0 || link.indexOf("?") !== -1) return link;
     var msg = "Assalam-o-Alaikum! Mein ne MrJobs par *" + (job.company || "") +
       "* ki *" + (job.title || "") + "* wali vacancy (" + titleCaseCity(job.location) +

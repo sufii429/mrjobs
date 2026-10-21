@@ -10,3 +10,17 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+# Internal files must not be publicly downloadable (security audit
+# 2026-10-21): build scripts and the internal listings log return 404.
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/JOBS.md"
+  to = "/404.html"
+  status = 404
+  force = true
