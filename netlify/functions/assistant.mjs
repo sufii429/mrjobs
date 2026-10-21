@@ -223,6 +223,7 @@ export async function handler(event) {
       const gerrText = await gres.text().catch(() => "");
       console.error("assistant: gemini http", gres.status, "model", model, gerrText.slice(0, 300));
       if (gres.status === 404) continue; // model unavailable for this key
+      if (gres.status === 503 || gres.status === 429) continue; // transient - try next attempt
       return json(200, {
         status: "error",
         debug: "gemini_http_" + gres.status,
