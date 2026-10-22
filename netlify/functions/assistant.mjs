@@ -179,75 +179,83 @@ export async function handler(event) {
     (jobs.length ? buildContext(jobs) : "(no open listings right now)") +
     `\n\nVisitor question: ${message}`;
 
-  let lastStatus = 0;
-  for (const [base, model] of GEMINI_ATTEMPTS) {
-    let gres;
+  // Bounded retry: the free Gemini tier rate-limits bursts (429/503), so
+  // a transient failure gets ONE retry after a short wait on the same
+  // model before falling through. A global deadline keeps the whole
+  // handler inside Netlify's 30s function limit.
+  const startedAt = Date.now();
+  const DEADLINE_MS = 21000;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const errReply = () =>
+    json(200, {
+      status: "error",
+      reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
+    });
+
+  attempts: for (const [base, model] of GEMINI_ATTEMPTS) {
     const genCfg = { maxOutputTokens: 400, temperature: 0.3 };
-    // 2.5-class models think by default, which is slow for simple Q&A.
+    // 2.5/3.x-class models think by default, which is slow for simple Q&A.
     if (model.includes("2.5") || model.includes("flash-latest") || model.includes("3.8")) {
       genCfg.thinkingConfig = { thinkingBudget: 0 };
     }
-    const ctrl = new AbortController();
-    const killer = setTimeout(() => ctrl.abort(), 9000);
-    try {
-      gres = await fetch(
-        `https://generativelanguage.googleapis.com/${base}/models/${model}:generateContent`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-goog-api-key": key },
-          signal: ctrl.signal,
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-            contents: [{ role: "user", parts: [{ text: prompt }] }],
-            generationConfig: genCfg,
-          }),
+    for (let tryNo = 0; tryNo < 2; tryNo++) {
+      if (Date.now() - startedAt > DEADLINE_MS) break attempts;
+      let gres;
+      const ctrl = new AbortController();
+      const killer = setTimeout(() => ctrl.abort(), 8000);
+      try {
+        gres = await fetch(
+          `https://generativelanguage.googleapis.com/${base}/models/${model}:generateContent`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-goog-api-key": key },
+            signal: ctrl.signal,
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+              contents: [{ role: "user", parts: [{ text: prompt }] }],
+              generationConfig: genCfg,
+            }),
+          }
+        );
+      } catch (err) {
+        clearTimeout(killer);
+        if (err && err.name === "AbortError") {
+          console.error("assistant: model timed out:", model);
+          break; // next attempt
         }
-      );
-    } catch (err) {
-      clearTimeout(killer);
-      if (err && err.name === "AbortError") {
-        console.error("assistant: model timed out:", model);
-        lastStatus = "timeout";
-        continue;
+        console.error("assistant: gemini fetch failed:", err && err.message ? err.message : err);
+        return errReply();
       }
-      console.error("assistant: gemini fetch failed:", err && err.message ? err.message : err);
-      return json(200, {
-        status: "error",
-        reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
-      });
+      clearTimeout(killer);
+      if (!gres.ok) {
+        const gerrText = await gres.text().catch(() => "");
+        console.error("assistant: gemini http", gres.status, "model", model, gerrText.slice(0, 300));
+        if (gres.status === 404) break; // model unavailable for this key - next attempt
+        if (gres.status === 503 || gres.status === 429) {
+          // transient (free-tier burst limit) - wait, then retry once
+          if (tryNo === 0 && Date.now() - startedAt < DEADLINE_MS - 4000) {
+            await sleep(2500);
+            continue;
+          }
+          break; // next attempt
+        }
+        return errReply();
+      }
+      const gdata = await gres.json().catch(() => null);
+      const reply =
+        gdata &&
+        gdata.candidates &&
+        gdata.candidates[0] &&
+        gdata.candidates[0].content &&
+        gdata.candidates[0].content.parts &&
+        gdata.candidates[0].content.parts[0] &&
+        gdata.candidates[0].content.parts[0].text;
+      if (!reply || !String(reply).trim()) {
+        console.error("assistant: empty gemini reply, model", model);
+        break; // next attempt
+      }
+      return json(200, { status: "ok", reply: String(reply).trim() });
     }
-    clearTimeout(killer);
-    if (!gres.ok) {
-      lastStatus = gres.status;
-      const gerrText = await gres.text().catch(() => "");
-      console.error("assistant: gemini http", gres.status, "model", model, gerrText.slice(0, 300));
-      if (gres.status === 404) continue; // model unavailable for this key
-      if (gres.status === 503 || gres.status === 429) continue; // transient - try next attempt
-      return json(200, {
-        status: "error",
-        reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
-      });
-    }
-    const gdata = await gres.json().catch(() => null);
-    const reply =
-      gdata &&
-      gdata.candidates &&
-      gdata.candidates[0] &&
-      gdata.candidates[0].content &&
-      gdata.candidates[0].content.parts &&
-      gdata.candidates[0].content.parts[0] &&
-      gdata.candidates[0].content.parts[0].text;
-    if (!reply || !String(reply).trim()) {
-      console.error("assistant: empty gemini reply, model", model);
-      return json(200, {
-        status: "error",
-        reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
-      });
-    }
-    return json(200, { status: "ok", reply: String(reply).trim() });
   }
-  return json(200, {
-    status: "error",
-    reply: "Sorry, the assistant is unavailable right now. Please browse the latest listings on the All Jobs page: https://mrjobs.top/all-jobs.html",
-  });
+  return errReply();
 }
