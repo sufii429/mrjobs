@@ -203,6 +203,7 @@ PAGE_TMPL = """<!DOCTYPE html>
         <li><a href="../guide/">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -420,6 +421,7 @@ GUIDE_NAV = """
         <li><a href="../guide/" aria-current="page">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -715,6 +717,7 @@ CITY_NAV = """
         <li><a href="../guide/">Guide</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
