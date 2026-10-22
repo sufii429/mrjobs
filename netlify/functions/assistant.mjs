@@ -184,7 +184,7 @@ export async function handler(event) {
   // model before falling through. A global deadline keeps the whole
   // handler inside Netlify's 30s function limit.
   const startedAt = Date.now();
-  const DEADLINE_MS = 21000;
+  const DEADLINE_MS = 24000;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const errReply = () =>
     json(200, {
@@ -202,7 +202,7 @@ export async function handler(event) {
       if (Date.now() - startedAt > DEADLINE_MS) break attempts;
       let gres;
       const ctrl = new AbortController();
-      const killer = setTimeout(() => ctrl.abort(), 8000);
+      const killer = setTimeout(() => ctrl.abort(), 7000);
       try {
         gres = await fetch(
           `https://generativelanguage.googleapis.com/${base}/models/${model}:generateContent`,
@@ -231,10 +231,11 @@ export async function handler(event) {
         const gerrText = await gres.text().catch(() => "");
         console.error("assistant: gemini http", gres.status, "model", model, gerrText.slice(0, 300));
         if (gres.status === 404) break; // model unavailable for this key - next attempt
-        if (gres.status === 503 || gres.status === 429) {
-          // transient (free-tier burst limit) - wait, then retry once
-          if (tryNo === 0 && Date.now() - startedAt < DEADLINE_MS - 4000) {
-            await sleep(2500);
+        if (gres.status === 429) break; // per-minute quota - a few seconds' wait won't clear it
+        if (gres.status === 503) {
+          // model overloaded (Google: "high demand... usually temporary") - wait, retry once
+          if (tryNo === 0 && Date.now() - startedAt < DEADLINE_MS - 9000) {
+            await sleep(9000);
             continue;
           }
           break; // next attempt
