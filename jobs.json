@@ -673,7 +673,7 @@
   },
   {
     "id": "job-61",
-    "timestamp": "2026-10-11",
+    "timestamp": "2026-10-24T16:01:18+05:00",
     "company": "Asian Continental Pharma",
     "title": "MIO",
     "location": "FAISALABAD",
@@ -1503,5 +1503,60 @@
     "contact": "923130156568",
     "featured": false,
     "applyLink": "https://wa.me/923130156568"
+  },
+  {
+    "id": "job-137",
+    "timestamp": "2026-10-24T16:01:18+05:00",
+    "company": "ADVIN PHARMA",
+    "title": "ASM (Area Sales Manager)",
+    "location": "JHANG",
+    "description": "ADVIN PHARMA is hiring an ASM (Area Sales Manager) for Jhang (Jhang belt, base Jhang) for its Gynae / Derma / Urology / Neuropsychiatry groups.\n\nRequirements: Graduate; 2 years experience with the same belt; no age limit.\n\nCompany offers: handsome attractive salary package, learning environment, earning opportunity, career growth, attractive incentive, health insurance, and internal promotions.\n\nInterested candidates may apply on WhatsApp — Muhammad Wasaq Ahmed, 923316500400 (also mention ADVIN PHARMA, 923460009400).",
+    "contact": "923316500400",
+    "featured": false,
+    "applyLink": "https://wa.me/923316500400"
+  },
+  {
+    "id": "job-138",
+    "timestamp": "2026-10-24T16:01:18+05:00",
+    "company": "CCL Pharmaceuticals",
+    "title": "MIRO / SMIRO (Neuro Psychiatry Division)",
+    "location": "FAISALABAD",
+    "description": "CCL Pharmaceuticals is hiring a MIRO / SMIRO for its Neuro Psychiatry Division in Faisalabad (Satiana Road / Madina Town area).\n\nRequirements: Graduate (BA, BSc); must have 1 year experience in Neuro Psychiatry.\n\nCompany offers: attractive salary package, internal promotion, annual increments, career growth, friendly and learning environment, international tour, and monthly incentives.\n\nInterested candidates may apply on WhatsApp — M. Tanveer (EDSM), 9233331672707.",
+    "contact": "9233331672707",
+    "featured": false,
+    "applyLink": "https://wa.me/9233331672707"
+  },
+  {
+    "id": "job-139",
+    "timestamp": "2026-10-24T16:01:18+05:00",
+    "company": "Rite Pharmaceuticals Pvt. Ltd.",
+    "title": "TM / STM / AFM",
+    "location": "FAISALABAD",
+    "description": "Rite Pharmaceuticals Pvt. Ltd. is hiring a TM / STM / AFM in Faisalabad. Male and female candidates may apply.\n\nRequirements: BA / B.Com / B.Sc / D Pharm; age limit 30 years; portfolio experience will be highly preferable.\n\nCompany offers: attractive salary, internal promotion, learning and earning environment, health insurance, monthly incentives, and annual international tour.\n\nInterested candidates may apply on WhatsApp — Sikander Hayat, 923007680513 (also mention 923116429317).",
+    "contact": "923007680513",
+    "featured": false,
+    "applyLink": "https://wa.me/923007680513"
+  },
+  {
+    "id": "job-140",
+    "timestamp": "2026-10-24T16:01:18+05:00",
+    "company": "CONTINENTAL PHARMACEUTICAL BRUSSELS BELGIUM",
+    "title": "TM & STM",
+    "location": "KARACHI",
+    "description": "CONTINENTAL PHARMACEUTICAL BRUSSELS BELGIUM is hiring a TM & STM in Karachi (Nazimabad / North Nazimabad territory).\n\nRequirements: Graduate; minimum 6 months experience of the relevant territory.\n\nCompany offers: attractive salary, attractive incentives (zero packs monthly incentive), learning and growing environment, annual increment, zero infiltration, and internal promotion.\n\nInterested candidates may apply by call or WhatsApp — RSM, 923411290518.",
+    "contact": "923411290518",
+    "featured": false,
+    "applyLink": "https://wa.me/923411290518"
+  },
+  {
+    "id": "job-141",
+    "timestamp": "2026-10-24T16:01:18+05:00",
+    "company": "Getz Pharma (Pvt.) Ltd",
+    "title": "Territory Manager, Insulin (Insuget) Portfolio",
+    "location": "FAISALABAD",
+    "description": "Getz Pharma (Pvt.) Ltd is hiring a Territory Manager for its Insulin (Insuget) Portfolio in Faisalabad (Extension Madina Town Belt).\n\nRequirements: Graduation / relevant qualification as per company policy; relevant Cardio Metabolic experience (2 years preferred); experienced candidates only; strong communication, interpersonal and selling skills; good knowledge of the Madina Town Belt territory.\n\nCompany offers: attractive salary package, attractive allowances, monthly incentives, health insurance policy, friendly and learning environment, internal promotion opportunities, and career growth.\n\nInterested candidates may apply on WhatsApp — 923429419761.",
+    "contact": "923429419761",
+    "featured": false,
+    "applyLink": "https://wa.me/923429419761"
   }
 ]
