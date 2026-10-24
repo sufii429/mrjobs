@@ -97,9 +97,18 @@ def job_url_path(job):
 
 
 def parse_date(s):
+    if s is None:
+        return None
+    s = str(s).strip()
+    if not s:
+        return None
     try:
-        return datetime.strptime(str(s).strip(), "%Y-%m-%d").date()
-    except (ValueError, TypeError, AttributeError):
+        return datetime.strptime(s, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        pass
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00")).date()
+    except ValueError:
         return None
 
 
@@ -296,6 +305,18 @@ def build_job_page(job):
         apply = "#"
 
     page_title = "%s — %s, %s | MrJobs" % (title, company, location)
+    if len(page_title) > 75:
+        short_company = company
+        for suf in (" (Pvt.) Ltd", " (Pvt) Ltd", " Pvt. Ltd",
+                    " (Private) Limited", " Limited", " Ltd"):
+            if short_company.endswith(suf):
+                short_company = short_company[: -len(suf)]
+                break
+        page_title = "%s — %s, %s | MrJobs" % (title, short_company, location)
+    if len(page_title) > 75:
+        page_title = "%s — %s | MrJobs" % (title, short_company)
+    if len(page_title) > 78:
+        page_title = page_title[:76].rstrip() + "…"
     desc_snippet = " ".join(desc.split())
     meta_desc = "%s at %s in %s — %s" % (title, company, location, desc_snippet)
     if len(meta_desc) > 157:
@@ -684,7 +705,8 @@ def build_guide(pages):
     os.makedirs(GUIDE_DIR, exist_ok=True)
     with open(os.path.join(GUIDE_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(build_guide_index())
-    pages.append((SITE_URL + "/guide/", None, "monthly", "0.7"))
+    pages.append((SITE_URL + "/guide/", date.today().isoformat(),
+                  "monthly", "0.7"))
     n = 0
     for art in GUIDE_ARTICLES:
         for lang in ("en", "ur"):
@@ -696,7 +718,8 @@ def build_guide(pages):
                       file=sys.stderr)
                 continue
             write_page(rel, html_page)
-            pages.append((SITE_URL + "/" + rel, None, "monthly", "0.7"))
+            pages.append((SITE_URL + "/" + rel, date.today().isoformat(),
+                          "monthly", "0.7"))
             n += 1
     print("  guide: wrote index + %d article pages" % n)
 
@@ -799,9 +822,8 @@ def build_city_page(city, slug, city_jobs_list):
     canonical = SITE_URL + "/cities/%s.html" % slug
     og_title = "Pharma Jobs in %s – MrJobs" % city
     meta_desc = ("Latest pharma jobs in %s: Medical Representative, TM, AM "
-                 "and more openings across Pakistan's top pharmaceutical "
-                 "companies. New listings daily — apply via WhatsApp on "
-                 "MrJobs." % city)
+                 "& more at Pakistan's top pharma companies. Apply via "
+                 "WhatsApp on MrJobs." % city)
     today = date.today()
 
     rows = []
@@ -906,14 +928,22 @@ def main():
     print("jobs.json: %d entries, %d active" % (len(jobs), len(active)))
 
     os.makedirs(JOBS_DIR, exist_ok=True)
+    today_iso = date.today().isoformat()
     pages = [
-        (SITE_URL + "/", None, "daily", "1.0"),
-        (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
-        (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
-        (SITE_URL + "/about.html", None, "monthly", "0.5"),
-        (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
-        (SITE_URL + "/contact.html", None, "monthly", "0.3"),
+        (SITE_URL + "/", today_iso, "daily", "1.0"),
+        (SITE_URL + "/all-jobs.html", today_iso, "daily", "0.9"),
+        (SITE_URL + "/expired-jobs.html", today_iso, "weekly", "0.4"),
+        (SITE_URL + "/about.html", today_iso, "monthly", "0.5"),
+        (SITE_URL + "/privacy.html", today_iso, "monthly", "0.3"),
+        (SITE_URL + "/contact.html", today_iso, "monthly", "0.3"),
+        (SITE_URL + "/blog/", today_iso, "weekly", "0.6"),
     ]
+    blog_dir = os.path.join(ROOT, "blog")
+    if os.path.isdir(blog_dir):
+        for fn in sorted(os.listdir(blog_dir)):
+            if fn.endswith(".html") and fn != "index.html":
+                pages.append((SITE_URL + "/blog/" + fn[:-5],
+                              today_iso, "monthly", "0.6"))
     for job in active:
         rel = job_url_path(job)
         try:
