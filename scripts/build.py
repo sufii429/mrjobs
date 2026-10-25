@@ -13,7 +13,6 @@ NEVER fails the deploy: any unexpected error still leaves a minimal
 sitemap.xml behind and exits 0.
 """
 
-import base64
 import html
 import json
 import os
@@ -132,33 +131,6 @@ def dedupe(jobs):
 
 def title_case_city(s):
     return " ".join(w.capitalize() for w in str(s).split())
-
-
-def poster_data_uri(job):
-    """Inline the .b64 poster as a data URI so the page needs no JS."""
-    img = job.get("image")
-    if not img or not str(img).lower().endswith(".b64"):
-        return None
-    path = os.path.realpath(os.path.join(ROOT, str(img).lstrip("/")))
-    if os.path.commonpath([path, ROOT]) != ROOT:
-        path = None  # poster path escapes the site root - ignore it
-    if not path or not os.path.isfile(path):
-        # also try relative to posters dir by basename
-        alt = os.path.join(POSTERS_DIR, os.path.basename(str(img)))
-        path = alt if os.path.isfile(alt) else None
-    if not path:
-        print("  warn: poster file missing for %s: %s" % (job.get("id"), img),
-              file=sys.stderr)
-        return None
-    try:
-        with open(path, "rb") as f:
-            raw_b64 = f.read().decode("ascii").strip()
-        base64.b64decode(raw_b64)  # validate
-        return "data:image/jpeg;base64," + raw_b64
-    except Exception as e:  # noqa: BLE001
-        print("  warn: bad poster %s for %s: %s" % (img, job.get("id"), e),
-              file=sys.stderr)
-        return None
 
 
 # Google Analytics 4 (owner property, added 2026-10-21)
@@ -363,10 +335,10 @@ def build_job_page(job):
         schema["jobLocation"]["address"]["addressRegion"] = "Punjab"
 
     badge = ('<div class="badge new">NEW</div>' if is_new else "")
-    data_uri = poster_data_uri(job)
-    poster_img = ('<img class="job-poster-lg" src="%s" alt="%s" />'
-                  % (esc(data_uri), esc("%s — job poster" % title))) \
-        if data_uri else ""
+    # Posters are source material for the text listing only and are NOT
+    # displayed on the site (owner decision 2026-10-24; SEO fix P1,
+    # 2026-10-25). Embedding them as base64 made job pages ~116 KB.
+    poster_img = ""
 
     paras = "\n".join("        <p>%s</p>" % esc(p)
                       for p in desc.split("\n") if p.strip())
@@ -419,7 +391,6 @@ def minimal_sitemap():
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
         (SITE_URL + "/cities/faisalabad.html", None, "daily", "0.9"),
         (SITE_URL + "/cities/jhang.html", None, "daily", "0.9"),
-        (SITE_URL + "/expired-jobs.html", None, "weekly", "0.4"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
         (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
         (SITE_URL + "/contact.html", None, "monthly", "0.3"),
@@ -929,10 +900,11 @@ def main():
 
     os.makedirs(JOBS_DIR, exist_ok=True)
     today_iso = date.today().isoformat()
+    # /expired-jobs.html stays live for visitors arriving from old links
+    # but is noindex and stays out of the sitemap (P6, decided 2026-10-24).
     pages = [
         (SITE_URL + "/", today_iso, "daily", "1.0"),
         (SITE_URL + "/all-jobs.html", today_iso, "daily", "0.9"),
-        (SITE_URL + "/expired-jobs.html", today_iso, "weekly", "0.4"),
         (SITE_URL + "/about.html", today_iso, "monthly", "0.5"),
         (SITE_URL + "/privacy.html", today_iso, "monthly", "0.3"),
         (SITE_URL + "/contact.html", today_iso, "monthly", "0.3"),
