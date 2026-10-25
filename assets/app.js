@@ -74,27 +74,9 @@
     return out;
   }
 
-  /* Posters are stored as base64 text (.b64) — decode to blob URLs before render. */
-  var posterCache = {};
-  async function resolvePosters(jobs) {
-    var pending = jobs.filter(function (j) {
-      return j.image && /\.b64$/i.test(j.image) && !posterCache[j.image];
-    });
-    await Promise.all(pending.map(async function (j) {
-      try {
-        var res = await fetch(j.image, { cache: "force-cache" });
-        var b64 = (await res.text()).replace(/\s+/g, "");
-        var bin = atob(b64);
-        var bytes = new Uint8Array(bin.length);
-        for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-        posterCache[j.image] = URL.createObjectURL(new Blob([bytes], { type: "image/jpeg" }));
-      } catch (e) { console.error("poster failed:", j.image, e); }
-    }));
-    jobs.forEach(function (j) {
-      if (j.image && posterCache[j.image]) j._posterUrl = posterCache[j.image];
-    });
-  }
-  function posterSrc(j) { return j._posterUrl || j.image || ""; }
+  /* Posters are source material for the text listings only (owner
+     decision 2026-10-24, extended to cards 2026-10-25): the board never
+     fetches or displays them — cards are clean text, pages stay light. */
 
   function fmtDate(iso) {
     var t = Date.parse(iso);
@@ -144,7 +126,6 @@
       }));
       allJobs.sort(function (a, b) { return Date.parse(b.timestamp) - Date.parse(a.timestamp); });
       allJobs.forEach(function (j) { j._top20 = isTop20(j); });
-      await resolvePosters(allJobs);
       buildFilter(allJobs);
       buildTicker(allJobs);
       if (!allJobs.length) { if (ARCHIVE_MODE) { showEmptyArchive(); } else { showEmptyBoard(); } return; }
@@ -228,10 +209,6 @@
     }
     return '' +
       '<article class="job-card">' + badge +
-      (job.image
-        ? '<img class="job-poster" src="' + escapeHtml(posterSrc(job)) + '" alt="' +
-          escapeHtml(job.title) + ' &mdash; job poster" loading="lazy">'
-        : '') +
       '<h3>' + escapeHtml(job.title) + '</h3>' +
       '<div class="job-meta"><i class="fas fa-building"></i><span>' + escapeHtml(job.company) + '</span></div>' +
       (job._top20 ? '<div class="job-meta topco"><i class="fas fa-award"></i><span>Top 20 Pharma Company</span></div>' : '') +
