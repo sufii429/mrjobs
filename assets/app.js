@@ -33,7 +33,15 @@
   var countEl = $("jobCount");
   var searchInput = $("searchInput");
   var locationFilter = $("locationFilter");
+  var pagerEl = $("boardPager");
   var allJobs = [];
+
+  /* Mobile pagination (owner request, 2026-10-25): on narrow screens the
+     board renders PAGE_SIZE cards at a time with a "Show more" button —
+     the full list felt like infinite scrolling. Desktop is unchanged
+     (PAGE_SIZE Infinity renders everything, the pager never appears). */
+  var PAGE_SIZE = (window.matchMedia && window.matchMedia("(max-width: 820px)").matches) ? 20 : Infinity;
+  var visibleCount = PAGE_SIZE;
 
   /* Escape text before injecting into HTML (job data is hand-edited). */
   function escapeHtml(s) {
@@ -140,6 +148,7 @@
       buildFilter(allJobs);
       buildTicker(allJobs);
       if (!allJobs.length) { if (ARCHIVE_MODE) { showEmptyArchive(); } else { showEmptyBoard(); } return; }
+      visibleCount = PAGE_SIZE;
       renderJobs(allJobs);
     } catch (e) {
       console.error(e);
@@ -252,11 +261,31 @@
     if (!jobs.length) {
       grid.innerHTML = '<div class="state"><i class="fas fa-search"></i><p>No matching jobs found.</p></div>';
       countEl.textContent = "0 jobs";
+      if (pagerEl) pagerEl.innerHTML = "";
       return;
     }
-    grid.innerHTML = jobs.map(cardHtml).join("");
+    grid.innerHTML = jobs.slice(0, visibleCount).map(cardHtml).join("");
     countEl.textContent = jobs.length + " job" + (jobs.length > 1 ? "s" : "") + " found";
+    renderPager(jobs.length);
     if (!ARCHIVE_MODE) injectSchema(jobs);
+  }
+
+  /* "Show more" pager under the grid. Renders only while more cards
+     remain hidden, so desktop (PAGE_SIZE Infinity) never sees it. The
+     slice starts at 0, so card indices still match the full filtered
+     list and share buttons keep their data-idx. */
+  function renderPager(total) {
+    if (!pagerEl) return;
+    if (total <= visibleCount) { pagerEl.innerHTML = ""; return; }
+    pagerEl.innerHTML =
+      '<p style="margin:0 0 10px;color:#5b6b73;font-size:.92rem">Showing ' +
+      Math.min(visibleCount, total) + ' of ' + total + ' jobs</p>' +
+      '<button type="button" class="apply-btn" id="showMoreBtn">' +
+      'Show more jobs <i class="fas fa-chevron-down"></i></button>';
+    $("showMoreBtn").addEventListener("click", function () {
+      visibleCount += PAGE_SIZE;
+      renderJobs(lastJobs);
+    });
   }
 
   /* Share-card button → MrJobsShareCard (assets/share-card.js). */
@@ -312,6 +341,7 @@
   }
 
   function applyFilters() {
+    visibleCount = PAGE_SIZE;
     var q = searchInput.value.trim().toLowerCase();
     var loc = locationFilter.value;
     renderJobs(allJobs.filter(function (j) {
