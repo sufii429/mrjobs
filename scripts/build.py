@@ -144,6 +144,14 @@ GA_SNIPPET = (
     '  </script>\n'
 )
 
+# Google AdSense (added 2026-10-26; publisher ca-pub-6876303205254884).
+# Placed in the <head> of every generated page alongside the GA tag.
+ADSENSE_SNIPPET = (
+    '  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6876303205254884"\n'
+    '       crossorigin="anonymous"></script>\n'
+)
+HEAD_SNIPPETS = GA_SNIPPET + ADSENSE_SNIPPET
+
 # ------------------------------------------------------------ templates
 PAGE_TMPL = """<!DOCTYPE html>
 <html lang="en">
@@ -354,7 +362,7 @@ def build_job_page(job):
                       for p in desc.split("\n") if p.strip())
 
     return PAGE_TMPL.format(
-        ga_snippet=GA_SNIPPET,
+        ga_snippet=HEAD_SNIPPETS,
         page_title=esc(page_title),
         meta_desc=esc(meta_desc or page_title),
         canonical=esc(canonical),
@@ -582,7 +590,7 @@ def build_article_page(art, lang):
                  '  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />\n') if is_ur else ""
 
     return ARTICLE_TMPL.format(
-        ga_snippet=GA_SNIPPET,
+        ga_snippet=HEAD_SNIPPETS,
         lang=lang,
         dir_attr=' dir="rtl"' if is_ur else "",
         page_title=esc(c["title"] + " | MrJobs Career Guide"),
@@ -675,7 +683,7 @@ def build_guide_index():
             % (esc(en["title"]), esc(ur["title"]), esc(en["desc"]),
                esc(art["slug"] + ".html"), esc(art["slug"] + "-urdu.html")))
     return GUIDE_INDEX_TMPL.format(
-        ga_snippet=GA_SNIPPET,
+        ga_snippet=HEAD_SNIPPETS,
         site=SITE_URL,
         g_nav=GUIDE_NAV,
         cards="\n".join(cards),
@@ -863,7 +871,7 @@ def build_city_page(city, slug, city_jobs_list):
                   % (other[0][1], other[0][0])) if other else ""
 
     return CITY_PAGE_TMPL.format(
-        ga_snippet=GA_SNIPPET,
+        ga_snippet=HEAD_SNIPPETS,
         page_title=esc(og_title),
         meta_desc=esc(meta_desc),
         canonical=esc(canonical),
