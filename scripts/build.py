@@ -223,6 +223,9 @@ PAGE_TMPL = """<!DOCTYPE html>
           <li><a href="../all-jobs.html">All Jobs</a></li>
           <li><a href="../cities/faisalabad.html">Pharma Jobs in Faisalabad</a></li>
           <li><a href="../cities/jhang.html">Pharma Jobs in Jhang</a></li>
+          <li><a href="../cities/sukkur.html">Pharma Jobs in Sukkur</a></li>
+          <li><a href="../cities/lahore.html">Pharma Jobs in Lahore</a></li>
+          <li><a href="../cities/karachi.html">Pharma Jobs in Karachi</a></li>
           <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../blog/">Blog</a></li>
           <li><a href="../about.html">About</a></li>
@@ -259,6 +262,26 @@ PAGE_TMPL = """<!DOCTYPE html>
 """
 
 
+def apply_href(job):
+    """The listing's Apply URL, sanitised. Mirror of applyHref() in
+    assets/app.js: only https:// and mailto: destinations survive
+    (security audit 2026-10-21, finding 2); WhatsApp links carry the
+    pre-filled Roman-Urdu message naming the company/title and linking
+    back to the job's page (owner-approved template, 2026-10-20)."""
+    apply = str(job.get("applyLink", "")).strip() or "#"
+    if apply != "#" and not apply.lower().startswith(("https://", "mailto:")):
+        apply = "#"
+    if apply.startswith("https://wa.me/") and "?" not in apply:
+        wa_msg = ("Assalam-o-Alaikum! Mein ne MrJobs par *%s* ki *%s* wali vacancy (%s) "
+                  "dekhi hai aur apply karna chahta hoon: %s. Shukriya."
+                  % (str(job.get("company", "")).strip(),
+                     str(job.get("title", "")).strip(),
+                     title_case_city(job.get("location", "")),
+                     SITE_URL + "/" + job_url_path(job)))
+        apply = apply + "?text=" + urllib.parse.quote(wa_msg, safe="")
+    return apply
+
+
 def build_job_page(job):
     posted = parse_date(job.get("timestamp"))
     posted_iso = posted.isoformat() if posted else None
@@ -270,11 +293,7 @@ def build_job_page(job):
     title = str(job.get("title", "")).strip()
     location = title_case_city(job.get("location", ""))
     desc = str(job.get("description", "")).strip()
-    apply = str(job.get("applyLink", "")).strip() or "#"
-    # Only web/mail apply destinations are allowed (security audit
-    # 2026-10-21, finding 2) - javascript:/data:/etc. become "#".
-    if apply != "#" and not apply.lower().startswith(("https://", "mailto:")):
-        apply = "#"
+    apply = apply_href(job)
 
     page_title = "%s — %s, %s | MrJobs" % (title, company, location)
     if len(page_title) > 75:
@@ -294,15 +313,6 @@ def build_job_page(job):
     if len(meta_desc) > 157:
         meta_desc = meta_desc[:155].rstrip() + "…"
     canonical = SITE_URL + "/" + job_url_path(job)
-
-    # WhatsApp apply links carry a pre-filled Roman-Urdu message naming the
-    # company/title and linking back to this page (owner-approved template,
-    # 2026-10-20). Mirrors applyHref() in assets/app.js.
-    if apply.startswith("https://wa.me/") and "?" not in apply:
-        wa_msg = ("Assalam-o-Alaikum! Mein ne MrJobs par *%s* ki *%s* wali vacancy (%s) "
-                  "dekhi hai aur apply karna chahta hoon: %s. Shukriya."
-                  % (company, title, location, canonical))
-        apply = apply + "?text=" + urllib.parse.quote(wa_msg, safe="")
 
     schema = {
         "@context": "https://schema.org",
@@ -391,6 +401,9 @@ def minimal_sitemap():
         (SITE_URL + "/all-jobs.html", None, "daily", "0.9"),
         (SITE_URL + "/cities/faisalabad.html", None, "daily", "0.9"),
         (SITE_URL + "/cities/jhang.html", None, "daily", "0.9"),
+        (SITE_URL + "/cities/sukkur.html", None, "daily", "0.9"),
+        (SITE_URL + "/cities/lahore.html", None, "daily", "0.9"),
+        (SITE_URL + "/cities/karachi.html", None, "daily", "0.9"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
         (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
         (SITE_URL + "/contact.html", None, "monthly", "0.3"),
@@ -433,6 +446,9 @@ GUIDE_FOOTER = """
           <li><a href="../all-jobs.html">All Jobs</a></li>
           <li><a href="../cities/faisalabad.html">Pharma Jobs in Faisalabad</a></li>
           <li><a href="../cities/jhang.html">Pharma Jobs in Jhang</a></li>
+          <li><a href="../cities/sukkur.html">Pharma Jobs in Sukkur</a></li>
+          <li><a href="../cities/lahore.html">Pharma Jobs in Lahore</a></li>
+          <li><a href="../cities/karachi.html">Pharma Jobs in Karachi</a></li>
           <li><a href="../expired-jobs.html">Expired Jobs</a></li>
           <li><a href="../guide/">Career Guide</a></li>
           <li><a href="../blog/">Blog</a></li>
@@ -697,7 +713,12 @@ def build_guide(pages):
 
 # ------------------------------------------------------ city landing pages
 # Pharmajobs.pk-style city hubs, generated from jobs.json.
-CITIES = [("Faisalabad", "faisalabad"), ("Jhang", "jhang")]
+# Order: Faisalabad + Jhang (originals), then the 2026-10-26 additions
+# (SEO fix P3) in live-listing volume order on that date — Sukkur 12,
+# Lahore 7, Karachi 5 active listings.
+CITIES = [("Faisalabad", "faisalabad"), ("Jhang", "jhang"),
+          ("Sukkur", "sukkur"), ("Lahore", "lahore"),
+          ("Karachi", "karachi")]
 
 CITY_NAV = """
   <nav class="navbar">
@@ -884,6 +905,158 @@ def build_cities(active_jobs, pages):
 
 
 
+# ------------------------------------------------- board pages (SEO P2)
+# index.html and all-jobs.html are committed statics whose job board is
+# rendered client-side by assets/app.js. At build time we fill the
+# BUILD markers in those files with (a) an ItemList JSON-LD of the
+# active jobs and (b) server-rendered copies of the board cards, so
+# crawlers and no-JS visitors see the full board in the static HTML.
+# app.js replaces the grid on load (loading state, then the same cards
+# rendered from jobs.json), so the end state for visitors is unchanged.
+# The committed files keep the empty markers; the fill is regenerated
+# on every deploy, exactly like jobs/, cities/ and the sitemap.
+BOARD_PAGES = [
+    ("index.html", "Jobs in Pakistan – MrJobs", SITE_URL + "/"),
+    ("all-jobs.html", "All Jobs in Pakistan – MrJobs",
+     SITE_URL + "/all-jobs.html"),
+]
+ITEMLIST_START = "<!-- BUILD:ITEMLIST -->"
+ITEMLIST_END = "<!-- /BUILD:ITEMLIST -->"
+SSR_START = "<!-- BUILD:SSR -->"
+SSR_END = "<!-- /BUILD:SSR -->"
+
+
+def board_sorted(active_jobs):
+    """Newest first, matching the app.js board sort (Date.parse on the
+    full timestamp, descending; ties keep jobs.json order, as the JS
+    sort is stable). Listings without a parseable timestamp go last."""
+    def key(job):
+        raw = str(job.get("timestamp") or "").strip()
+        try:
+            return (1, datetime.fromisoformat(
+                raw.replace("Z", "+00:00")).timestamp())
+        except ValueError:
+            pass
+        d = parse_date(raw)
+        if d:
+            return (1, datetime(d.year, d.month, d.day).timestamp())
+        return (0, 0.0)
+    return sorted(active_jobs, key=key, reverse=True)
+
+
+def board_card_html(job, idx):
+    """Server-rendered copy of cardHtml() in assets/app.js (board mode):
+    same classes and content, text-only — no poster images (owner
+    decision 2026-10-24). data-idx matches the card's position in the
+    full board list, as in app.js, so share buttons line up."""
+    posted = parse_date(job.get("timestamp"))
+    is_new = posted is not None and \
+        (date.today() - posted).days <= NEW_WITHIN_DAYS
+    if job.get("featured"):
+        badge = ('<div class="badge featured">'
+                 '<i class="fas fa-star"></i> Featured</div>')
+    elif is_new:
+        badge = '<div class="badge new">NEW</div>'
+    else:
+        badge = ""
+    parts = ['<article class="job-card">' + badge]
+    parts.append("<h3>%s</h3>" % esc(job.get("title", "")))
+    parts.append('<div class="job-meta"><i class="fas fa-building"></i>'
+                 "<span>%s</span></div>" % esc(job.get("company", "")))
+    if is_top20(job):
+        parts.append('<div class="job-meta topco">'
+                     '<i class="fas fa-award"></i>'
+                     "<span>Top 20 Pharma Company</span></div>")
+    parts.append('<div class="job-meta">'
+                 '<i class="fas fa-map-marker-alt"></i>'
+                 "<span>%s</span></div>" % esc(job.get("location", "")))
+    parts.append('<div class="job-meta">'
+                 '<i class="fas fa-money-bill-wave"></i>'
+                 "<span>%s</span></div>"
+                 % esc(job.get("salary") or
+                       "Competitive Salary + Incentives"))
+    if posted:
+        # JS fmtDate (en-PK) style: unpadded day, e.g. "6 Oct 2026"
+        posted_str = "%d %s %d" % (posted.day, posted.strftime("%b"),
+                                    posted.year)
+        parts.append('<div class="job-meta">'
+                     '<i class="far fa-calendar-alt"></i>'
+                     "<span>Posted %s</span></div>" % esc(posted_str))
+    parts.append('<p class="job-desc">%s</p>'
+                 % esc(job.get("description", "")))
+    parts.append('<a class="apply-btn" href="%s" target="_blank" '
+                 'rel="noopener"><i class="fab fa-whatsapp"></i> '
+                 "Apply Now</a>" % esc(apply_href(job)))
+    parts.append('<a class="details-link" href="%s">View details '
+                 '<i class="fas fa-arrow-right"></i></a>'
+                 % esc(job_url_path(job)))
+    parts.append('<button class="share-btn" data-idx="%d">'
+                 '<i class="fas fa-share-alt"></i> Share</button>' % idx)
+    parts.append("</article>")
+    return "".join(parts)
+
+
+def board_itemlist_jsonld(ordered_jobs, name, url):
+    """ItemList of plain name+url ListItems — the city-page pattern.
+    (JobPosting items belong on the job pages themselves; typing list
+    entries as JobPosting made Google validate them as full postings —
+    Search Console, 2026-10-20.)"""
+    items = []
+    for i, job in enumerate(ordered_jobs, 1):
+        items.append({
+            "@type": "ListItem",
+            "position": i,
+            "name": "%s — %s" % (str(job.get("title", "")),
+                                 str(job.get("company", ""))),
+            "url": SITE_URL + "/" + job_url_path(job),
+        })
+    return safe_json_ld({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": name,
+        "url": url,
+        "itemListElement": items,
+    })
+
+
+def inject_board_page(rel, name, url, ordered_jobs):
+    path = os.path.join(ROOT, rel)
+    with open(path, encoding="utf-8") as f:
+        src = f.read()
+    ld_block = ('  <script type="application/ld+json">\n'
+                + board_itemlist_jsonld(ordered_jobs, name, url)
+                + "\n  </script>")
+    cards = "\n".join("      " + board_card_html(job, i)
+                      for i, job in enumerate(ordered_jobs))
+    out = re.sub(re.escape(ITEMLIST_START) + ".*?" +
+                 re.escape(ITEMLIST_END),
+                 lambda m: ITEMLIST_START + "\n" + ld_block + "\n  "
+                 + ITEMLIST_END,
+                 src, count=1, flags=re.S)
+    out = re.sub(re.escape(SSR_START) + ".*?" + re.escape(SSR_END),
+                 lambda m: SSR_START + "\n" + cards + "\n      "
+                 + SSR_END,
+                 out, count=1, flags=re.S)
+    if out == src:
+        print("  warn: BUILD markers missing in %s — board not injected"
+              % rel, file=sys.stderr)
+        return
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(out)
+    print("  board: %s — ItemList + %d server-rendered cards"
+          % (rel, len(ordered_jobs)))
+
+
+def build_board_pages(active_jobs):
+    ordered = board_sorted(active_jobs)
+    for rel, name, url in BOARD_PAGES:
+        try:
+            inject_board_page(rel, name, url, ordered)
+        except Exception as e:  # noqa: BLE001
+            print("  warn: board injection failed %s: %s" % (rel, e),
+                  file=sys.stderr)
+
+
 # ----------------------------------------------------------------- main
 def main():
     try:
@@ -933,6 +1106,8 @@ def main():
     build_guide(pages)
 
     build_cities(active, pages)
+
+    build_board_pages(active)
 
     with open(SITEMAP, "w", encoding="utf-8") as f:
         f.write(build_sitemap(pages))
