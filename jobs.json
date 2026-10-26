@@ -1307,7 +1307,7 @@
   },
   {
     "id": "job-119",
-    "timestamp": "2026-10-25T16:00:54+05:00",
+    "timestamp": "2026-10-26T16:01:28+05:00",
     "company": "Pacific Pharma",
     "title": "SPO / SSPO (General Group)",
     "location": "FAISALABAD",
@@ -1613,5 +1613,60 @@
     "contact": "923331374599",
     "featured": false,
     "applyLink": "https://wa.me/923331374599"
+  },
+  {
+    "id": "job-147",
+    "timestamp": "2026-10-26T16:01:28+05:00",
+    "company": "Well Reputed Pharma Company",
+    "title": "Medical Representative (Paediatric Group)",
+    "location": "KARACHI",
+    "description": "A well reputed pharmaceutical company is hiring a Medical Representative for its Paediatric Group for the FB Area, Karachi.\n\nRequirements: Male candidates only; Graduation; well experienced in the pharmaceutical industry.\n\nFacilities: Good salary package; Attractive incentives; Internal promotion; Provident Fund; Career growth; Medical Insurance; International Tour on achievement; Bike Policy; Profit shares.\n\nContact on WhatsApp to apply.",
+    "contact": 923008249479,
+    "featured": false,
+    "applyLink": "https://wa.me/923008249479"
+  },
+  {
+    "id": "job-148",
+    "timestamp": "2026-10-26T16:01:28+05:00",
+    "company": "Werick Pharmaceuticals",
+    "title": "Territory Manager",
+    "location": "KARACHI",
+    "description": "Werick Pharmaceuticals is hiring a Territory Manager for Karachi (areas: Sadar, Civil Hospital).\n\nRequirements: Graduation; minimum 1 year of experience.\n\nOffers: Attractive Salary Package; Incentives; Learning & Growth Opportunities; Fuel allowance & Medical.\n\nContact on WhatsApp to apply.",
+    "contact": 923343522892,
+    "featured": false,
+    "applyLink": "https://wa.me/923343522892"
+  },
+  {
+    "id": "job-149",
+    "timestamp": "2026-10-26T16:01:28+05:00",
+    "company": "Wilson Healthcare",
+    "title": "SPO (Ortho & Gyne Portfolio)",
+    "location": "LAHORE",
+    "description": "Wilson Healthcare is hiring an SPO for its Ortho & Gyne Portfolio for Lahore (Sheikhupura basis). Areas: Ganga Ram Hospital, Gulshan Ravi, Sanda, Islampura, Temple Road, Shahdara, Kot Abdul Malik.\n\nRequirements: Graduate (BA / B.Com / BSc); minimum 1 year of experience in the same segment (same-segment candidates preferred).\n\nOffers: Attractive Salary Package + Monthly Incentive; Medical Insurance; Annual Increment; Learning Environment; Fast Career Growth.\n\nContact Fakhar Khan (Sr. DSM) on WhatsApp to apply.",
+    "contact": 923234190977,
+    "featured": false,
+    "applyLink": "https://wa.me/923234190977"
+  },
+  {
+    "id": "job-150",
+    "timestamp": "2026-10-26T16:01:28+05:00",
+    "company": "CIBEX Pharma",
+    "title": "SPO / SSPO (General Group)",
+    "location": "SHIKARPUR",
+    "description": "CIBEX Pharma is hiring SPOs / SSPOs for its General Group for Shikarpur.\n\nRequirements: Graduation; pharmaceutical experience required; freshers are not eligible.\n\nOffers: Attractive Salary; Highest Incentives; Monthly + Annual Bonus; Career Growth; Half Area; Bike Loan.\n\nContact on WhatsApp to apply.",
+    "contact": 923132529475,
+    "featured": false,
+    "applyLink": "https://wa.me/923132529475"
+  },
+  {
+    "id": "job-151",
+    "timestamp": "2026-10-26T16:01:28+05:00",
+    "company": "Nabi Qasim",
+    "title": "STM / AFM (NQ Eracos — Aesthetic)",
+    "location": "SUKKUR",
+    "description": "Nabi Qasim (NQ Eracos — Aesthetic) is hiring STMs / AFMs for Sukkur.\n\nRequirements: Graduation; minimum 1 to 2 years of experience in Derma.\n\nOffers: Attractive Salary; Learning and Growing environment; Annual increment; Zero pack incentive; Health insurance; Internal promotion.\n\nContact Ali Raza Mangi (ASM, Nabi Qasim) on WhatsApp to apply.",
+    "contact": 923073498923,
+    "featured": false,
+    "applyLink": "https://wa.me/923073498923"
   }
 ]
