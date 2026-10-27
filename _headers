@@ -1,0 +1,28 @@
+# Netlify response headers (added 2026-10-27, PageSpeed follow-up).
+# app.js / style.css are cache-busted by ?v= query strings, so they can
+# be cached immutably for a year — a version bump is a new URL.
+/assets/app.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/style.css
+  Cache-Control: public, max-age=31536000, immutable
+# Stable artwork / helper script: month-long cache, not immutable
+# (these paths can still be replaced in place if ever needed).
+/assets/hero-bg.svg
+  Cache-Control: public, max-age=2592000
+/assets/hiring.svg
+  Cache-Control: public, max-age=2592000
+/assets/logo.svg
+  Cache-Control: public, max-age=2592000
+/assets/logo-light.svg
+  Cache-Control: public, max-age=2592000
+/assets/logo-icon.svg
+  Cache-Control: public, max-age=2592000
+/assets/whatsapp-channel-qr.svg
+  Cache-Control: public, max-age=2592000
+/assets/share-card.js
+  Cache-Control: public, max-age=2592000
+/logo.png
+  Cache-Control: public, max-age=2592000
+# HTTPS is enforced by Netlify; pin it (PageSpeed Best Practices: HSTS).
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
