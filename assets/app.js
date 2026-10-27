@@ -114,7 +114,12 @@
   }
 
   async function loadJobs() {
-    showLoading();
+    /* Server-rendered boards (homepage / All Jobs) already display the
+       current cards — keep them on screen until the fresh render swaps
+       them in one go. Collapsing to the loading state and re-expanding
+       was the main desktop CLS source (PageSpeed 2026-10-27). Pages
+       without SSR cards (archive) still get the loading state. */
+    if (!grid.children.length) showLoading();
     try {
       var res = await fetch(JOB_DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
@@ -152,7 +157,7 @@
   function buildTicker(jobs) {
     var ticker = $("ticker");
     if (!ticker) return;
-    if (!jobs.length) { ticker.hidden = true; return; }
+    if (!jobs.length) { ticker.style.display = "none"; return; }
     var locs = {};
     jobs.forEach(function (j) { if (j.location) locs[j.location] = true; });
     var top = Object.keys(locs).sort().slice(0, 6).map(escapeHtml).join(" &middot; ");
@@ -161,7 +166,9 @@
       '<span>&#128205; ' + top + '</span>' +
       '<span>Apply via WhatsApp instantly!</span>';
     $("tickerTrack").innerHTML = msg + msg; // duplicated for a seamless loop
-    ticker.hidden = false;
+    /* The ticker band's height is reserved in CSS from first paint, so
+       revealing the track now cannot shift the page (CLS fix). */
+    $("tickerTrack").style.visibility = "visible";
   }
 
   /* Detail-page slug + URL — MUST stay identical to slugify()/job_url_path()
@@ -225,13 +232,13 @@
       (ARCHIVE_MODE
         ? '<p class="job-note"><i class="fas fa-info-circle"></i> This ad has expired &mdash; the vacancy may already be filled, but many positions stay open longer. It is worth contacting the employer to confirm the position is still open before applying.</p>'
         : '') +
-      '<a class="apply-btn" href="' + escapeHtml(applyHref(job)) + '" target="_blank" rel="noopener">' +
+      '<a class="apply-btn" href="' + escapeHtml(applyHref(job)) + '" target="_blank" rel="noopener" aria-label="Apply for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '">' +
       '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
       (ARCHIVE_MODE
         ? ''
-        : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '">' +
+        : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '" aria-label="View details for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '">' +
           'View details <i class="fas fa-arrow-right"></i></a>' +
-          '<button class="share-btn" data-idx="' + i + '"><i class="fas fa-share-alt"></i> Share</button>') +
+          '<button class="share-btn" data-idx="' + i + '" aria-label="Share ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '"><i class="fas fa-share-alt"></i> Share</button>') +
       '</article>';
   }
 
