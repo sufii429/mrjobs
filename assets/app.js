@@ -130,7 +130,9 @@
       buildTicker(allJobs);
       if (!allJobs.length) { if (ARCHIVE_MODE) { showEmptyArchive(); } else { showEmptyBoard(); } return; }
       visibleCount = PAGE_SIZE;
-      renderJobs(allJobs);
+      /* A shared link may arrive with ?q= already in the box (see the
+         DOMContentLoaded init) — honour it instead of rendering all. */
+      if (searchInput.value.trim()) { applyFilters(); } else { renderJobs(allJobs); }
     } catch (e) {
       console.error(e);
       showError();
@@ -317,13 +319,33 @@
     document.head.appendChild(s);
   }
 
+  /* Shareable search links (owner request, 2026-10-27): keep the address
+     bar in sync with the search box via ?q= so the URL can be copied and
+     sent to someone — e.g. all-jobs.html?q=female. replaceState only, no
+     reload; any other query params are preserved. */
+  function syncSearchUrl(rawQ) {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      if (rawQ) { params.set("q", rawQ); } else { params.delete("q"); }
+      var qs = params.toString();
+      window.history.replaceState(null, "",
+        window.location.pathname + (qs ? "?" + qs : "") + window.location.hash);
+    } catch (e) { /* progressive enhancement — search still works */ }
+  }
+
   function applyFilters() {
     visibleCount = PAGE_SIZE;
-    var q = searchInput.value.trim().toLowerCase();
+    var rawQ = searchInput.value.trim();
+    /* Multi-word queries match listings containing EVERY word (in any
+       order) across the same fields the search has always checked:
+       title + company + description. A single word behaves as before;
+       an empty query matches everything. */
+    var words = rawQ.toLowerCase().split(/\s+/).filter(Boolean);
     var loc = locationFilter.value;
+    syncSearchUrl(rawQ);
     renderJobs(allJobs.filter(function (j) {
       var hay = ((j.title || "") + " " + (j.company || "") + " " + (j.description || "")).toLowerCase();
-      return hay.indexOf(q) !== -1 && (!loc || j.location === loc);
+      return words.every(function (w) { return hay.indexOf(w) !== -1; }) && (!loc || j.location === loc);
     }));
   }
 
@@ -367,6 +389,12 @@
     var year = $("year");
     if (year) year.textContent = new Date().getFullYear();
     if (grid && searchInput && locationFilter) {
+      /* Opened via a shared search link (?q=...)? Pre-fill the box;
+         loadJobs() applies it once the listings arrive. */
+      try {
+        var sharedQ = new URLSearchParams(window.location.search).get("q");
+        if (sharedQ) searchInput.value = sharedQ;
+      } catch (e) { /* no param support — board opens unfiltered */ }
       searchInput.addEventListener("input", applyFilters);
       locationFilter.addEventListener("change", applyFilters);
       loadJobs();
