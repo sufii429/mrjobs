@@ -174,7 +174,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <link rel="stylesheet" href="../assets/style.css?v=12" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -183,7 +183,7 @@ PAGE_TMPL = """<!DOCTYPE html>
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" width="248" height="64" /></a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
@@ -221,11 +221,11 @@ PAGE_TMPL = """<!DOCTYPE html>
   <footer>
     <div class="footer-inner">
       <div>
-        <h4>MrJobs</h4>
+        <h2>MrJobs</h2>
         <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2>Explore</h2>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
@@ -425,7 +425,7 @@ GUIDE_DIR = os.path.join(ROOT, "guide")
 GUIDE_NAV = """
   <nav class="navbar">
     <div class="nav-container">
-      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" width="248" height="64" /></a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
@@ -444,11 +444,11 @@ GUIDE_FOOTER = """
   <footer>
     <div class="footer-inner">
       <div>
-        <h4>MrJobs</h4>
+        <h2>MrJobs</h2>
         <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2>Explore</h2>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
@@ -490,7 +490,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
 {font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <link rel="stylesheet" href="../assets/style.css?v=12" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -534,7 +534,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <link rel="stylesheet" href="../assets/style.css?v=12" />
 {ga_snippet}
 </head>
 <body>
@@ -672,7 +672,7 @@ def build_guide_index():
         en, ur = art["en"], art["ur"]
         cards.append(
             '      <div class="guide-card">\n'
-            '        <h3>%s</h3>\n'
+            '        <h2>%s</h2>\n'
             '        <p class="ur-title" dir="rtl" lang="ur">%s</p>\n'
             '        <p>%s</p>\n'
             '        <div class="guide-links">\n'
@@ -731,7 +731,7 @@ CITIES = [("Faisalabad", "faisalabad"), ("Jhang", "jhang"),
 CITY_NAV = """
   <nav class="navbar">
     <div class="nav-container">
-      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" /></a>
+      <a class="nav-logo" href="../"><img src="../assets/logo.svg" alt="MrJobs logo" width="248" height="64" /></a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../">Home</a></li>
@@ -750,11 +750,11 @@ CITY_FOOTER = """
   <footer>
     <div class="footer-inner">
       <div>
-        <h4>MrJobs</h4>
+        <h2>MrJobs</h2>
         <p>Connecting job seekers with employers across Pakistan &mdash; a free job board, all jobs welcome, with priority for pharmaceutical sales: Medical Representative, TM &amp; AM openings.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2>Explore</h2>
         <ul class="footer-links">
           <li><a href="../">Home</a></li>
           <li><a href="../all-jobs.html">All Jobs</a></li>
@@ -795,7 +795,7 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=7" />
+  <link rel="stylesheet" href="../assets/style.css?v=12" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -833,7 +833,7 @@ def build_city_page(city, slug, city_jobs_list):
         rows.append(
             '      <div class="city-job">'
             + ('<span class="badge new">NEW</span>' if is_new else "")
-            + '<h3><a href="../%s">%s</a></h3>' % (esc(job_url_path(job)),
+            + '<h2><a href="../%s">%s</a></h2>' % (esc(job_url_path(job)),
                                                   esc(job.get("title", "")))
             + '<div class="job-meta"><i class="fas fa-building"></i><span>%s</span></div>'
               % esc(job.get("company", ""))
@@ -993,13 +993,21 @@ def board_card_html(job, idx):
     parts.append('<p class="job-desc">%s</p>'
                  % esc(job.get("description", "")))
     parts.append('<a class="apply-btn" href="%s" target="_blank" '
-                 'rel="noopener"><i class="fab fa-whatsapp"></i> '
-                 "Apply Now</a>" % esc(apply_href(job)))
-    parts.append('<a class="details-link" href="%s">View details '
+                 'rel="noopener" aria-label="Apply for %s at %s">'
+                 '<i class="fab fa-whatsapp"></i> '
+                 "Apply Now</a>" % (esc(apply_href(job)),
+                                     esc(job.get("title", "")),
+                                     esc(job.get("company", ""))))
+    parts.append('<a class="details-link" href="%s" '
+                 'aria-label="View details for %s at %s">View details '
                  '<i class="fas fa-arrow-right"></i></a>'
-                 % esc(job_url_path(job)))
-    parts.append('<button class="share-btn" data-idx="%d">'
-                 '<i class="fas fa-share-alt"></i> Share</button>' % idx)
+                 % (esc(job_url_path(job)), esc(job.get("title", "")),
+                    esc(job.get("company", ""))))
+    parts.append('<button class="share-btn" data-idx="%d" '
+                 'aria-label="Share %s at %s">'
+                 '<i class="fas fa-share-alt"></i> Share</button>'
+                 % (idx, esc(job.get("title", "")),
+                    esc(job.get("company", ""))))
     parts.append("</article>")
     return "".join(parts)
 
