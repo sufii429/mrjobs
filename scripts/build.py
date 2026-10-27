@@ -174,7 +174,7 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=12" />
+  <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -490,7 +490,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
 {font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=12" />
+  <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -534,7 +534,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=12" />
+  <link rel="stylesheet" href="../assets/style.css?v=13" />
 {ga_snippet}
 </head>
 <body>
@@ -795,7 +795,7 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/style.css?v=12" />
+  <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -968,7 +968,7 @@ def board_card_html(job, idx):
     else:
         badge = ""
     parts = ['<article class="job-card">' + badge]
-    parts.append("<h3>%s</h3>" % esc(job.get("title", "")))
+    parts.append("<h2>%s</h2>" % esc(job.get("title", "")))
     parts.append('<div class="job-meta"><i class="fas fa-building"></i>'
                  "<span>%s</span></div>" % esc(job.get("company", "")))
     if is_top20(job):
@@ -993,21 +993,24 @@ def board_card_html(job, idx):
     parts.append('<p class="job-desc">%s</p>'
                  % esc(job.get("description", "")))
     parts.append('<a class="apply-btn" href="%s" target="_blank" '
-                 'rel="noopener" aria-label="Apply for %s at %s">'
+                 'rel="noopener" aria-label="Apply for %s at %s in %s">'
                  '<i class="fab fa-whatsapp"></i> '
                  "Apply Now</a>" % (esc(apply_href(job)),
                                      esc(job.get("title", "")),
-                                     esc(job.get("company", ""))))
+                                     esc(job.get("company", "")),
+                                     esc(job.get("location", ""))))
     parts.append('<a class="details-link" href="%s" '
-                 'aria-label="View details for %s at %s">View details '
+                 'aria-label="View details for %s at %s in %s">View details '
                  '<i class="fas fa-arrow-right"></i></a>'
                  % (esc(job_url_path(job)), esc(job.get("title", "")),
-                    esc(job.get("company", ""))))
+                    esc(job.get("company", "")),
+                    esc(job.get("location", ""))))
     parts.append('<button class="share-btn" data-idx="%d" '
-                 'aria-label="Share %s at %s">'
+                 'aria-label="Share %s at %s in %s">'
                  '<i class="fas fa-share-alt"></i> Share</button>'
                  % (idx, esc(job.get("title", "")),
-                    esc(job.get("company", ""))))
+                    esc(job.get("company", "")),
+                    esc(job.get("location", ""))))
     parts.append("</article>")
     return "".join(parts)
 
