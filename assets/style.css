@@ -203,7 +203,7 @@ img { max-width: 100%; }
   margin-bottom: 14px;
   display: block;
 }
-.job-card h3 {
+.job-card h2 {
   margin: 0 0 8px;
   color: var(--teal-dark);
   font-size: 1.3rem;
@@ -243,6 +243,22 @@ img { max-width: 100%; }
 }
 .apply-btn:hover { background: var(--teal-dark); }
 
+/* ---------- mobile pre-pagination of SSR cards (CLS fix) ----------
+   The board pages ship all active cards server-rendered (SEO), but on
+   mobile app.js paginates to 20 per view. Before app.js runs, the full
+   grid made the page much taller than the first client render, and
+   everything below the grid jumped when it collapsed (mobile CLS
+   0.337, PageSpeed 2026-10-27; desktop renders all cards, so it never
+   shifted). Until app.js completes its first render (it adds
+   .board-ready to <body> in renderJobs), hide SSR cards past the 20th
+   on the same breakpoint app.js paginates at — the first paint is
+   then already the paginated height. After .board-ready, app.js owns
+   card visibility entirely (search/filter/show-more), so this rule
+   must stay scoped to the pre-ready state. */
+@media (max-width: 820px) {
+  body:not(.board-ready) #jobListings .job-card:nth-child(n+21) { display: none; }
+}
+
 /* ---------- loading / empty states ---------- */
 .state {
   text-align: center;
@@ -251,7 +267,7 @@ img { max-width: 100%; }
   color: var(--muted);
 }
 .state i { font-size: 2.4rem; color: var(--teal); margin-bottom: 12px; }
-.state h3 { color: var(--ink); }
+.state h2 { color: var(--ink); font-size: 1.17em; margin: 1em 0; }
 .state-urdu { font-size: 1.05rem; line-height: 2; color: var(--ink); margin-top: 2px; }
 
 /* ---------- newsletter ---------- */
@@ -303,6 +319,12 @@ footer p { margin: 0; font-size: .92rem; }
   padding: 16px 20px;
   font-size: .85rem;
 }
+/* Explicit colour: without it these links fall back to the browser's
+   default link blue (#0000ee), only 1.43:1 on the dark footer.
+   #cfe0e4 (same as the footer text and .footer-links) computes to
+   9.89:1 against the footer background #10333c — WCAG AA pass
+   (PageSpeed contrast audit, 2026-10-27). */
+.footer-bottom a { color: #cfe0e4; }
 
 /* ---------- about page ---------- */
 .about { max-width: 800px; margin: 0 auto; padding: 36px 20px 8px; }

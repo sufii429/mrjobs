@@ -91,7 +91,7 @@
   function showError() {
     grid.innerHTML =
       '<div class="state"><i class="fas fa-exclamation-triangle"></i>' +
-      '<h3>Couldn\'t load jobs</h3><p>Please check back in a bit.</p>' +
+      '<h2>Couldn\'t load jobs</h2><p>Please check back in a bit.</p>' +
       '<button class="apply-btn" id="retryBtn"><i class="fas fa-sync-alt"></i> Retry</button></div>';
     countEl.textContent = "";
     $("retryBtn").addEventListener("click", loadJobs);
@@ -100,7 +100,7 @@
   function showEmptyBoard() {
     grid.innerHTML =
       '<div class="state"><i class="fas fa-briefcase"></i>' +
-      '<h3>No open positions right now</h3>' +
+      '<h2>No open positions right now</h2>' +
       '<p>New medical-rep jobs are added regularly &mdash; check back soon or subscribe below for weekly alerts.</p></div>';
     countEl.textContent = "0 jobs";
   }
@@ -108,7 +108,7 @@
   function showEmptyArchive() {
     grid.innerHTML =
       '<div class="state"><i class="fas fa-history"></i>' +
-      '<h3>No expired listings right now</h3>' +
+      '<h2>No expired listings right now</h2>' +
       '<p>Jobs move here 28 days after posting and stay for 90 days &mdash; nothing has aged out at the moment.</p></div>';
     countEl.textContent = "0 jobs";
   }
@@ -218,7 +218,7 @@
     }
     return '' +
       '<article class="job-card">' + badge +
-      '<h3>' + escapeHtml(job.title) + '</h3>' +
+      '<h2>' + escapeHtml(job.title) + '</h2>' +
       '<div class="job-meta"><i class="fas fa-building"></i><span>' + escapeHtml(job.company) + '</span></div>' +
       (job._top20 ? '<div class="job-meta topco"><i class="fas fa-award"></i><span>Top 20 Pharma Company</span></div>' : '') +
       '<div class="job-meta"><i class="fas fa-map-marker-alt"></i><span>' + escapeHtml(job.location) + '</span></div>' +
@@ -232,18 +232,24 @@
       (ARCHIVE_MODE
         ? '<p class="job-note"><i class="fas fa-info-circle"></i> This ad has expired &mdash; the vacancy may already be filled, but many positions stay open longer. It is worth contacting the employer to confirm the position is still open before applying.</p>'
         : '') +
-      '<a class="apply-btn" href="' + escapeHtml(applyHref(job)) + '" target="_blank" rel="noopener" aria-label="Apply for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '">' +
+      '<a class="apply-btn" href="' + escapeHtml(applyHref(job)) + '" target="_blank" rel="noopener" aria-label="Apply for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + ' in ' + escapeHtml(job.location) + '">' +
       '<i class="fab fa-whatsapp"></i> Apply Now</a>' +
       (ARCHIVE_MODE
         ? ''
-        : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '" aria-label="View details for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '">' +
+        : '<a class="details-link" href="' + escapeHtml(jobPageUrl(job)) + '" aria-label="View details for ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + ' in ' + escapeHtml(job.location) + '">' +
           'View details <i class="fas fa-arrow-right"></i></a>' +
-          '<button class="share-btn" data-idx="' + i + '" aria-label="Share ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + '"><i class="fas fa-share-alt"></i> Share</button>') +
+          '<button class="share-btn" data-idx="' + i + '" aria-label="Share ' + escapeHtml(job.title) + ' at ' + escapeHtml(job.company) + ' in ' + escapeHtml(job.location) + '"><i class="fas fa-share-alt"></i> Share</button>') +
       '</article>';
   }
 
   function renderJobs(jobs) {
     lastJobs = jobs;
+    /* The first client render has taken over the grid — lift the CSS
+       pre-pagination of the server-rendered cards (mobile CLS fix,
+       2026-10-27). From here on app.js alone controls which cards are
+       in the DOM, so the :not(.board-ready) rule can never hide a
+       card that search/filter/show-more put there. */
+    if (document.body) document.body.classList.add("board-ready");
     if (!jobs.length) {
       grid.innerHTML = '<div class="state"><i class="fas fa-search"></i><p>No matching jobs found.</p></div>';
       countEl.textContent = "0 jobs";
