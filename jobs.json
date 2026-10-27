@@ -468,7 +468,7 @@
   },
   {
     "id": "job-43",
-    "timestamp": "2026-10-07",
+    "timestamp": "2026-10-27T16:00:57+05:00",
     "company": "Nutrifactor",
     "title": "MIO / PS",
     "location": "FAISALABAD",
@@ -1668,5 +1668,60 @@
     "contact": 923073498923,
     "featured": false,
     "applyLink": "https://wa.me/923073498923"
+  },
+  {
+    "id": "job-152",
+    "timestamp": "2026-10-27T16:00:57+05:00",
+    "company": "Shaafi Pharma",
+    "title": "SPO / TM",
+    "location": "DADU",
+    "description": "Shaafi Pharma is hiring SPOs / TMs for Dadu.\n\nRequirements: Male candidate; Graduate (B.Com / BSc); minimum 1 year of experience.\n\nOffers: Competitive salary; Tour on Achievement; Annual Increment; Supportive Environment; Internal promotions.\n\nContact on WhatsApp to apply.",
+    "contact": 923130011774,
+    "featured": false,
+    "applyLink": "https://wa.me/923130011774"
+  },
+  {
+    "id": "job-153",
+    "timestamp": "2026-10-27T16:00:57+05:00",
+    "company": "Horizon Pharma",
+    "title": "Territory Manager (Ophthalmology / Eye Care)",
+    "location": "SUKKUR",
+    "description": "Horizon Pharma is hiring a Territory Manager for its Ophthalmology / Eye Care segment for Sukkur.\n\nRequirements: Up to 3 years of experience in the Ophthalmology segment.\n\nBenefits: Health Insurance; Provident Fund; Annual Salary Increment; Other Company Benefits.\n\nContact on WhatsApp to apply.",
+    "contact": 923337353114,
+    "featured": false,
+    "applyLink": "https://wa.me/923337353114"
+  },
+  {
+    "id": "job-154",
+    "timestamp": "2026-10-27T16:00:57+05:00",
+    "company": "Pharmedic Laboratories (Pvt) Ltd",
+    "title": "SPO (Gynae Group)",
+    "location": "SUKKUR",
+    "description": "Pharmedic Laboratories (Pvt) Ltd is hiring an SPO for its Gynae Group (Onset Tablet; 100% territory) for Sukkur (Khairpur Belt). This vacancy has arisen due to the promotion of the previous SPO.\n\nRequirements: Male candidate; age limit 28 years; Graduate; minimum 6 months of experience in a reputable pharmaceutical company.\n\nOffers: Attractive salary package up to 65,000; Monthly incentive Rs. 15,000–20,000+; Career Growth; Earning opportunity; Health insurance; Learning environment; Internal Promotion.\n\nContact on WhatsApp to apply.",
+    "contact": 923312750712,
+    "featured": false,
+    "applyLink": "https://wa.me/923312750712"
+  },
+  {
+    "id": "job-155",
+    "timestamp": "2026-10-27T16:00:57+05:00",
+    "company": "PharmaQio Pharma",
+    "title": "Field Manager",
+    "location": "SUKKUR",
+    "description": "PharmaQio Pharma (a Karachi-based company) is hiring a Field Manager (female or male) for Sukkur.\n\nOffers: Good package; Monthly incentive.\n\nContact SM Sukkur on WhatsApp to apply.",
+    "contact": 923322928381,
+    "featured": false,
+    "applyLink": "https://wa.me/923322928381"
+  },
+  {
+    "id": "job-156",
+    "timestamp": "2026-10-27T16:00:57+05:00",
+    "company": "TRION Pharmaceutical",
+    "title": "Sales Officer",
+    "location": "SAMUNDRI",
+    "description": "TRION Pharmaceutical is hiring a Sales Officer for Samundri. Candidates must be residents of Samundri.\n\nRequirements: BA / BSc / B.Com / Pharm-D; freshers encouraged to apply; salary package negotiable in interview.\n\nOffers: Attractive salary package; Unique Incentive Policy; 8 tours per month; Supportive Environment; Recruitment Training; Learning Programs; Internal Promotion; Career growth.\n\nContact Mustafa Ijaz Khan (Regional Sales Head) on WhatsApp to apply.",
+    "contact": 923069073134,
+    "featured": false,
+    "applyLink": "https://wa.me/923069073134"
   }
 ]
