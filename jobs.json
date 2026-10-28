@@ -457,7 +457,7 @@
   },
   {
     "id": "job-42",
-    "timestamp": "2026-10-07",
+    "timestamp": "2026-10-28T17:03:57+05:00",
     "company": "Amarant Pharma Pvt. Ltd.",
     "title": "TM & STM",
     "location": "FAISALABAD",
@@ -514,7 +514,7 @@
   },
   {
     "id": "job-47",
-    "timestamp": "2026-10-23T11:54:00+05:00",
+    "timestamp": "2026-10-28T17:03:57+05:00",
     "company": "Daneen Pharma Ltd.",
     "title": "MIO & SMIO",
     "location": "FAISALABAD",
@@ -1550,7 +1550,7 @@
   },
   {
     "id": "job-141",
-    "timestamp": "2026-10-24T16:01:18+05:00",
+    "timestamp": "2026-10-28T17:03:57+05:00",
     "company": "Getz Pharma (Pvt.) Ltd",
     "title": "Territory Manager, Insulin (Insuget) Portfolio",
     "location": "FAISALABAD",
@@ -1723,5 +1723,60 @@
     "contact": 923069073134,
     "featured": false,
     "applyLink": "https://wa.me/923069073134"
+  },
+  {
+    "id": "job-157",
+    "timestamp": "2026-10-28T17:03:57+05:00",
+    "company": "Cell Laboratory",
+    "title": "Sales Executive (Gynee Group)",
+    "location": "FAISALABAD",
+    "description": "Cell Laboratory is hiring a Sales Executive for its Gynee Group in Faisalabad (Madina Town belt) — extension plan, 1 position (male/female).\n\nRequirements: Minimum Graduation; 2–3 years of experience preferred with a Gynee portfolio.\n\nOffers: Attractive Salary Package & Allowances; Career Growth & Internal Promotion; Health Insurance; Friendly & Learning Environment; Two Annual Bonuses.\n\nContact Bilal Tahir (DFM) on WhatsApp to apply.",
+    "contact": 923217816295,
+    "featured": false,
+    "applyLink": "https://wa.me/923217816295"
+  },
+  {
+    "id": "job-158",
+    "timestamp": "2026-10-28T17:03:57+05:00",
+    "company": "Amarant Pharma Pvt. Ltd.",
+    "title": "TM & STM",
+    "location": "JHANG",
+    "description": "Amarant Pharma Pvt. Ltd. is hiring TMs & STMs for Jhang — General & Ortho Group.\n\nRequirements: Experience preferred.\n\nQualification: B.A / B.Com / BSc / B.S.\n\nOffers: Attractive Salary Package; Attractive Allowances; Friendly & Learning Environment; Internal Promotion.\n\nContact Sohail Asif (ASM Faisalabad) on WhatsApp to apply.",
+    "contact": 923077900401,
+    "featured": false,
+    "applyLink": "https://wa.me/923077900401"
+  },
+  {
+    "id": "job-159",
+    "timestamp": "2026-10-28T17:03:57+05:00",
+    "company": "Barrett Hodgson",
+    "title": "MSO (Medical Sales Officer)",
+    "location": "JHANG",
+    "description": "Barrett Hodgson is urgently hiring a Medical Sales Officer (MSO) for Jhang.\n\nRequirements: Graduate (BSc preferable); age below 28 years; 6 months to 1 year of experience.\n\nOffers: Attractive Salary Package; Monthly incentive policy; Annual three bonuses; Motor bike policy after six months; Yearly profit share; Provident fund scheme; Friendly & Learning Environment.\n\nContact Awais Raza on WhatsApp to apply.",
+    "contact": 923411110854,
+    "featured": false,
+    "applyLink": "https://wa.me/923411110854"
+  },
+  {
+    "id": "job-160",
+    "timestamp": "2026-10-28T17:03:57+05:00",
+    "company": "Abbott Laboratories",
+    "title": "Territory Manager (Peads Group)",
+    "location": "JHANG",
+    "description": "Abbott Laboratories is hiring a Territory Manager for its Peads Group in Jhang.\n\nRequirements: Male/Female; must be a Science Graduate; age limit: fresh 25 / experienced 27 years; only shortlisted candidates will be contacted.\n\nOffers: Attractive Salary Package; Learning Environment; Quarterly Incentive; Provident Fund; Career Growth; Health Insurance; Internal Promotion.\n\nContact on WhatsApp to apply.",
+    "contact": 923326264165,
+    "featured": false,
+    "applyLink": "https://wa.me/923326264165"
+  },
+  {
+    "id": "job-161",
+    "timestamp": "2026-10-28T17:03:57+05:00",
+    "company": "Scilife Pharma",
+    "title": "PS / FE",
+    "location": "JHANG",
+    "description": "Scilife Pharma is hiring PSs / FEs for Jhang — experienced base, specially in the Diabetes Associated group.\n\nRequirements: Graduate; 1 to 2 years of experience; age limit 26 years.\n\nOffers: Handsome salary package; Friendly working environment; Internal promotion; Learning environment; Attractive Monthly Zero pack incentive; International tour for achievers.\n\nContact ASM Suffiyan Bhatti on WhatsApp to apply.",
+    "contact": 923067079576,
+    "featured": false,
+    "applyLink": "https://wa.me/923067079576"
   }
 ]
