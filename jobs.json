@@ -457,7 +457,7 @@
   },
   {
     "id": "job-42",
-    "timestamp": "2026-10-28T17:03:57+05:00",
+    "timestamp": "2026-10-31T15:59:39+05:00",
     "company": "Amarant Pharma Pvt. Ltd.",
     "title": "TM & STM",
     "location": "FAISALABAD",
@@ -786,7 +786,7 @@
   },
   {
     "id": "job-71",
-    "timestamp": "2026-10-14",
+    "timestamp": "2026-10-31T15:59:39+05:00",
     "company": "Brookes Pharma",
     "title": "STM / FE — Metier Group (Pyodine)",
     "location": "JHANG",
@@ -909,7 +909,7 @@
   },
   {
     "id": "job-84",
-    "timestamp": "2026-10-15",
+    "timestamp": "2026-10-31T15:59:39+05:00",
     "company": "Biomax Pharmaceutical",
     "title": "MIO",
     "location": "FAISALABAD",
@@ -1517,7 +1517,7 @@
   },
   {
     "id": "job-138",
-    "timestamp": "2026-10-24T16:01:18+05:00",
+    "timestamp": "2026-10-31T15:59:39+05:00",
     "company": "CCL Pharmaceuticals",
     "title": "MIRO / SMIRO (Neuro Psychiatry Division)",
     "location": "FAISALABAD",
@@ -1825,7 +1825,7 @@
   },
   {
     "id": "job-166",
-    "timestamp": "2026-10-29T15:56:59+05:00",
+    "timestamp": "2026-10-31T15:59:39+05:00",
     "company": "Horizon Pharma (Pvt) Ltd",
     "title": "TM / STM (Nephrology & Urology Group)",
     "location": "JHANG",
@@ -1888,5 +1888,60 @@
     "contact": 923335230750,
     "featured": false,
     "applyLink": "https://wa.me/923335230750"
+  },
+  {
+    "id": "job-172",
+    "timestamp": "2026-10-31T15:59:39+05:00",
+    "company": "Searle Pakistan Ltd",
+    "title": "Medical Information Executive (Gynae Group)",
+    "location": "LAHORE",
+    "description": "Searle Pakistan Ltd is hiring a Medical Information Executive (MIE) for its Gynae Group in Lahore, based at Lahore General Hospital (LGH).\n\nProducts: Venofer, Maltofer Syrup, Omatrill, Nausidox.\n\nRequirements: Graduate; minimum 1 year of experience (fresh candidates can also apply); age not more than 25 years.\n\nOffers: Attractive Salary Package; Internal Promotion; Monthly Incentive 30k+; Annual Increment; Health Insurance; Learning and Good Environment; Provident Fund; LFA.\n\nContact Syed Naeem Shahid (SRM) on WhatsApp to apply.",
+    "contact": 923000220488,
+    "featured": false,
+    "applyLink": "https://wa.me/923000220488"
+  },
+  {
+    "id": "job-173",
+    "timestamp": "2026-10-31T15:59:39+05:00",
+    "company": "Horizon Pharma (Pvt) Ltd",
+    "title": "TM / STM (Nephrology & Urology Group)",
+    "location": "FAISALABAD",
+    "description": "Horizon Pharma (Pvt) Ltd is hiring TM / STM for its Nephrology & Urology Group in Faisalabad (belts: DHQ Hospital Belt, Allied Hospital Belt).\n\nRequirements: Graduate; minimum 1 to 2 years of experience in the Nephrology & Urology segment; age limit below 32 years; only experienced candidates with the same territory.\n\nOffers: Handsome Attractive Salary Package; Learning Environment; Earning Opportunity; Career Growth; Incentive Policy; Health Insurance.\n\nContact Horizon Pharma on WhatsApp to apply.",
+    "contact": 923021107450,
+    "featured": false,
+    "applyLink": "https://wa.me/923021107450"
+  },
+  {
+    "id": "job-174",
+    "timestamp": "2026-10-31T15:59:39+05:00",
+    "company": "Genix Pharmaceutical",
+    "title": "STM (Ortho & Neuro Group)",
+    "location": "TOBA TEK SINGH",
+    "description": "Genix Pharmaceutical is hiring an STM for its Ortho & Neuro Group in Toba Tek Singh.\n\nRequirements: Graduate; 1 year of experience in a good company; good communication and selling skills; age limit maximum 28 years; fresh candidates are not eligible.\n\nOffers: Attractive Salary Package; Friendly and Learning Environment; Internal Promotion; Career Growth; Monthly Incentive; Health Insurance; Bike Allowance.\n\nContact Adnan Haider (ASM) on WhatsApp to apply. You can also call Adnan Haider on 923182738976.",
+    "contact": 923462315060,
+    "featured": false,
+    "applyLink": "https://wa.me/923462315060"
+  },
+  {
+    "id": "job-175",
+    "timestamp": "2026-10-31T15:59:39+05:00",
+    "company": "Martin Dow Marker",
+    "title": "Medical Information Executive (MIE)",
+    "location": "FAISALABAD",
+    "description": "Martin Dow Marker is hiring a Medical Information Executive (MIE) in Faisalabad (areas: Ghulam Muhammad Abad, Jinnah Colony, Jhang Road; out stations: Shahkot, Chiniot, Sangla, Jhumrah, Dijkot).\n\nProducts / Division: Evion, Polybion Z, Levomerc.\n\nRequirements: Graduate; minimum 1 year of experience; good communication and selling skills; territory knowledge.\n\nOffers: Attractive Salary Package; Attractive Allowance; Monthly Incentives; Friendly and Learning Environment; Internal Promotion; Career Growth.\n\nContact Rana Shabir Ahmad (Regional Manager, Faisalabad) on WhatsApp to apply.",
+    "contact": 923218645532,
+    "featured": false,
+    "applyLink": "https://wa.me/923218645532"
+  },
+  {
+    "id": "job-176",
+    "timestamp": "2026-10-31T15:59:39+05:00",
+    "company": "Nabiqasim Industries Pvt Ltd",
+    "title": "TM / STM (Gastro Portfolio)",
+    "location": "FAISALABAD",
+    "description": "Nabiqasim Industries Pvt Ltd is hiring TM / STM for its Gastro Portfolio in Faisalabad (belts: Gulistan Colony, Satiana Road).\n\nRequirements: Minimum 6 months to 1 year of experience.\n\nOffers: Attractive Salary; Zero Pack Monthly Incentive; Friendly Environment; Fast Career Growth; Annual Increments; Provident Fund; Medical.\n\nContact the ZSM on WhatsApp to apply.",
+    "contact": 923227780575,
+    "featured": false,
+    "applyLink": "https://wa.me/923227780575"
   }
 ]
