@@ -209,6 +209,7 @@ PAGE_TMPL = """<!DOCTYPE html>
       <div class="job-desc-full">
 {desc_paras}
       </div>
+{editorial}
       <div class="job-cta">
         <a class="apply-btn" href="{apply}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Apply Now on WhatsApp</a>
         <button class="share-btn" id="shareBtn" data-id="{job_id}" data-title="{title_attr}" data-company="{company_attr}" data-location="{location_attr}" data-top20="{top20_attr}" data-isnew="{isnew_attr}"><i class="fas fa-share-alt"></i> Share</button>
@@ -288,6 +289,107 @@ def apply_href(job):
                      SITE_URL + "/" + job_url_path(job)))
         apply = apply + "?text=" + urllib.parse.quote(wa_msg, safe="")
     return apply
+
+
+# ------------------------------------------- job-page editorial layer (F2)
+# Original per-page context added 2026-11-02 (AdSense fix batch): a short
+# "About this role / How to apply" block generated from the listing's own
+# facts — role family, therapy segment, city, company standing — so every
+# job page carries original editorial text beyond the employer's ad copy.
+ROLE_PATTERNS = [
+    ("manager", ("area sales manager", "regional sales manager",
+                 "district sales manager", "zonal sales manager",
+                 "sales manager", "manager")),
+    ("tm", ("territory manager", "territory", "stm")),
+    ("specialist", ("product specialist", "specialist")),
+    ("mr", ("medical representative", "medical information officer",
+            "mio", "spo", "spso", "field executive", "field officer",
+            "sales officer", "sales executive", "representative")),
+]
+ROLE_SENTENCES = {
+    "manager": ("It is a field-management role: you will lead a team of "
+                "medical representatives, work their territories jointly "
+                "with them, and own the area's sales target."),
+    "tm": ("It is a territory role for an experienced representative: you "
+           "will manage an established doctor panel, be measured on "
+           "monthly target achievement, and cover a defined hospital and "
+           "clinic belt."),
+    "specialist": ("It is a product-specialist role: the focus is deep "
+                   "product knowledge, confident detailing to consultants, "
+                   "and building prescription support in the assigned "
+                   "segment."),
+    "mr": ("It is a field-sales role: daily doctor and chemist visits in "
+           "the assigned territory, product detailing, and a monthly "
+           "sales target."),
+    "field": ("It is a field-sales role: daily doctor and chemist visits "
+              "in the assigned territory, product detailing, and a "
+              "monthly sales target."),
+}
+SEGMENT_PATTERNS = [
+    ("gynaecology and obstetrics",
+     ("gynae", "gyne", "obstetric", "ob/gyn")),
+    ("cardiology", ("cardio",)),
+    ("orthopaedics", ("ortho",)),
+    ("neurology and psychiatry", ("neuro", "psych")),
+    ("gastroenterology", ("gastro",)),
+    ("dermatology", ("derma",)),
+    ("diabetes care", ("diabet", "insulin")),
+    ("nephrology and urology", ("nephro", "uro")),
+    ("paediatrics", ("paed", "peds")),
+    ("oncology", ("onco",)),
+    ("respiratory care", ("respiratory", "pulmo", "chest")),
+]
+
+
+def editorial_block(job):
+    company = str(job.get("company", "")).strip()
+    title = str(job.get("title", "")).strip()
+    location = title_case_city(job.get("location", ""))
+    hay = (title + " " + str(job.get("description", ""))).lower()
+
+    role_key = "field"
+    t = title.lower()
+    for key, pats in ROLE_PATTERNS:
+        if any(p in t for p in pats):
+            role_key = key
+            break
+
+    segment = None
+    for name, pats in SEGMENT_PATTERNS:
+        if any(p in hay for p in pats):
+            segment = name
+            break
+
+    para1 = "%s is hiring for this position in %s. %s" % (
+        company, location, ROLE_SENTENCES[role_key])
+    if segment:
+        para1 += (" The portfolio centres on %s, so the territory is "
+                  "built around the consultants, hospitals and chemists "
+                  "who serve that specialty." % segment)
+    if is_top20(job):
+        para2 = ("%s is counted among Pakistan's leading pharmaceutical "
+                 "companies, and its field roles typically come with "
+                 "structured training and a defined growth path from this "
+                 "seat." % company)
+    else:
+        para2 = ("Package details are shared by the hiring team during "
+                 "shortlisting — confirm the territory, segment and "
+                 "incentive policy with them before you resign from "
+                 "anywhere.")
+    para3 = ("To apply, tap Apply Now — WhatsApp opens with a pre-filled "
+             "message naming this role and city. Attach your CV as a PDF, "
+             "keep it to one page, and put your relevant experience in "
+             "the first two lines. MrJobs never charges candidates, and "
+             "no genuine employer asks for payment for an interview or "
+             "an offer letter.")
+
+    return ('      <div class="job-editorial">\n'
+            '        <h2>About this role</h2>\n'
+            '        <p>%s</p>\n'
+            '        <p>%s</p>\n'
+            '        <h2>How to apply</h2>\n'
+            '        <p>%s</p>\n'
+            '      </div>' % (esc(para1), esc(para2), esc(para3)))
 
 
 def build_job_page(job):
@@ -376,6 +478,7 @@ def build_job_page(job):
         location=esc(location),
         posted=esc(posted.strftime("%d %b %Y") if posted else "recently"),
         desc_paras=paras,
+        editorial=editorial_block(job),
         apply=esc(apply),
         expiry_note=esc("on " + (posted + timedelta(days=EXPIRE_AFTER_DAYS))
                         .strftime("%d %b %Y") if posted
@@ -806,7 +909,7 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
   <main class="wrap">
     <p class="crumbs"><a href="../">Home</a> &rsaquo; {h1}</p>
     <h1>{h1}</h1>
-    <p class="city-intro">{intro}</p>
+    {intro_block}
     <div class="city-jobs">
 {job_rows}
     </div>
@@ -816,6 +919,70 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
 </body>
 </html>
 """
+
+
+# Original per-city market introductions (AdSense fix F3, 2026-11-02):
+# 150-250 words of editorial context per city page, plus a guide link.
+CITY_INTROS = {
+    "lahore": [
+        "Lahore is Punjab's largest pharmaceutical market and the headquarters city for many national companies and distribution networks. Teaching hospitals such as Mayo Hospital, Services Hospital, Jinnah Hospital and Shaikh Zayed Hospital anchor large territories, and most specialty segments — cardiology, gynae, neuro, diabetes — run dedicated teams here.",
+        "Territories in Lahore are usually drawn by zones rather than the whole city: a rep may cover the Gulberg–Model Town belt, the old city and its hospital clusters, or the fast-growing housing-society belts on the outskirts. Because head offices sit here, Lahore also sees the most management-level openings and the quickest interview cycles.",
+        "Competition for good Lahore territories is real, and companies hiring here can choose experienced candidates. Fresh candidates do get in — usually through trainee openings and smaller territories first.",
+    ],
+    "karachi": [
+        "Karachi is Pakistan's largest city and its commercial capital, and many pharmaceutical companies keep their head offices and main distribution here. Aga Khan University Hospital, Jinnah Postgraduate Medical Centre, Civil Hospital and a dense private sector give the city some of the country's biggest prescription volumes.",
+        "Karachi territories are drawn by district and corridor — a rep might cover the Saddar–Clifton belt, the Gulshan and North Nazimabad corridors, or the industrial Korangi side. Travel time is a real factor in this city, and managers value reps who plan routes tightly and know their areas street by street.",
+        "Because so many companies are headquartered here, Karachi offers openings at every level, from trainee MR to national roles — and specialty and hospital portfolios are stronger here than in most cities.",
+    ],
+    "faisalabad": [
+        "Faisalabad, Pakistan's textile hub, is one of the strongest pharma territories in Punjab. Allied Hospital, DHQ Hospital and the Punjab Medical College belt anchor the city's prescription base, while Satiana Road, Madina Town and the main bazaar clusters carry dense networks of private clinics and chemists.",
+        "Most national companies run full teams here across general, gynae and specialty segments, and territories are usually compact — a rep covers defined clinic belts rather than the whole city, which makes call quality, not travel, the deciding factor.",
+        "Faisalabad is also where MrJobs began, and it remains the board's busiest city: new listings here appear in almost every daily batch. Candidates based in Faisalabad benefit from that depth — when one territory closes, another usually opens within days, and experienced local reps are rarely out of options for long.",
+    ],
+    "jhang": [
+        "Jhang is a compact but active pharma territory in central Punjab, anchored by DHQ Hospital and a busy private-practice sector spread across the city and its satellite towns. Most companies cover Jhang either with a dedicated rep or as part of a combined belt with nearby areas such as Shorkot and Ahmad Pur Sial.",
+        "General-segment products dominate here, and relationships matter more than portfolio size: a rep who knows the city's consultants, GPs and chemists personally — and visits them with discipline — builds a stable business quickly.",
+        "Because teams are small, Jhang openings often suit candidates already living in the district; companies rarely relocate a rep for a single-territory seat. When a Jhang vacancy does open, it is usually filled quickly — local candidates with their documents ready hear about it first through the board and the vacancy groups.",
+    ],
+    "sukkur": [
+        "Sukkur is upper Sindh's pharma hub, serving a wide belt that stretches toward Larkana, Khairpur and Jacobabad. Ghulam Muhammad Mahar Medical College and the city's teaching and private hospitals anchor the territory, and most national companies run at least a small team here.",
+        "Territories around Sukkur involve more travel than the Punjab cities — satellite towns are part of the weekly route, and summer field work here demands planning around the heat. Companies value reps who already know the upper-Sindh belt and its chemist network.",
+        "General and gynae segments hire most often in Sukkur, and experienced reps from the region are in short supply — which makes local candidates here more valuable than their CVs alone suggest. Openings based in Sukkur appear on the board as managers share them, and they tend to close fast when a territory has been lying vacant.",
+    ],
+}
+
+CITY_GUIDE_LINKS = {
+    "lahore": ("mr-interview-questions-tips",
+               "MR interview questions and tips guide",
+               "it covers the questions managers actually ask and how to prepare"),
+    "karachi": ("mr-salary-incentives-pakistan",
+                "MR salary and incentives guide",
+                "it explains how MR pay, TA/DA and incentives really add up"),
+    "faisalabad": ("become-medical-representative-pakistan",
+                   "guide to becoming a Medical Representative",
+                   "it explains the role, the qualifications and how hiring works"),
+    "jhang": ("cv-tips-pharma-sales",
+              "CV tips guide for pharma sales",
+              "it shows how to write the one-page CV that gets shortlisted"),
+    "sukkur": ("become-medical-representative-pakistan",
+               "guide to becoming a Medical Representative",
+               "it explains the role, the qualifications and how hiring works"),
+}
+
+
+def city_intro_block(city, slug):
+    paras = CITY_INTROS.get(slug) or [
+        "All open pharma jobs in %s — Medical Representative, TM, AM and "
+        "more, newest first. Apply directly with a single WhatsApp click, "
+        "free for job seekers." % city]
+    parts = ['<p class="city-intro">%s</p>' % esc(p) for p in paras]
+    g = CITY_GUIDE_LINKS.get(slug)
+    if g:
+        parts.append(
+            '<p class="city-intro">New to this field? Start with our '
+            '<a href="../guide/%s.html">%s</a> — %s.</p>'
+            % (g[0], esc(g[1]), esc(g[2])))
+    return "\n    ".join(parts)
 
 
 def build_city_page(city, slug, city_jobs_list):
@@ -879,9 +1046,7 @@ def build_city_page(city, slug, city_jobs_list):
         json_ld=json_ld,
         c_nav=CITY_NAV,
         h1=esc("Pharma Jobs in %s" % city),
-        intro=esc("All open pharma jobs in %s — Medical Representative, TM, "
-                 "AM and more, newest first. Apply directly with a single "
-                 "WhatsApp click, free for job seekers." % city),
+        intro_block=city_intro_block(city, slug),
         city=esc(city),
         other_city_link=other_link,
         job_rows="\n".join(rows),

@@ -33,6 +33,11 @@ Poster images go in `posters/` as `<date>-<company>-<short>.jpg.b64`
 it in the browser). Keep one poster per job; reuse the same file for
 multi-city splits.
 
+**Multi-city descriptions (F5 rule, 2026-11-02):** when one ad splits into
+several cities, each listing's description must carry a city-specific line
+(territory, belt or base town) — never ship identical description text
+across cities.
+
 ## Lifespan (automatic)
 
 - **NEW badge:** first 14 days after `timestamp`.
