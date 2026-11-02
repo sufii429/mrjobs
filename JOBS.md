@@ -19,7 +19,7 @@ Each entry:
 |-------------|----------|-----------------------------------------------------------|
 | id          | yes      | `job-N`, N = max existing + 1                             |
 | timestamp   | yes      | `YYYY-MM-DD` — posting date. Drives NEW badge + expiry    |
-| company     | yes      | as written in the ad                                      |
+| company     | yes      | as written in the ad; if the ad genuinely names NO company (small-franchise ads that intentionally omit it), use `confidential` + a disclosure line in the description (Mazeen's ruling 2026-11-02; matches Google's documented anonymous-hiring value for JobPosting schema) |
 | title       | yes      | post/role, e.g. `SPO`, `TM / STM — GYN GROUP`             |
 | location    | yes      | city, UPPER CASE, e.g. `FAISALABAD`                       |
 | description | yes      | areas, offers, requirements, contact person               |
