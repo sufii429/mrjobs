@@ -514,7 +514,7 @@
   },
   {
     "id": "job-47",
-    "timestamp": "2026-10-28T17:03:57+05:00",
+    "timestamp": "2026-11-03T16:01:37+05:00",
     "company": "Daneen Pharma Ltd.",
     "title": "MIO & SMIO",
     "location": "FAISALABAD",
@@ -695,7 +695,7 @@
   },
   {
     "id": "job-63",
-    "timestamp": "2026-10-13",
+    "timestamp": "2026-11-03T16:01:37+05:00",
     "company": "Bristol Mayer Biotech Pakistan",
     "title": "Territory Manager (TM) / Senior Territory Manager (STM)",
     "location": "FAISALABAD",
@@ -1307,7 +1307,7 @@
   },
   {
     "id": "job-119",
-    "timestamp": "2026-10-26T16:01:28+05:00",
+    "timestamp": "2026-11-03T16:01:37+05:00",
     "company": "Pacific Pharma",
     "title": "SPO / SSPO (General Group)",
     "location": "FAISALABAD",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "job-182",
-    "timestamp": "2026-11-02T16:12:00+05:00",
+    "timestamp": "2026-11-03T16:01:37+05:00",
     "company": "confidential",
     "title": "TM / STM",
     "location": "FAISALABAD",
@@ -2009,5 +2009,60 @@
     "contact": 923336372562,
     "featured": false,
     "applyLink": "https://wa.me/923336372562"
+  },
+  {
+    "id": "job-183",
+    "timestamp": "2026-11-03T16:01:37+05:00",
+    "company": "Himont Pharmaceutical",
+    "title": "SPO",
+    "location": "FAISALABAD",
+    "description": "Himont Pharmaceutical is hiring an SPO (Speciality Gynae) for Faisalabad.\n\nMale and female candidates can both apply. Age limit: up to 32 years.\n\nProducts: Spasfon Injection, Pregnovit Tablet, VC CAL Sachet/Tablet, Hemocare SYP 120ml.\n\nRequirements: Graduation; experience from a few months up to 1 year.\n\nOffers: Attractive Salary Package; Gross Salary up to 45,000; Friendly Atmosphere; Quarterly Incentive; Annual Bonus; Internal Promotion; Bike Allowance; PF.\n\nSend your CV to M Farooq (DSM) on WhatsApp to apply.",
+    "contact": 923320665279,
+    "featured": false,
+    "applyLink": "https://wa.me/923320665279"
+  },
+  {
+    "id": "job-184",
+    "timestamp": "2026-11-03T16:01:37+05:00",
+    "company": "confidential",
+    "title": "TM",
+    "location": "FAISALABAD",
+    "description": "A growing national company is hiring a Territory Manager (TM) for its Faisalabad territory. The employer has not disclosed the company name in this advertisement, so this listing is shown as Confidential — the hiring manager will share company details with shortlisted candidates.\n\nRequirements: Graduate (minimum); at least 1 year of experience, preferably in control trade; must have a pool of purchasing doctors.\n\nOffers: Opportunity to earn up to PKR 100,000 in monthly incentives; Car on achievement of targets (Suzuki Alto); Excellent career growth opportunity.\n\nSend your CV on WhatsApp to apply.",
+    "contact": 923002199856,
+    "featured": false,
+    "applyLink": "https://wa.me/923002199856"
+  },
+  {
+    "id": "job-185",
+    "timestamp": "2026-11-03T16:01:37+05:00",
+    "company": "confidential",
+    "title": "TM",
+    "location": "TOBA TEK SINGH",
+    "description": "A growing national company is hiring a Territory Manager (TM) for its Toba Tek Singh territory. The employer has not disclosed the company name in this advertisement, so this listing is shown as Confidential — the hiring manager will share company details with shortlisted candidates.\n\nRequirements: Graduate (minimum); at least 1 year of experience, preferably in control trade; must have a pool of purchasing doctors.\n\nOffers: Opportunity to earn up to PKR 100,000 in monthly incentives; Car on achievement of targets (Suzuki Alto); Excellent career growth opportunity.\n\nSend your CV on WhatsApp to apply.",
+    "contact": 923002199856,
+    "featured": false,
+    "applyLink": "https://wa.me/923002199856"
+  },
+  {
+    "id": "job-186",
+    "timestamp": "2026-11-03T16:01:37+05:00",
+    "company": "AJM Pharmaceuticals",
+    "title": "SPO / SSPO",
+    "location": "JHANG",
+    "description": "AJM Pharmaceuticals is hiring an SPO / SSPO (Trade + Promotion group) for Jhang.\n\nRequirements: minimum 1 year experience as SPO in trade (any pharmaceutical company); B.A / B.Sc; age limit maximum 30 years; fresh candidates NOT allowed (experienced only).\n\nOffers: Attractive Salary Package; Fastest Career Growth; Learning Environment; Medical Insurance; Quarterly Incentive.\n\nCall or WhatsApp to apply.",
+    "contact": 923350186158,
+    "featured": false,
+    "applyLink": "https://wa.me/923350186158"
+  },
+  {
+    "id": "job-187",
+    "timestamp": "2026-11-03T16:01:37+05:00",
+    "company": "Barrett Hodgson (BH) Pakistan",
+    "title": "MSO",
+    "location": "SHIKARPUR",
+    "description": "Barrett Hodgson (BH) Pakistan is hiring a Medical Sales Officer (MSO), Peads group, for Shikarpur.\n\nRequirements: Graduate with good communication skills; previous experience in pharmaceutical sales; age limit 30 years; fresh candidates NOT eligible (experienced only).\n\nOffers: Career growth opportunities; Internal promotions; Handsome salary package; Monthly incentives; Learning opportunities; Profit sharing; Yearly bonus; Company provided motorcycle.\n\nSend your CV via WhatsApp to apply.",
+    "contact": 9233322901996,
+    "featured": false,
+    "applyLink": "https://wa.me/9233322901996"
   }
 ]
