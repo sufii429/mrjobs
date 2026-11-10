@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-10-06",
+    "timestamp": "2026-11-10T16:00:07+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -1395,7 +1395,7 @@
   },
   {
     "id": "job-127",
-    "timestamp": "2026-10-22T18:31:30+05:00",
+    "timestamp": "2026-11-10T16:00:07+05:00",
     "company": "Neutro Pharma",
     "title": "Medical Representative (Group: Alpha 1)",
     "location": "LAHORE",
@@ -2166,7 +2166,7 @@
   },
   {
     "id": "job-197",
-    "timestamp": "2026-11-09T15:57:31+05:00",
+    "timestamp": "2026-11-10T16:00:07+05:00",
     "company": "Pharmedic Laboratories (Pvt) Ltd",
     "title": "SPO (Gyne Group)",
     "location": "JHANG",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "job-207",
-    "timestamp": "2026-11-07T16:00:39+05:00",
+    "timestamp": "2026-11-10T16:00:07+05:00",
     "company": "Global Pharmaceutical (Pvt.) Ltd.",
     "title": "SSPO",
     "location": "FAISALABAD",
@@ -2394,5 +2394,60 @@
     "contact": 923157012295,
     "featured": false,
     "applyLink": "https://wa.me/923157012295"
+  },
+  {
+    "id": "job-218",
+    "timestamp": "2026-11-10T16:00:07+05:00",
+    "company": "Saffron Pharmaceuticals",
+    "title": "District Sales Manager (DSM)",
+    "location": "FAISALABAD",
+    "description": "Saffron Pharmaceuticals requires a District Sales Manager (DSM) for its Dermatology segment at Faisalabad (territory: Faisalabad, Jhang & Toba Tek Singh). The company offers an excellent Dermatology & General product portfolio with a strong prescriber base.\n\nOffers: Attractive Monthly Achievement-Based Incentives; Company-Provided Car Allowance; Excellent Travel & Other Company Allowances.\n\nSend your CV on WhatsApp to SM (Derma, Faisalabad) M. Awais at 0334 6534830 to apply.",
+    "contact": 923346534830,
+    "featured": false,
+    "applyLink": "https://wa.me/923346534830"
+  },
+  {
+    "id": "job-219",
+    "timestamp": "2026-11-10T16:00:07+05:00",
+    "company": "Remington Pharma",
+    "title": "TM / STM",
+    "location": "FAISALABAD",
+    "description": "Remington Pharma requires a Territory Manager / Senior Territory Manager (TM / STM) at Faisalabad. Male and female candidates can apply; Eye and GP experience preferred; good customer relationships required.\n\nRequirements: Graduate; 6 months to 1 year of experience.\n\nOffers: Career Growth; Health Insurance; Learning & Good Environment; Monthly Incentive.\n\nSend your CV on WhatsApp to Muhammad Salman at 0306 8545037 to apply. (Call: 0342 5750383.)",
+    "contact": 923068545037,
+    "featured": false,
+    "applyLink": "https://wa.me/923068545037"
+  },
+  {
+    "id": "job-220",
+    "timestamp": "2026-11-10T16:00:07+05:00",
+    "company": "Continental Pharmaceutical Belgium",
+    "title": "TM / STM",
+    "location": "JHANG",
+    "description": "Continental Pharmaceutical Belgium requires a young and hard-working Territory Manager / Senior Territory Manager (TM / STM) at Jhang.\n\nRequirements: Graduation; 1 to 2 years of experience preferred.\n\nOffers: Handsome Salary Package; Attractive Allowances; Monthly Incentives; Internal Promotion; Learning Environment.\n\nSend your CV on WhatsApp to Regional Sales Manager Saif Ullah Farhan at 0342 4721544 to apply.",
+    "contact": 923424721544,
+    "featured": false,
+    "applyLink": "https://wa.me/923424721544"
+  },
+  {
+    "id": "job-221",
+    "timestamp": "2026-11-10T16:00:07+05:00",
+    "company": "ATCO Laboratories Pvt Ltd",
+    "title": "Sales Promotion Officer (SPO)",
+    "location": "FAISALABAD",
+    "description": "ATCO Laboratories Pvt Ltd requires a Sales Promotion Officer (SPO) for its PEADS-3 Group at Faisalabad (GM Abad & Jinnah Colony).\n\nRequirements: Graduate (B.A / B.Sc / B.Com); minimum 1 year of experience.\n\nOffers: Attractive Salary Package, Gross PKR 38,000 to 40,000; Monthly and Quarterly Incentives; Learning Opportunity; Friendly Environment; Fast Career Growth; Internal Promotion; Medical Insurance; Umrah for Achievers; Bike Policy; Two-child schooling fee PKR 5,000.\n\nSend your CV on WhatsApp to DSM Muhammad Ehsaan Ashraf at 0304 3978711 to apply. (Also: 0334 6781823.)",
+    "contact": 923043978711,
+    "featured": false,
+    "applyLink": "https://wa.me/923043978711"
+  },
+  {
+    "id": "job-222",
+    "timestamp": "2026-11-10T16:00:07+05:00",
+    "company": "Helix Pharma",
+    "title": "STM",
+    "location": "FAISALABAD",
+    "description": "Helix Pharma requires a young, energetic male Senior Territory Manager (STM) at Faisalabad (territories: DHQ Hospital, Madina Town, Satyana Road).\n\nRequirements: Graduate; good communication and selling skills; territory knowledge; good PR with doctors; minimum 1 year of experience.\n\nOffers: Attractive Salary Package; Internal Promotion; 2 Eid Bonus; Quarterly Incentive; Gratuity; Medical.\n\nContact on WhatsApp / call at 0301 0271271 to apply.",
+    "contact": 923010271271,
+    "featured": false,
+    "applyLink": "https://wa.me/923010271271"
   }
 ]
