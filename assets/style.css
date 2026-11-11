@@ -517,6 +517,11 @@ html[lang="ur"] .lang-toggle, html[lang="ur"] .cta-box .apply-btn { line-height:
 .partner-promo a { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(6,20,23,.22); transition: transform .25s ease, box-shadow .25s ease; }
 .partner-promo a:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(6,20,23,.30); }
 .partner-promo img { display: block; width: 100%; height: auto; }
+
+/* ---- Partner promo: PakToolkit tools (text card) ---- */
+.partner-promo a.partner-text { background: linear-gradient(135deg, #0a7a42, #065e32); color: #fff; padding: 24px 20px; text-decoration: none; text-align: center; }
+.partner-promo a.partner-text strong { display: block; font-size: 1.3rem; margin-bottom: 6px; }
+.partner-promo a.partner-text span { font-size: .95rem; opacity: .93; }
 @media (max-width: 640px) { .partner-promo { margin: 30px 0 4px; } }
 
 /* ---- WhatsApp Channel follow strip (added 2026-10-20) ---- */
