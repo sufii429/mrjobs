@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-11T16:01:24+05:00",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -266,7 +266,7 @@
   },
   {
     "id": "job-25",
-    "timestamp": "2026-10-06",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "AMT International Laboratories",
     "title": "STM — GYN / GPS / DERMA",
     "location": "FAISALABAD",
@@ -819,7 +819,7 @@
   },
   {
     "id": "job-74",
-    "timestamp": "2026-10-14",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "Helix Pharmaceuticals",
     "title": "PS, SPS, FE (General + Injectable)",
     "location": "FAISALABAD",
@@ -2078,7 +2078,7 @@
   },
   {
     "id": "job-189",
-    "timestamp": "2026-11-04T15:56:42+05:00",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "Global Pharmaceutical (Pvt.) Ltd.",
     "title": "SPO",
     "location": "FAISALABAD",
@@ -2166,7 +2166,7 @@
   },
   {
     "id": "job-197",
-    "timestamp": "2026-11-10T16:00:07+05:00",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "Pharmedic Laboratories (Pvt) Ltd",
     "title": "SPO (Gyne Group)",
     "location": "JHANG",
@@ -2232,7 +2232,7 @@
   },
   {
     "id": "job-203",
-    "timestamp": "2026-11-12T16:02:36+05:00",
+    "timestamp": "2026-11-13T16:01:34+05:00",
     "company": "Genix Pharma",
     "title": "TM / STM",
     "location": "FAISALABAD",
@@ -2548,5 +2548,60 @@
     "contact": 923322667901,
     "featured": false,
     "applyLink": "https://wa.me/923322667901"
+  },
+  {
+    "id": "job-232",
+    "timestamp": "2026-11-13T16:01:34+05:00",
+    "company": "Aspin Pharma",
+    "title": "Sales Manager (Gastro Portfolio)",
+    "location": "HYDERABAD",
+    "description": "Aspin Pharma requires a Sales Manager for its Gastro Portfolio at Hyderabad.\n\nRequirements: Graduate; minimum 2 years' experience as a 2nd Line Manager with proven team leadership responsibility; age limit not more than 38 years.\n\nOffers: Competitive Salary Package; Attractive Incentives; Internal Promotion & Long-Term Career Growth; Provident Fund & Medical Insurance; Car Allowance and Other Benefits; Fuel Card.\n\nSend your CV on WhatsApp to Mohsin Siddiqui (DNSM) at 0332 2667901 to apply.",
+    "contact": 923322667901,
+    "featured": false,
+    "applyLink": "https://wa.me/923322667901"
+  },
+  {
+    "id": "job-233",
+    "timestamp": "2026-11-13T16:01:34+05:00",
+    "company": "Aspin Pharma",
+    "title": "Sales Manager (Gastro Portfolio)",
+    "location": "SUKKUR",
+    "description": "Aspin Pharma requires a Sales Manager for its Gastro Portfolio at Sukkur.\n\nRequirements: Graduate; minimum 2 years' experience as a 2nd Line Manager with proven team leadership responsibility; age limit not more than 38 years.\n\nOffers: Competitive Salary Package; Attractive Incentives; Internal Promotion & Long-Term Career Growth; Provident Fund & Medical Insurance; Car Allowance and Other Benefits; Fuel Card.\n\nSend your CV on WhatsApp to Mohsin Siddiqui (DNSM) at 0332 2667901 to apply.",
+    "contact": 923322667901,
+    "featured": false,
+    "applyLink": "https://wa.me/923322667901"
+  },
+  {
+    "id": "job-234",
+    "timestamp": "2026-11-13T16:01:34+05:00",
+    "company": "Macter International",
+    "title": "Key Account Associate (GLP-1)",
+    "location": "SUKKUR",
+    "description": "Macter International requires a Key Account Associate for its GLP-1 (Diabetic/Cardiac) segment at Sukkur.\n\nRequirements: Graduation; 1-2 years' experience in GLP / Diabetic / Cardiac segments highly preferred; fresh candidates are not accepted.\n\nOffers: Handsome Salary Package; Monthly & Quarterly Incentives; Internal Promotion Opportunities; Professional Learning Environment; Yearly Bonus; Health Insurance; International Tour for Achievers.\n\nSend your CV on WhatsApp to apply.",
+    "contact": 923121375556,
+    "featured": false,
+    "applyLink": "https://wa.me/923121375556"
+  },
+  {
+    "id": "job-235",
+    "timestamp": "2026-11-13T16:01:34+05:00",
+    "company": "ATCO Laboratories",
+    "title": "District Sales Manager",
+    "location": "FAISALABAD",
+    "description": "ATCO Laboratories (ATCO Cardiology) requires a District Sales Manager for its Cardiology Division at Faisalabad.\n\nRequirements: Graduate; cardio-metabolic experience; age maximum 36 years. Self-motivated and energetic candidate.\n\nOffers: Official Vehicle & Allowance; Attractive Salary Package; Monthly Incentives; Learning and Growing Environment; Internal Promotion; Annual Foreign Tour; Annual Bonus.\n\nSend your CV to SM Zaib Hassan at 0300 6005791 to apply.",
+    "contact": 923006005791,
+    "featured": false,
+    "applyLink": "https://wa.me/923006005791"
+  },
+  {
+    "id": "job-236",
+    "timestamp": "2026-11-13T16:01:34+05:00",
+    "company": "Stanley Pharma",
+    "title": "SPO / SSPO",
+    "location": "FAISALABAD",
+    "description": "Stanley Pharma requires SPOs / SSPOs at Faisalabad (Gulistan Colony, Millat Road, Sargodha Road).\n\nRequirements: Graduate (B.A / B.Sc / B.Com). Energetic and hardworking candidate.\n\nOffers: Attractive Salary Package; Quarterly Incentives; Learning Opportunity; Fast Career Growth; Internal Promotion.\n\nSend your CV on WhatsApp only to 0321 7810119 to apply. SM Shahzaman: 0300 8599493.",
+    "contact": 923217810119,
+    "featured": false,
+    "applyLink": "https://wa.me/923217810119"
   }
 ]
