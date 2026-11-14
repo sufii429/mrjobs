@@ -424,7 +424,7 @@
   },
   {
     "id": "job-39",
-    "timestamp": "2026-11-12T16:02:36+05:00",
+    "timestamp": "2026-11-14T15:59:03+05:00",
     "company": "CCL Pharmaceuticals",
     "title": "Medical Information and Relationships Officer",
     "location": "FAISALABAD",
@@ -457,7 +457,7 @@
   },
   {
     "id": "job-42",
-    "timestamp": "2026-11-12T16:02:36+05:00",
+    "timestamp": "2026-11-14T15:59:03+05:00",
     "company": "Amarant Pharma Pvt. Ltd.",
     "title": "TM & STM",
     "location": "FAISALABAD",
@@ -875,7 +875,7 @@
   },
   {
     "id": "job-81",
-    "timestamp": "2026-10-15",
+    "timestamp": "2026-11-14T15:59:03+05:00",
     "company": "Brookes Pharmaceuticals Pvt Ltd",
     "title": "Senior Territory Manager",
     "location": "FAISALABAD",
@@ -1957,7 +1957,7 @@
   },
   {
     "id": "job-178",
-    "timestamp": "2026-11-01T15:57:47+05:00",
+    "timestamp": "2026-11-14T15:59:03+05:00",
     "company": "Medisure Laboratories",
     "title": "Medical Information Officer (MIO)",
     "location": "FAISALABAD",
@@ -2603,5 +2603,60 @@
     "contact": 923217810119,
     "featured": false,
     "applyLink": "https://wa.me/923217810119"
+  },
+  {
+    "id": "job-237",
+    "timestamp": "2026-11-14T15:59:03+05:00",
+    "company": "Getz Pharma",
+    "title": "Territory Manager (Cardiology Group)",
+    "location": "JHANG",
+    "description": "Getz Pharma requires a Territory Manager for its Cardiology Group at Jhang.\n\nRequirements: Graduate; good product knowledge; good customer knowledge.\n\nOffers: Attractive Salary Package; Gross Salary 40+; Unit-Wise Incentives; Monthly Incentive; Provident Fund; Career Growth; Health Insurance; Internal Promotion.\n\nSend your CV to Ali Hasnain at 0345 0132868 to apply.",
+    "contact": 923450132868,
+    "featured": false,
+    "applyLink": "https://wa.me/923450132868"
+  },
+  {
+    "id": "job-238",
+    "timestamp": "2026-11-14T15:59:03+05:00",
+    "company": "Shrooq Pharmaceutical",
+    "title": "AFM (Gyne + Peads Group)",
+    "location": "JHANG",
+    "description": "Shrooq Pharmaceutical requires an AFM for its Gyne + Peads Group at Jhang. Male and female candidates can apply.\n\nRequirements: Graduate; 2 years experience in a good company; good communication and selling skills; fresh candidates are not allowed.\n\nOffers: Attractive Salary Package; Friendly & Learning Environment; Internal Promotion; Career Growth; Bike Allowance.\n\nSend your CV on WhatsApp to 0318 3414892 to apply.",
+    "contact": 923183414892,
+    "featured": false,
+    "applyLink": "https://wa.me/923183414892"
+  },
+  {
+    "id": "job-239",
+    "timestamp": "2026-11-14T15:59:03+05:00",
+    "company": "Prowess Pharma",
+    "title": "Medical Representative / Sales Officer",
+    "location": "MULTAN",
+    "description": "Prowess Pharma requires a Medical Representative / Sales Officer for the Multan Region.\n\nRequirements: F.Sc / B.Sc / Pharma; fresh and experienced both can apply; good communication skills; must have bike & valid licence; resident of Multan preferred.\n\nSend your CV on WhatsApp to Abdul Moiz (Director Marketing Manager) at 0325 4040039 to apply.",
+    "contact": 923254040039,
+    "featured": false,
+    "applyLink": "https://wa.me/923254040039"
+  },
+  {
+    "id": "job-240",
+    "timestamp": "2026-11-14T15:59:03+05:00",
+    "company": "Macter International",
+    "title": "PA / SPA / FE (Cardio-Metabolic Division)",
+    "location": "FAISALABAD",
+    "description": "Macter International requires a PA / SPA / FE for its Cardio-Metabolic Division at Faisalabad (GM Abad, Jinnah Colony, Jhang Road).\n\nRequirements: Graduate; minimum 1 year experience; Cardio-Metabolic experience is a must; maximum age 28 years. Energetic & self-motivated candidate.\n\nOffers: Attractive Salary Package; Internal Promotion; Zero Pack Incentive; Annual Increments; Career Growth; Learning Environment.\n\nSend your CV on WhatsApp to RSM M Shahrooz at 0322 6325127 to apply.",
+    "contact": 923226325127,
+    "featured": false,
+    "applyLink": "https://wa.me/923226325127"
+  },
+  {
+    "id": "job-241",
+    "timestamp": "2026-11-14T15:59:03+05:00",
+    "company": "SAMI Pharma",
+    "title": "MSO (General Group)",
+    "location": "SUKKUR",
+    "description": "SAMI Pharma requires an MSO for its General Group at Sukkur. Male candidates, experienced only.\n\nRequirements: Graduate; minimum 6 months experience.\n\nOffers: Attractive Salary Packages; Career Growth; Learning Environment; Internal Promotion; Zero Pack Incentives; Provident Fund; Insurance Policy.\n\nSend your CV on WhatsApp to 0335 2610560 to apply.",
+    "contact": 923352610560,
+    "featured": false,
+    "applyLink": "https://wa.me/923352610560"
   }
 ]
