@@ -370,7 +370,7 @@
       ["subOK", "subDup", "subErr"].forEach(function (id) { $(id).style.display = "none"; });
       try {
         var fd = new FormData(form);
-        var res = await fetch("https://formsubmit.co/ajax/sufyanbarret@gmail.com", {
+        var res = await fetch("https://formsubmit.co/ajax/mrjobs.top@gmail.com", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify({
