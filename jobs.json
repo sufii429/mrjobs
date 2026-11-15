@@ -1946,7 +1946,7 @@
   },
   {
     "id": "job-177",
-    "timestamp": "2026-11-01T15:57:47+05:00",
+    "timestamp": "2026-11-15T16:01:52+05:00",
     "company": "Shaigan Pharmaceutical",
     "title": "FE & STM",
     "location": "FAISALABAD",
@@ -2463,7 +2463,7 @@
   },
   {
     "id": "job-224",
-    "timestamp": "2026-11-11T16:01:24+05:00",
+    "timestamp": "2026-11-15T16:01:52+05:00",
     "company": "Santex Pharma",
     "title": "PS",
     "location": "LAHORE",
@@ -2658,5 +2658,60 @@
     "contact": 923352610560,
     "featured": false,
     "applyLink": "https://wa.me/923352610560"
+  },
+  {
+    "id": "job-242",
+    "timestamp": "2026-11-15T16:01:52+05:00",
+    "company": "SAMI Pharma",
+    "title": "MSO (General Group)",
+    "location": "SHIKARPUR",
+    "description": "SAMI Pharma requires an MSO for its General Group at Shikarpur. Male candidates, experienced only.\n\nRequirements: Graduate; minimum 6 months experience.\n\nOffers: Attractive Salary Packages; Career Growth; Learning Environment; Internal Promotion; Zero Pack Incentives; Provident Fund; Insurance Policy.\n\nSend your CV on WhatsApp to 0335 2610560 to apply.",
+    "contact": 923352610560,
+    "featured": false,
+    "applyLink": "https://wa.me/923352610560"
+  },
+  {
+    "id": "job-243",
+    "timestamp": "2026-11-15T16:01:52+05:00",
+    "company": "SAMI Pharma",
+    "title": "TBM (Territory Business Manager) (Cardio Group)",
+    "location": "SUKKUR",
+    "description": "SAMI Pharma requires a Territory Business Manager (TBM) for its Cardio Group at Sukkur (Khairpur Belt). Two vacant positions; final interview stage. Male candidates, experienced only. Age 27.\n\nRequirements: Graduate; minimum 6 months experience.\n\nOffers: Attractive Salary Packages; Career Growth; Learning Environment; Internal Promotion; Zero Pack Incentives; Provident Fund.\n\nSend your CV on WhatsApp to 0334 7670967 to apply.",
+    "contact": 923347670967,
+    "featured": false,
+    "applyLink": "https://wa.me/923347670967"
+  },
+  {
+    "id": "job-244",
+    "timestamp": "2026-11-15T16:01:52+05:00",
+    "company": "Nabi Qasim Pharmaceuticals",
+    "title": "TM / STM (Gastro Group)",
+    "location": "SUKKUR",
+    "description": "Nabi Qasim Pharmaceuticals requires a Territory Manager / Senior Territory Manager for its Gastro Group at Sukkur (Ghotki Belt).\n\nRequirements: Graduate; experienced only (minimum 6 months to 1 year experience).\n\nOffers: Attractive Salary Package; Internal Promotions; Monthly Incentive Zero Pack; Medical Policy after confirmation; Career Growth; Friendly & Learning Environment.\n\nSend your CV on WhatsApp to 0313 3661051 to apply.",
+    "contact": 923133661051,
+    "featured": false,
+    "applyLink": "https://wa.me/923133661051"
+  },
+  {
+    "id": "job-245",
+    "timestamp": "2026-11-15T16:01:52+05:00",
+    "company": "Feelac Milk Nutrition",
+    "title": "SPO",
+    "location": "SUKKUR",
+    "description": "Feelac Milk Nutrition requires a Sales Promotion Officer (SPO) at Sukkur (allocated towns: Shikarpur, Ghotki Belt).\n\nRequirements: Graduate (BSc / B.Com); minimum 1 year experience; age limit below 30 years; only experienced candidates.\n\nOffers: Attractive Salary Package; Fast Career Growth; Internal Promotion.\n\nSend your CV on WhatsApp to 0311 4183133 to apply.",
+    "contact": 923114183133,
+    "featured": false,
+    "applyLink": "https://wa.me/923114183133"
+  },
+  {
+    "id": "job-246",
+    "timestamp": "2026-11-15T16:01:52+05:00",
+    "company": "Martin Dow Ltd",
+    "title": "TM (Injection Group)",
+    "location": "LARKANA",
+    "description": "Martin Dow Ltd requires a Territory Manager for its Injection Group at Larkana.\n\nProducts: Rocephin 250mg/500mg, Meropenex 1g/500mg, Perabectam 500/1g/2g, Esomax IV, Sanistin IV.\n\nRequirements: Graduation; minimum 1 year experience for the Injection Group; fresh candidates not eligible.\n\nOffers: Attractive Salary; Monthly Incentive Policy; Career Growth; Friendly Working Environment; Internal Promotions; Foreign Tours on achievement; Earning & Learning opportunities; Sales & Medical Training after hiring; Medical Insurance from day first.\n\nSend your CV on WhatsApp to 0348 2887975 to apply.",
+    "contact": 923482887975,
+    "featured": false,
+    "applyLink": "https://wa.me/923482887975"
   }
 ]
