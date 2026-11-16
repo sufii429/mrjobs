@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-13T16:01:34+05:00",
+    "timestamp": "2026-11-16T16:03:50+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -684,7 +684,7 @@
   },
   {
     "id": "job-62",
-    "timestamp": "2026-10-11",
+    "timestamp": "2026-11-16T16:03:50+05:00",
     "company": "Searle Pakistan Ltd",
     "title": "Medical Information Executive (Gynae Group)",
     "location": "JHANG",
@@ -1528,7 +1528,7 @@
   },
   {
     "id": "job-139",
-    "timestamp": "2026-10-25T16:00:54+05:00",
+    "timestamp": "2026-11-16T16:03:50+05:00",
     "company": "Rite Pharmaceuticals Pvt. Ltd.",
     "title": "TM / STM / AFM",
     "location": "FAISALABAD",
@@ -2713,5 +2713,60 @@
     "contact": 923482887975,
     "featured": false,
     "applyLink": "https://wa.me/923482887975"
+  },
+  {
+    "id": "job-247",
+    "timestamp": "2026-11-16T16:03:50+05:00",
+    "company": "Route2Health (Highnoon Laboratories)",
+    "title": "Product Specialist (General Group)",
+    "location": "KARACHI",
+    "description": "Route2Health (Highnoon Laboratories) requires a Product Specialist for its General Group at Defence & Clifton, Karachi.\n\nProducts: Tres Orix Z, Prospan.\n\nRequirements: Experienced & Graduate candidate; age maximum 30 years.\n\nOffers: Career Growth; Attractive Quarterly Incentive; International Achiever Conference; Learning Opportunities; Family Health Insurance along with parents.\n\nSend your CV on WhatsApp to 0345 3351510 to apply.",
+    "contact": 923453351510,
+    "featured": false,
+    "applyLink": "https://wa.me/923453351510"
+  },
+  {
+    "id": "job-248",
+    "timestamp": "2026-11-16T16:03:50+05:00",
+    "company": "ZAKA Healthcare",
+    "title": "Product Specialist (Psychiatry Division)",
+    "location": "KARACHI",
+    "description": "ZAKA Healthcare requires a Product Specialist for its Psychiatry Division at Karachi.\n\nRequirements: Minimum 1 year pharmaceutical sales experience; strong communication, presentation and interpersonal skills; Psychiatry segment experience an added advantage.\n\nOffers: Attractive Salary Package; Monthly Incentives; Career Growth Opportunities; Internal Promotions; Professional Learning Environment; Excellent Earning Potential.\n\nContact Syed Saqib Mazhar (Sr. Area Sales Manager) on WhatsApp to apply.",
+    "contact": 923243987939,
+    "featured": false,
+    "applyLink": "https://wa.me/923243987939"
+  },
+  {
+    "id": "job-249",
+    "timestamp": "2026-11-16T16:03:50+05:00",
+    "company": "OPAL LABORATORIES",
+    "title": "MR (Urodonol & Dologin Group)",
+    "location": "KARACHI",
+    "description": "OPAL LABORATORIES requires a Medical Representative for its Urodonol & Dologin Group at Karachi. Territories: Orangi Town and Hub; North Karachi / New Karachi.\n\nRequirements: At least 6 months to 1 year experience in marketing and sales.\n\nOffers: Handsome Salary Package; Internal Promotions; Career Growth; Excellent Environment.\n\nSend your CV on WhatsApp to 0333 3630851 to apply.",
+    "contact": 923333630851,
+    "featured": false,
+    "applyLink": "https://wa.me/923333630851"
+  },
+  {
+    "id": "job-250",
+    "timestamp": "2026-11-16T16:03:50+05:00",
+    "company": "Scotmann Pharma",
+    "title": "TM",
+    "location": "FAISALABAD",
+    "description": "Scotmann Pharma requires a Territory Manager for Faisalabad. Territories: Brick, Jinnah Colony, GM Abad. Product: Pentoxal M.\n\nRequirements: Graduation degree; minimum 1 year experience; experienced candidate preferred; maximum age limit 28 years.\n\nOffers: Attractive Salary Package; Friendly & Learning Environment; Fast Career Growth and Internal Promotion.\n\nSend your CV on WhatsApp to 0321 6603025 to apply.",
+    "contact": 923216603025,
+    "featured": false,
+    "applyLink": "https://wa.me/923216603025"
+  },
+  {
+    "id": "job-251",
+    "timestamp": "2026-11-16T16:03:50+05:00",
+    "company": "Horizon Pharmaceutical",
+    "title": "Territory Manager (Ophthalmology / Eye Care)",
+    "location": "FAISALABAD",
+    "description": "Horizon Pharmaceutical is hiring a Territory Manager for its Ophthalmology / Eye Care segment for Faisalabad. Ophthalmology experience preferably.\n\nOffers: Handsome Salary Package; Annual Bonuses; Fast Career Growth; Provident Fund; EOBI.\n\nSend your CV on WhatsApp to 0301 6660597 to apply.",
+    "contact": 923016660597,
+    "featured": false,
+    "applyLink": "https://wa.me/923016660597"
   }
 ]
