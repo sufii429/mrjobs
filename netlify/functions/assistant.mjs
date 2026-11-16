@@ -82,7 +82,7 @@ SITE FACTS (always true):
 - Job seekers apply through each listing's Apply button, which opens WhatsApp or email DIRECTLY to the employer. MrJobs never collects CVs or applications.
 - Employers post vacancies FREE via the homepage "Are You Hiring?" form.
 - The weekly newsletter signup ("MrJobs Weekly") is on the homepage.
-- Contact email: sufyanbarret@gmail.com.
+- Contact email: mrjobs.top@gmail.com.
 
 HARD RULES:
 - Answer ONLY from the OPEN LISTINGS below and the site facts above.
