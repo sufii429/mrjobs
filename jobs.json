@@ -457,7 +457,7 @@
  },
  {
   "id": "job-42",
-  "timestamp": "2026-11-14T15:59:03+05:00",
+  "timestamp": "2026-11-18T16:00:00+05:00",
   "company": "Amarant Pharma Pvt. Ltd.",
   "title": "TM & STM",
   "location": "FAISALABAD",
@@ -763,7 +763,7 @@
  },
  {
   "id": "job-69",
-  "timestamp": "2026-10-14",
+  "timestamp": "2026-11-18T16:00:00+05:00",
   "company": "Getz Pharma",
   "title": "Territory Manager (TM) — Ortho Group",
   "location": "FAISALABAD",
@@ -1153,7 +1153,7 @@
  },
  {
   "id": "job-105",
-  "timestamp": "2026-10-20",
+  "timestamp": "2026-11-18T16:00:00+05:00",
   "company": "Continental Pharmaceutical",
   "title": "TM",
   "location": "FAISALABAD",
@@ -2276,7 +2276,7 @@
  },
  {
   "id": "job-207",
-  "timestamp": "2026-11-10T16:00:07+05:00",
+  "timestamp": "2026-11-18T16:00:00+05:00",
   "company": "Global Pharmaceutical (Pvt.) Ltd.",
   "title": "SSPO",
   "location": "FAISALABAD",
@@ -2823,5 +2823,60 @@
   "contact": 923411110890,
   "featured": false,
   "applyLink": "https://wa.me/923411110890"
+ },
+ {
+  "id": "job-257",
+  "timestamp": "2026-11-18T16:00:00+05:00",
+  "company": "CiTI Pharmaceuticals",
+  "title": "TM / STM",
+  "location": "JHANG",
+  "description": "CiTI Pharmaceuticals is hiring a TM / STM for Jhang. Male candidates.\n\nRequirements: Minimum Graduate; minimum 1 year of experience as a TM in relevant segments.\n\nOffers: Attractive Salary Package; Internal Promotion; Monthly Rewards; Annual Increments; Career Growth; Friendly Environment.\n\nSend your CV on WhatsApp to Zeeshan Mubashar (RSM) at 0333 5104024 to apply.",
+  "contact": 923335104024,
+  "featured": false,
+  "applyLink": "https://wa.me/923335104024"
+ },
+ {
+  "id": "job-258",
+  "timestamp": "2026-11-18T16:00:00+05:00",
+  "company": "Macter Pharma (Pvt) Ltd",
+  "title": "Key Account Associate & Product Specialist (GLP-1 Portfolio — Semaglutide)",
+  "location": "LAHORE",
+  "description": "Macter Pharma (Pvt) Ltd is hiring a Key Account Associate & Product Specialist for its GLP-1 Portfolio (Semaglutide) for Lahore, based at Gulab Devi Hospital and surrounding areas.\n\nRequirements: Graduate; minimum 1 year of experience in the Diabetes Portfolio.\n\nOffers: Handsome Salary Package; Annual Increments; Attractive Incentive Policy; Internal Promotions; Medical Facility; Provident Fund.\n\nSend your CV on WhatsApp to Zahid Iqbal (Zonal Sales Manager) at 0324 9086489 to apply.",
+  "contact": 923249086489,
+  "featured": false,
+  "applyLink": "https://wa.me/923249086489"
+ },
+ {
+  "id": "job-259",
+  "timestamp": "2026-11-18T16:00:00+05:00",
+  "company": "Tabros Pharmaceuticals Pvt Ltd",
+  "title": "TM / STM (URO GYN Group)",
+  "location": "LAHORE",
+  "description": "Tabros Pharmaceuticals Pvt Ltd is hiring a TM / STM for its URO GYN Group for Lahore, based at Services Hospital (expansion seat).\n\nRequirements: Graduate; at least 2 years of working experience in a reputable pharmaceutical company.\n\nOffers: Handsome Competitive Salary Package; Good Monthly Incentive; Annual Increments; Annual Bonus; Provident Fund; Internal Promotions; Medical Health Card Facility; Friendly Environment.\n\nSend your CV on WhatsApp to Arm Ali Raza at 0324 4026249 to apply.",
+  "contact": 923244026249,
+  "featured": false,
+  "applyLink": "https://wa.me/923244026249"
+ },
+ {
+  "id": "job-260",
+  "timestamp": "2026-11-18T16:00:00+05:00",
+  "company": "ALLMED Pharmaceutical",
+  "title": "PS / SPS (Urology Group)",
+  "location": "LAHORE",
+  "description": "ALLMED Pharmaceutical is hiring a PS / SPS for its Urology Group for Lahore, based at Shaikh Zayed Hospital and Jinnah Hospital.\n\nRequirements: Graduate; territory knowledge; minimum 6 months of experience in Urology as a Product Specialist.\n\nOffers: Attractive Salary Package; Monthly Incentive Policy; Quarterly Incentive; Medical Policy for Family; Bike Policy; International Tour on achievement.\n\nSend your CV on WhatsApp to Jahanzaib Shoukat at 0305 4557739 to apply. You can also email your CV to J.shoukat67@gmail.com.",
+  "contact": 923054557739,
+  "featured": false,
+  "applyLink": "https://wa.me/923054557739"
+ },
+ {
+  "id": "job-261",
+  "timestamp": "2026-11-18T16:00:00+05:00",
+  "company": "Santex Pharma",
+  "title": "FMR",
+  "location": "LAHORE",
+  "description": "Santex Pharma requires male and female candidates for the post of FMR (Gyne segment) for Lahore, covering a territory of around 20 hospitals.\n\nRequirements: BA / BSc / B.Com; minimum 1 to 2 years of experience in a reputed company; fresh candidates will not be considered.\n\nOffers: Attractive Salary Package; Monthly Incentive Policy; Learning Environment; Internal Promotion; Provident Fund; Health Insurance Policy.\n\nContact Rana Nadeem on WhatsApp at 0307 6403405 to apply.",
+  "contact": 923076403405,
+  "featured": false,
+  "applyLink": "https://wa.me/923076403405"
  }
 ]
