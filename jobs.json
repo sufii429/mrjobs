@@ -875,7 +875,7 @@
  },
  {
   "id": "job-81",
-  "timestamp": "2026-11-14T15:59:03+05:00",
+  "timestamp": "2026-11-19T16:00:00+05:00",
   "company": "Brookes Pharmaceuticals Pvt Ltd",
   "title": "Senior Territory Manager",
   "location": "FAISALABAD",
@@ -1307,7 +1307,7 @@
  },
  {
   "id": "job-119",
-  "timestamp": "2026-11-03T16:01:37+05:00",
+  "timestamp": "2026-11-19T16:00:00+05:00",
   "company": "Pacific Pharma",
   "title": "SPO / SSPO (General Group)",
   "location": "FAISALABAD",
@@ -2878,5 +2878,60 @@
   "contact": 923076403405,
   "featured": false,
   "applyLink": "https://wa.me/923076403405"
+ },
+ {
+  "id": "job-262",
+  "timestamp": "2026-11-19T16:00:00+05:00",
+  "company": "Standpharm Pvt Ltd",
+  "title": "MSO",
+  "location": "JHANG",
+  "description": "Standpharm Pvt Ltd is hiring a Medical Sales Officer (MSO) for Jhang. Male candidates; experienced candidates only (priority).\n\nRequirements: Must be Graduate; experience from a reputable pharmaceutical company.\n\nOffers: Handsome Salary Package; Professional Growth; Internal Promotion; Friendly Environment; Monthly Incentive.\n\nSend your CV on WhatsApp to M Rana Naeem (Field Manager) at 0307 6797857 to apply. You can also email your CV to mrananaeem951993@gmail.com.",
+  "contact": 923076797857,
+  "featured": false,
+  "applyLink": "https://wa.me/923076797857"
+ },
+ {
+  "id": "job-263",
+  "timestamp": "2026-11-19T16:00:00+05:00",
+  "company": "Tabros Pharma",
+  "title": "TM (Dermatology Group)",
+  "location": "FAISALABAD",
+  "description": "Tabros Pharma is hiring a Territory Manager (TM) for its Dermatology Group for Faisalabad, based at DHQ Madina Town Satiana Road.\n\nRequirements: Graduate; 1 year of experience in a good company; good communication and selling skills; age limit maximum 28 years; fresh candidates are not eligible.\n\nOffers: Attractive Salary Package; Friendly & Learning Environment; Internal Promotion; Career Growth; Monthly Incentive; Health Insurance.\n\nSend your CV on WhatsApp to 0332 7788832 to apply.",
+  "contact": 923327788832,
+  "featured": false,
+  "applyLink": "https://wa.me/923327788832"
+ },
+ {
+  "id": "job-264",
+  "timestamp": "2026-11-19T16:00:00+05:00",
+  "company": "medicaids Pharmaceuticals",
+  "title": "TM / STM (Peads & Gyn Segment)",
+  "location": "FAISALABAD",
+  "description": "medicaids Pharmaceuticals is hiring a TM / STM for its Peads & Gyn Segment for Faisalabad.\n\nRequirements: Graduate in a relevant field; minimum 1-2 years of experience in Pharmaceutical Sales; strong doctor relationship and market knowledge in the Peads & Gyn segment; excellent communication and negotiation skills.\n\nOffers: Competitive Salary Package; Attractive Incentives; Professional Growth; Supportive Work Environment.\n\nShare your CV on WhatsApp at 0342 7692213 to apply.",
+  "contact": 923427692213,
+  "featured": false,
+  "applyLink": "https://wa.me/923427692213"
+ },
+ {
+  "id": "job-265",
+  "timestamp": "2026-11-19T16:00:00+05:00",
+  "company": "Martin Dow Marker",
+  "title": "Regional Manager (Tirzepatide Launch)",
+  "location": "OTHER",
+  "description": "Martin Dow Marker is hiring a Regional Manager for its upcoming Tirzepatide launch (GLP-1/GIP - Diabetes & Cardiovascular segments), covering 10 cities: Karachi, Lahore, Multan, Islamabad, Peshawar, Gujranwala, Faisalabad, Sahiwal, Swat and Hyderabad.\n\nRequirements: 2-3 years of experience in GLP-1/GIP, Diabetes or Cardiovascular sales.\n\nHow to apply: send your CV on WhatsApp to your zonal lead with the subject 'Regional Manager - Tirzepatide - [City]': North Zone - Nasir Khan (Head of Sales) 0300 0601446; Lahore - Farooq Azam Niazi 0304 1920864; Multan - Shahbaz Anjum 0304 1920847; Karachi - Zulfiqar Ali 0304 1920815.",
+  "contact": 923000601446,
+  "featured": false,
+  "applyLink": "https://wa.me/923000601446"
+ },
+ {
+  "id": "job-266",
+  "timestamp": "2026-11-19T16:00:00+05:00",
+  "company": "Martin Dow Marker",
+  "title": "Medical Executive (Tirzepatide Launch)",
+  "location": "OTHER",
+  "description": "Martin Dow Marker is hiring Medical Executives for its upcoming Tirzepatide launch (GLP-1/GIP - Diabetes & Cardiovascular segments), for all major cities across Pakistan.\n\nRequirements: 1-2 years of experience in GLP-1/GIP, Diabetes or Cardiovascular sales.\n\nHow to apply: send your CV on WhatsApp to your zonal lead with the subject 'Medical Executive - Tirzepatide - [City]': North Zone - Nasir Khan (Head of Sales) 0300 0601446; Lahore - Farooq Azam Niazi 0304 1920864; Multan - Shahbaz Anjum 0304 1920847; Karachi - Zulfiqar Ali 0304 1920815.",
+  "contact": 923000601446,
+  "featured": false,
+  "applyLink": "https://wa.me/923000601446"
  }
 ]
