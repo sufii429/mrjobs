@@ -177,6 +177,8 @@ img { max-width: 100%; }
   display: flex;
   flex-direction: column;
   transition: transform .25s ease, box-shadow .25s ease;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
 }
 .job-card:hover {
   transform: translateY(-4px);

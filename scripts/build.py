@@ -166,14 +166,16 @@ PAGE_TMPL = """<!DOCTYPE html>
   <meta property="og:description" content="{meta_desc}" />
   <meta property="og:url" content="{canonical}" />
   <meta property="og:site_name" content="MrJobs" />
-  <meta property="og:image" content="https://mrjobs.top/logo.png" />
+  <meta property="og:image" content="https://mrjobs.top/og-image.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{og_title}" />
   <meta name="twitter:description" content="{meta_desc}" />
-  <meta name="twitter:image" content="https://mrjobs.top/logo.png" />
+  <meta name="twitter:image" content="https://mrjobs.top/og-image.webp" />
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}
@@ -592,7 +594,9 @@ ARTICLE_TMPL = """<!DOCTYPE html>
   <meta property="og:site_name" content="MrJobs" />
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
-{font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+{font_link}  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}
@@ -636,7 +640,9 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/style.css?v=13" />
 {ga_snippet}
 </head>
@@ -890,14 +896,16 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
   <meta property="og:description" content="{meta_desc}" />
   <meta property="og:url" content="{canonical}" />
   <meta property="og:site_name" content="MrJobs" />
-  <meta property="og:image" content="https://mrjobs.top/logo.png" />
+  <meta property="og:image" content="https://mrjobs.top/og-image.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{og_title}" />
   <meta name="twitter:description" content="{meta_desc}" />
-  <meta name="twitter:image" content="https://mrjobs.top/logo.png" />
+  <meta name="twitter:image" content="https://mrjobs.top/og-image.webp" />
   <meta name="theme-color" content="#2d849e" />
   <link rel="icon" href="../assets/logo-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../assets/style.css?v=13" />
   <script type="application/ld+json">
 {json_ld}

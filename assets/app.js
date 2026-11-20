@@ -253,7 +253,7 @@
     if (!jobs.length) {
       grid.innerHTML = '<div class="state"><i class="fas fa-search"></i><p>No matching jobs found.</p></div>';
       countEl.textContent = "0 jobs";
-      if (pagerEl) pagerEl.innerHTML = "";
+      if (pagerEl) pagerEl.replaceChildren();
       return;
     }
     grid.innerHTML = jobs.slice(0, visibleCount).map(cardHtml).join("");
@@ -268,7 +268,7 @@
      list and share buttons keep their data-idx. */
   function renderPager(total) {
     if (!pagerEl) return;
-    if (total <= visibleCount) { pagerEl.innerHTML = ""; return; }
+    if (total <= visibleCount) { pagerEl.replaceChildren(); return; }
     pagerEl.innerHTML =
       '<p style="margin:0 0 10px;color:#5b6b73;font-size:.92rem">Showing ' +
       Math.min(visibleCount, total) + ' of ' + total + ' jobs</p>' +
