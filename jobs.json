@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-16T16:03:50+05:00",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -424,7 +424,7 @@
   },
   {
     "id": "job-39",
-    "timestamp": "2026-11-14T15:59:03+05:00",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "CCL Pharmaceuticals",
     "title": "Medical Information and Relationships Officer",
     "location": "FAISALABAD",
@@ -1097,7 +1097,7 @@
   },
   {
     "id": "job-100",
-    "timestamp": "2026-10-19",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "Barrett Hodgson Pakistan",
     "title": "Medical Sales Officer",
     "location": "FAISALABAD",
@@ -1108,7 +1108,7 @@
   },
   {
     "id": "job-101",
-    "timestamp": "2026-10-19",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "Getz Pharma",
     "title": "Territory Manager",
     "location": "JHANG",
@@ -1528,7 +1528,7 @@
   },
   {
     "id": "job-139",
-    "timestamp": "2026-11-16T16:03:50+05:00",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "Rite Pharmaceuticals Pvt. Ltd.",
     "title": "TM / STM / AFM",
     "location": "FAISALABAD",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "job-142",
-    "timestamp": "2026-10-25T16:00:54+05:00",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "CONTINENTAL PHARMACEUTICAL BELGIUM",
     "title": "TM / STM",
     "location": "FAISALABAD",
@@ -1957,7 +1957,7 @@
   },
   {
     "id": "job-178",
-    "timestamp": "2026-11-14T15:59:03+05:00",
+    "timestamp": "2026-11-20T16:07:00+05:00",
     "company": "Medisure Laboratories",
     "title": "Medical Information Officer (MIO)",
     "location": "FAISALABAD",
@@ -2933,5 +2933,60 @@
     "contact": 923000601446,
     "featured": false,
     "applyLink": "https://wa.me/923000601446"
+  },
+  {
+    "id": "job-267",
+    "timestamp": "2026-11-20T16:07:00+05:00",
+    "company": "Surge Laboratories",
+    "title": "TM / STM",
+    "location": "TOBA TEK SINGH",
+    "description": "Surge Laboratories is hiring a TM / STM in Toba Tek Singh.\n\nRequirements: BA / B.Com / B.Sc; minimum 1–2 years experience; age limit 30 years.\n\nOffers: Attractive Salary; Monthly Incentive; Internal Promotion; Provident Fund; Gratuity; Life Insurance; Learning & Earning Environment.\n\nSend your CV on WhatsApp to Syed Shahid Rasheed (ZSM, Faisalabad) at 0314 4305773 to apply.",
+    "contact": 923144305773,
+    "featured": false,
+    "applyLink": "https://wa.me/923144305773"
+  },
+  {
+    "id": "job-268",
+    "timestamp": "2026-11-20T16:07:00+05:00",
+    "company": "Highnoon Laboratories",
+    "title": "TM",
+    "location": "FAISALABAD",
+    "description": "Highnoon Laboratories is hiring a Territory Manager (TM) in Faisalabad (Satiana Road, PC1 & PC2). Diabetes group experience is specifically required.\n\nRequirements: Must be Graduate; experienced base, specially in Diabetes group; age limit 27 years.\n\nOffers: Handsome Salary Package; Friendly Working Environment; Internal Promotion; Learning Environment; Attractive Monthly + Quarterly Incentive; Achiever Conference Abroad.\n\nSend your CV on WhatsApp to M. Usman Ali (ASM) at 0317 7824671 to apply.",
+    "contact": 923177824671,
+    "featured": false,
+    "applyLink": "https://wa.me/923177824671"
+  },
+  {
+    "id": "job-269",
+    "timestamp": "2026-11-20T16:07:00+05:00",
+    "company": "BIO CARE Pharmaceutica",
+    "title": "FO (Field Officer)",
+    "location": "JHANG",
+    "description": "BIO CARE Pharmaceutica is hiring a Field Officer (FO) in Jhang for its Antibiotic / Pain Killer group. Male and female candidates can apply.\n\nRequirements: Graduation (BA / B.Com / BSc); minimum 1 year experience as Field Officer; age limit maximum 30 years.\n\nOffers: Insurance Policy on Joining; Attractive Salary Package; Incentive Policy; Health Insurance; Learning Environment.\n\nSend your CV on WhatsApp to 0336 6172515 to apply.",
+    "contact": 923366172515,
+    "featured": false,
+    "applyLink": "https://wa.me/923366172515"
+  },
+  {
+    "id": "job-270",
+    "timestamp": "2026-11-20T16:07:00+05:00",
+    "company": "OBS-AGP (Pfizer-Sandoz Portfolio)",
+    "title": "STM / TM",
+    "location": "FAISALABAD",
+    "description": "OBS-AGP (Pfizer-Sandoz Portfolio) is hiring a STM / TM in Faisalabad (Gulistan Colony; outstation: Chiniot, Sangla, Tandlianwala) for its Urology / Gynae segment.\n\nRequirements: Graduation (BA / BSc / B.Com); minimum 6 months experience.\n\nOffers: Attractive Salary Package; Monthly Incentives; Medical Coverage (Family); Zero Pack Incentive; Internal Promotions; Annual Tour on Achievement.\n\nSend your CV on WhatsApp to 0322 4657066 to apply.",
+    "contact": 923224657066,
+    "featured": false,
+    "applyLink": "https://wa.me/923224657066"
+  },
+  {
+    "id": "job-271",
+    "timestamp": "2026-11-20T16:07:00+05:00",
+    "company": "Testapol Pharmaceuticals",
+    "title": "Camp Coordinator (Female, Gynae)",
+    "location": "FAISALABAD",
+    "description": "Testapol Pharmaceuticals is hiring a Camp Coordinator (Female, Gynae) in Faisalabad. Experienced and fresh candidates can both apply.\n\nOffers: Attractive Salary Package; Learning Atmosphere; Fast Career Growth; Internal Promotions; Handsome Incentives.\n\nSend your CV on WhatsApp to 0314 3396494 to apply. Contact: Ali Murtaza. Website: www.testapol.com.",
+    "contact": 923143396494,
+    "featured": false,
+    "applyLink": "https://wa.me/923143396494"
   }
 ]
