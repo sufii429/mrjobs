@@ -397,7 +397,10 @@ def editorial_block(job):
 def build_job_page(job):
     posted = parse_date(job.get("timestamp"))
     posted_iso = posted.isoformat() if posted else None
-    valid_through = (posted + timedelta(days=EXPIRE_AFTER_DAYS)).isoformat() \
+    # validThrough covers the full active period: a job stays live through
+    # day EXPIRE_AFTER_DAYS+1's build (is_expired is age > EXPIRE_AFTER_DAYS),
+    # so Google never sees a live page with an already-passed validThrough.
+    valid_through = (posted + timedelta(days=EXPIRE_AFTER_DAYS + 1)).isoformat() \
         if posted else None
     is_new = posted is not None and (date.today() - posted).days <= NEW_WITHIN_DAYS
 
@@ -482,7 +485,7 @@ def build_job_page(job):
         desc_paras=paras,
         editorial=editorial_block(job),
         apply=esc(apply),
-        expiry_note=esc("on " + (posted + timedelta(days=EXPIRE_AFTER_DAYS))
+        expiry_note=esc("on " + (posted + timedelta(days=EXPIRE_AFTER_DAYS + 1))
                         .strftime("%d %b %Y") if posted
                         else "28 days after posting"),
         year=date.today().year,
