@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-20T16:07:00+05:00",
+    "timestamp": "2026-11-23T15:58:52+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -763,7 +763,7 @@
   },
   {
     "id": "job-69",
-    "timestamp": "2026-11-18T16:00:00+05:00",
+    "timestamp": "2026-11-23T15:58:52+05:00",
     "company": "Getz Pharma",
     "title": "Territory Manager (TM) — Ortho Group",
     "location": "FAISALABAD",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "job-207",
-    "timestamp": "2026-11-18T16:00:00+05:00",
+    "timestamp": "2026-11-23T15:58:52+05:00",
     "company": "Global Pharmaceutical (Pvt.) Ltd.",
     "title": "SSPO",
     "location": "FAISALABAD",
@@ -3098,5 +3098,60 @@
     "contact": 923224546043,
     "featured": false,
     "applyLink": "https://wa.me/923224546043"
+  },
+  {
+    "id": "job-282",
+    "timestamp": "2026-11-23T15:58:52+05:00",
+    "company": "Brookes Pharma",
+    "title": "FM / Sr. FM (Gastro Group)",
+    "location": "LAHORE",
+    "description": "Brookes Pharma is hiring a Field Manager / Senior Field Manager (FM / Sr. FM) for its Gastro Group in Lahore. Products: Hepa-Merz Infusion, Hepa-Merz Granules, Xifaxa and PK-Merz.\n\nBelts: Jinnah Belt, Sheikh Zayed Belt, Ganga Ram Belt and Shahdara Belt (all Lahore).\n\nRequirements: Age less than 40 years.\n\nOffers: Attractive and handsome salary package; four-wheeler or allowance; medical and life insurance from day one; competitive benefits and monthly incentives; excellent career growth opportunities; opportunity to work with leading pharmaceutical brands.\n\nPlease do not call — share your CV on WhatsApp only. Shortlisted candidates will be contacted.\n\nSend your CV on WhatsApp to the Business Manager at 0300 9666541 to apply.",
+    "contact": 923009666541,
+    "featured": false,
+    "applyLink": "https://wa.me/923009666541"
+  },
+  {
+    "id": "job-283",
+    "timestamp": "2026-11-23T15:58:52+05:00",
+    "company": "Brookes Pharma",
+    "title": "FM / Sr. FM (Gastro Group)",
+    "location": "KASUR",
+    "description": "Brookes Pharma is hiring a Field Manager / Senior Field Manager (FM / Sr. FM) for its Gastro Group in Kasur. Products: Hepa-Merz Infusion, Hepa-Merz Granules, Xifaxa and PK-Merz.\n\nRequirements: Age less than 40 years.\n\nOffers: Attractive and handsome salary package; four-wheeler or allowance; medical and life insurance from day one; competitive benefits and monthly incentives; excellent career growth opportunities; opportunity to work with leading pharmaceutical brands.\n\nPlease do not call — share your CV on WhatsApp only. Shortlisted candidates will be contacted.\n\nSend your CV on WhatsApp to the Business Manager at 0300 9666541 to apply.",
+    "contact": 923009666541,
+    "featured": false,
+    "applyLink": "https://wa.me/923009666541"
+  },
+  {
+    "id": "job-284",
+    "timestamp": "2026-11-23T15:58:52+05:00",
+    "company": "Wilsons Pharmaceutical",
+    "title": "Product Specialist (Cardiometabolic Group)",
+    "location": "FAISALABAD",
+    "description": "Wilsons Pharmaceutical is hiring a Product Specialist for its Cardiometabolic Group (SOFVASC V), based at Faisalabad — Satiana Road Belt. Consultant working.\n\nRequirements: B.A / B.Com / BSc; minimum 1 to 2 years of experience in pharma.\n\nOffers: Learning Environment; Handsome Salary Package; 0-Pack Incentive; Internal Promotions; Health Insurance; Maternity Allowance; Provident Fund.\n\nSend your CV on WhatsApp to 0315 6643668 to apply.",
+    "contact": 923156643668,
+    "featured": false,
+    "applyLink": "https://wa.me/923156643668"
+  },
+  {
+    "id": "job-285",
+    "timestamp": "2026-11-23T15:58:52+05:00",
+    "company": "Eastern Pharma",
+    "title": "Product Specialist (Gynae Group)",
+    "location": "LAHORE",
+    "description": "Eastern Pharma is hiring a Product Specialist for its Gynae Group, based at Lahore — Shalamar Belt. Come with CV for a better future.\n\nRequirements: B.A / B.Com / B.Sc; minimum 6 months of experience.\n\nOffers: Attractive Salary; Internal Promotion; Learning & Earning Environment; Attractive Incentive Policy.\n\nSend your CV on WhatsApp to the District Sales Manager at 0306 4326395 to apply.",
+    "contact": 923064326395,
+    "featured": false,
+    "applyLink": "https://wa.me/923064326395"
+  },
+  {
+    "id": "job-286",
+    "timestamp": "2026-11-23T15:58:52+05:00",
+    "company": "Ferozsons Laboratories Limited",
+    "title": "PSP (Derma)",
+    "location": "JHANG",
+    "description": "Ferozsons Laboratories Limited is hiring a PSP (Derma) in Jhang. Male candidate.\n\nRequirements: B.A / B.Sc / M.Sc, Science Graduate; minimum 1 year of experience; age 26 years.\n\nOffers: Professional learning environment; attractive earning opportunities; competitive salary package; excellent career growth; quarterly performance incentives; fast-track internal promotions; company bike upon joining; yearly Leave Fare Assistance (LFA); children's education support; marriage grant.\n\nSend your CV on WhatsApp to Naeem Saleem at 0301 6001826 to apply. Second contact: 0335 4007150.",
+    "contact": 923016001826,
+    "featured": false,
+    "applyLink": "https://wa.me/923016001826"
   }
 ]
