@@ -1528,7 +1528,7 @@
   },
   {
     "id": "job-139",
-    "timestamp": "2026-11-20T16:07:00+05:00",
+    "timestamp": "2026-11-24T16:06:45+05:00",
     "company": "Rite Pharmaceuticals Pvt. Ltd.",
     "title": "TM / STM / AFM",
     "location": "FAISALABAD",
@@ -2947,7 +2947,7 @@
   },
   {
     "id": "job-268",
-    "timestamp": "2026-11-20T16:07:00+05:00",
+    "timestamp": "2026-11-24T16:06:45+05:00",
     "company": "Highnoon Laboratories",
     "title": "TM",
     "location": "FAISALABAD",
@@ -3153,5 +3153,60 @@
     "contact": 923016001826,
     "featured": false,
     "applyLink": "https://wa.me/923016001826"
+  },
+  {
+    "id": "job-287",
+    "timestamp": "2026-11-24T16:06:45+05:00",
+    "company": "Wimits Pharma",
+    "title": "TM / PS",
+    "location": "LAHORE",
+    "description": "Wimits Pharma is hiring a Territory Manager / Product Specialist (TM / PS) in Lahore. Territories: Garhi Shahu, Dharampura, Al Faisal Town and Paragon City.\n\nRequirements: Age up to 25 years; minimum 1 year of experience.\n\nOffers: Attractive salary package plus incentives; internal promotion; learning and growing environment; medical insurance; career growth.\n\nSend your CV on WhatsApp to the ASM at 0334 4017450 to apply.",
+    "contact": 923344017450,
+    "featured": false,
+    "applyLink": "https://wa.me/923344017450"
+  },
+  {
+    "id": "job-288",
+    "timestamp": "2026-11-24T16:06:45+05:00",
+    "company": "confidential",
+    "title": "Female Territory Manager (Gyn/Peeds Group)",
+    "location": "FAISALABAD",
+    "description": "A well-known pharmaceutical company in Faisalabad is hiring a Female Territory Manager for its Gyn / Peeds Group. The employer has not disclosed the company name in this advertisement, so this listing is shown as Confidential — the hiring manager will share company details with shortlisted candidates.\n\nRequirements: FA / BA.\n\nThe company offers an attractive salary package, monthly incentive, provident fund, career growth and internal promotion.\n\nSend your CV on WhatsApp only to 0333 6372562.",
+    "contact": 923336372562,
+    "featured": false,
+    "applyLink": "https://wa.me/923336372562"
+  },
+  {
+    "id": "job-289",
+    "timestamp": "2026-11-24T16:06:45+05:00",
+    "company": "Orion Medisave Pharmaceutical",
+    "title": "Assistant ASM",
+    "location": "JHANG",
+    "description": "Orion Medisave Pharmaceutical is hiring an Assistant Area Sales Manager (Assistant ASM) in Jhang.\n\nRequirements: Graduate; minimum 6 months of experience.\n\nOffers: Attractive salary package; internal promotion; incentive; annual increments; career growth.\n\nSend your CV on WhatsApp only to Ch Sajid Hussain at 0300 7298949 to apply.",
+    "contact": 923007298949,
+    "featured": false,
+    "applyLink": "https://wa.me/923007298949"
+  },
+  {
+    "id": "job-290",
+    "timestamp": "2026-11-24T16:06:45+05:00",
+    "company": "Wilshire Pharmaceutical Pvt",
+    "title": "Medical Information Officer",
+    "location": "JHANG",
+    "description": "Wilshire Pharmaceutical Pvt is hiring a Medical Information Officer in Jhang. Areas: Gojra, Bhowana and AP Sial.\n\nRequirements: Only experienced candidates can apply; B.Sc / B.A.\n\nOffers: Attractive salary; rewards for achievers; internal promotion; learning environment.\n\nSend your CV on WhatsApp to Muhammad Tariq (DFM) at 0334 6336723 to apply.",
+    "contact": 923346336723,
+    "featured": false,
+    "applyLink": "https://wa.me/923346336723"
+  },
+  {
+    "id": "job-291",
+    "timestamp": "2026-11-24T16:06:45+05:00",
+    "company": "Scilife Pharma",
+    "title": "Medical Representative (S.I.M)",
+    "location": "FAISALABAD",
+    "description": "Scilife Pharma is hiring a Medical Representative (S.I.M) in Faisalabad (Allied + AFT Belt).\n\nRequirements: Must be a graduate (B.A, BSc or B.Com); experienced and fresh candidates can apply; good territory knowledge.\n\nOffers: Attractive salary package; learning atmosphere; fast career growth; internal promotions; handsome monthly and quarterly incentive; medical insurance from day one; foreign tour on achievement.\n\nContact 0307 3330487 to apply. Second contact: 0324 2770670.",
+    "contact": 923073330487,
+    "featured": false,
+    "applyLink": "https://wa.me/923073330487"
   }
 ]
