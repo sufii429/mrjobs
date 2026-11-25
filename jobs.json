@@ -424,7 +424,7 @@
   },
   {
     "id": "job-39",
-    "timestamp": "2026-11-20T16:07:00+05:00",
+    "timestamp": "2026-11-25T16:00:29+05:00",
     "company": "CCL Pharmaceuticals",
     "title": "Medical Information and Relationships Officer",
     "location": "FAISALABAD",
@@ -1946,7 +1946,7 @@
   },
   {
     "id": "job-177",
-    "timestamp": "2026-11-15T16:01:52+05:00",
+    "timestamp": "2026-11-25T16:00:29+05:00",
     "company": "Shaigan Pharmaceutical",
     "title": "FE & STM",
     "location": "FAISALABAD",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "job-194",
-    "timestamp": "2026-11-05T16:00:00+05:00",
+    "timestamp": "2026-11-25T16:00:29+05:00",
     "company": "Nuzzer Nutrition",
     "title": "Female Candidate",
     "location": "JHANG",
@@ -2881,7 +2881,7 @@
   },
   {
     "id": "job-262",
-    "timestamp": "2026-11-19T16:00:00+05:00",
+    "timestamp": "2026-11-25T16:00:29+05:00",
     "company": "Standpharm Pvt Ltd",
     "title": "MSO",
     "location": "JHANG",
@@ -3208,5 +3208,60 @@
     "contact": 923073330487,
     "featured": false,
     "applyLink": "https://wa.me/923073330487"
+  },
+  {
+    "id": "job-292",
+    "timestamp": "2026-11-25T16:00:29+05:00",
+    "company": "Qourum Pharma",
+    "title": "Product Specialist (Gynae Specialty Group)",
+    "location": "FAISALABAD",
+    "description": "Qourum Pharma is hiring a Product Specialist (Gynae Specialty Group) in Faisalabad (Satiana Road Belt). Male and female candidates can apply. Consultant working.\n\nRequirements: B.A / B.Com / BSc; minimum 1 to 2 years of experience in pharma.\n\nOffers: Learning environment; handsome salary package; 0-pack incentive; internal promotions; health insurance; maternity allowance; provident fund.\n\nSend your CV on WhatsApp to 0318 7030811 to apply.",
+    "contact": 923187030811,
+    "featured": false,
+    "applyLink": "https://wa.me/923187030811"
+  },
+  {
+    "id": "job-293",
+    "timestamp": "2026-11-25T16:00:29+05:00",
+    "company": "AGP Limited",
+    "title": "TM / STM / ETM",
+    "location": "FAISALABAD",
+    "description": "AGP Limited requires TM / STM / ETM in Faisalabad (Satiyana Road Belt).\n\nRequirements: Minimum 1 year of experience in any reputable company (mandatory).\n\nOffers: Handsome salary; professional growth; internal promotion; lucrative monthly incentive; annual bonus; health insurance.\n\nSend your CV on WhatsApp to Sr RSM Sajid Gilani at 0300 6554271 to apply.",
+    "contact": 923006554271,
+    "featured": false,
+    "applyLink": "https://wa.me/923006554271"
+  },
+  {
+    "id": "job-294",
+    "timestamp": "2026-11-25T16:00:29+05:00",
+    "company": "Barrett Hodgson Pakistan",
+    "title": "Medical Sales Officer",
+    "location": "D G KHAN",
+    "description": "Barrett Hodgson Pakistan requires a young, energetic Medical Sales Officer to be based at D G Khan. Fresh candidates can also apply.\nBarrett Hodgson offers: attractive salary package, good incentive policy, attractive allowances, bike policy, profit sharing, annual bonuses, leave encashment, career growth, internal promotion, health insurance & hospitalization, and a friendly working environment.\nEligibility: B.Sc, BS, MSc or BBA. B.A / B.Com candidates should have 1-2 years of experience. Age limit: maximum 28 years.\nHow to apply: WhatsApp your CV to M Ali (DSAM) at 0333 2925212. Imran Shah (AM) can also be reached at 0333 7493249.",
+    "contact": 923329251212,
+    "featured": false,
+    "applyLink": "https://wa.me/923329251212"
+  },
+  {
+    "id": "job-295",
+    "timestamp": "2026-11-25T16:00:29+05:00",
+    "company": "Nabi Qasim Pharmaceuticals",
+    "title": "Medical Representative",
+    "location": "TOBA TEK SINGH",
+    "description": "Nabi Qasim Pharmaceuticals is hiring a Medical Representative (Gynea Group) in Toba Tek Singh.\n\nRequirements: Good communication and presentation skills; strong relationship-building abilities; passionate and target-oriented; relevant pharma sales experience will be preferred.\n\nContact Rehan Asif on Call / WhatsApp at 0302 6003677 to apply.",
+    "contact": 923026003677,
+    "featured": false,
+    "applyLink": "https://wa.me/923026003677"
+  },
+  {
+    "id": "job-296",
+    "timestamp": "2026-11-25T16:00:29+05:00",
+    "company": "Metier Brooks (Brookes Pharma)",
+    "title": "SPO / SSPO",
+    "location": "JHANG",
+    "description": "Metier Brooks (Brookes Pharma) is hiring SPO & SSPO for its New Extended (Pyodine + Injectable) Group in Jhang (local base).\n\nRequirements: Must be a Graduate; experience preferably in the injectable portfolio.\n\nOffers: Attractive salary package; internal promotion; attractive incentive policy; 2 annual bonuses and increments; career growth.\n\nSend your CV on WhatsApp to 0324 6478234 to apply. Second contact: 0315 7473602.",
+    "contact": 923246478234,
+    "featured": false,
+    "applyLink": "https://wa.me/923246478234"
   }
 ]
