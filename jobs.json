@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-23T15:58:52+05:00",
+    "timestamp": "2026-11-26T15:57:52+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "job-182",
-    "timestamp": "2026-11-03T16:01:37+05:00",
+    "timestamp": "2026-11-26T15:57:52+05:00",
     "company": "confidential",
     "title": "TM / STM",
     "location": "FAISALABAD",
@@ -2078,7 +2078,7 @@
   },
   {
     "id": "job-189",
-    "timestamp": "2026-11-13T16:01:34+05:00",
+    "timestamp": "2026-11-26T15:57:52+05:00",
     "company": "Global Pharmaceutical (Pvt.) Ltd.",
     "title": "SPO",
     "location": "FAISALABAD",
@@ -3263,5 +3263,60 @@
     "contact": 923246478234,
     "featured": false,
     "applyLink": "https://wa.me/923246478234"
+  },
+  {
+    "id": "job-297",
+    "timestamp": "2026-11-26T15:57:52+05:00",
+    "company": "Paramount Pharmaceuticals",
+    "title": "Area Manager (Sales & Marketing)",
+    "location": "FAISALABAD",
+    "description": "Paramount Pharmaceuticals (an Islamabad-based pharmaceutical manufacturing company) is hiring an Area Manager (Sales & Marketing) for Faisalabad.\n\nRequirements: Strong knowledge of pharmaceutical products and the local market; established doctor contacts in the assigned territory; proven pharma sales & marketing experience; excellent communication, negotiation and relationship-management skills; ability to develop market coverage, lead sales activities and achieve targets.\n\nSend your CV on WhatsApp to 0346 8635321 to apply. You can also email your CV to hr@paramount.net.pk. Last date to apply: 5 December 2026.",
+    "contact": 923468635321,
+    "featured": false,
+    "applyLink": "https://wa.me/923468635321"
+  },
+  {
+    "id": "job-298",
+    "timestamp": "2026-11-26T15:57:52+05:00",
+    "company": "Paramount Pharmaceuticals",
+    "title": "Area Manager (Sales & Marketing)",
+    "location": "TOBA TEK SINGH",
+    "description": "Paramount Pharmaceuticals (an Islamabad-based pharmaceutical manufacturing company) is hiring an Area Manager (Sales & Marketing) for Toba Tek Singh.\n\nRequirements: Strong knowledge of pharmaceutical products and the local market; established doctor contacts in the assigned territory; proven pharma sales & marketing experience; excellent communication, negotiation and relationship-management skills; ability to develop market coverage, lead sales activities and achieve targets.\n\nSend your CV on WhatsApp to 0346 8635321 to apply. You can also email your CV to hr@paramount.net.pk. Last date to apply: 5 December 2026.",
+    "contact": 923468635321,
+    "featured": false,
+    "applyLink": "https://wa.me/923468635321"
+  },
+  {
+    "id": "job-299",
+    "timestamp": "2026-11-26T15:57:52+05:00",
+    "company": "Paramount Pharmaceuticals",
+    "title": "Area Manager (Sales & Marketing)",
+    "location": "MULTAN",
+    "description": "Paramount Pharmaceuticals (an Islamabad-based pharmaceutical manufacturing company) is hiring an Area Manager (Sales & Marketing) for Multan.\n\nRequirements: Strong knowledge of pharmaceutical products and the local market; established doctor contacts in the assigned territory; proven pharma sales & marketing experience; excellent communication, negotiation and relationship-management skills; ability to develop market coverage, lead sales activities and achieve targets.\n\nSend your CV on WhatsApp to 0346 8635321 to apply. You can also email your CV to hr@paramount.net.pk. Last date to apply: 5 December 2026.",
+    "contact": 923468635321,
+    "featured": false,
+    "applyLink": "https://wa.me/923468635321"
+  },
+  {
+    "id": "job-300",
+    "timestamp": "2026-11-26T15:57:52+05:00",
+    "company": "Shaigan Pharmaceutical",
+    "title": "TM / STM / FE",
+    "location": "JHANG",
+    "description": "Shaigan Pharmaceutical is hiring TM / STM / FE for its ESSO 20 Team in Jhang.\n\nRequirements: Graduate (B.A, BSc or B.Com); minimum 1 year of experience; age less than 30 years.\n\nOffers: Gross salary PKR 60,000 per month plus incentive; learning atmosphere; fast career growth; internal promotions; handsome monthly incentive; medical insurance; foreign tour on achievement.\n\nSend your CV on WhatsApp only (call or SMS) to Tanveer Iqbal at 0321 4145082 to apply.",
+    "contact": 923214145082,
+    "featured": false,
+    "applyLink": "https://wa.me/923214145082"
+  },
+  {
+    "id": "job-301",
+    "timestamp": "2026-11-26T15:57:52+05:00",
+    "company": "Kaizen Pharma",
+    "title": "SSPO (Gynae Group)",
+    "location": "JHANG",
+    "description": "Kaizen Pharma is hiring an SSPO (Gynae Group) in Jhang.\n\nRequirements: B.A / B.Com / BSc; minimum 1 to 2 years of experience in pharma.\n\nOffers: Learning environment; handsome salary package; lucrative incentive; internal promotions; health insurance; maternity allowance; provident fund.\n\nSend your CV on WhatsApp to 0300 6693051 to apply.",
+    "contact": 923006693051,
+    "featured": false,
+    "applyLink": "https://wa.me/923006693051"
   }
 ]
