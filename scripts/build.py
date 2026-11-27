@@ -243,9 +243,10 @@ PAGE_TMPL = """<!DOCTYPE html>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../contact.html">Contact</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../cookie-policy.html">Cookie Policy</a> &middot; <a href="../contact.html">Contact</a></div>
   </footer>
   <script src="../assets/share-card.js?v=1"></script>
+  <script src="../assets/cookie-consent.js?v=1"></script>
   <script>
     (function () {{
       var navToggle = document.getElementById('navToggle');
@@ -522,6 +523,7 @@ def minimal_sitemap():
         (SITE_URL + "/cities/karachi.html", None, "daily", "0.9"),
         (SITE_URL + "/about.html", None, "monthly", "0.5"),
         (SITE_URL + "/privacy.html", None, "monthly", "0.3"),
+        (SITE_URL + "/cookie-policy.html", None, "monthly", "0.3"),
         (SITE_URL + "/contact.html", None, "monthly", "0.3"),
     ])
 
@@ -572,7 +574,7 @@ GUIDE_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../contact.html">Contact</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../cookie-policy.html">Cookie Policy</a> &middot; <a href="../contact.html">Contact</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -623,6 +625,7 @@ ARTICLE_TMPL = """<!DOCTYPE html>
     </article>
   </main>
 {g_footer}
+  <script src="../assets/cookie-consent.js?v=1"></script>
 </body>
 </html>
 """
@@ -662,6 +665,7 @@ GUIDE_INDEX_TMPL = """<!DOCTYPE html>
     </div>
 {recommended}  </main>
 {g_footer}
+  <script src="../assets/cookie-consent.js?v=1"></script>
 </body>
 </html>
 """
@@ -877,7 +881,7 @@ CITY_FOOTER = """
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../contact.html">Contact</a></div>
+    <div class="footer-bottom">&copy; {year} MrJobs &ndash; Connecting Job Seekers with Pakistan&rsquo;s Pharma Industry<br />Built with ❤️ by <a href="https://sufyanaura.netlify.app/" target="_blank" rel="noopener">Sufyan Aura</a> &middot; <a href="../privacy.html">Privacy</a> &middot; <a href="../cookie-policy.html">Cookie Policy</a> &middot; <a href="../contact.html">Contact</a></div>
   </footer>
   <script>
     document.getElementById('navToggle').addEventListener('click', function () {{
@@ -927,6 +931,7 @@ CITY_PAGE_TMPL = """<!DOCTYPE html>
     <p class="city-more">Looking beyond {city}? <a href="../all-jobs.html">Browse all jobs across Pakistan</a>{other_city_link}.</p>
   </main>
 {c_footer}
+  <script src="../assets/cookie-consent.js?v=1"></script>
 </body>
 </html>
 """
@@ -1275,6 +1280,7 @@ def main():
         (SITE_URL + "/all-jobs.html", today_iso, "daily", "0.9"),
         (SITE_URL + "/about.html", today_iso, "monthly", "0.5"),
         (SITE_URL + "/privacy.html", today_iso, "monthly", "0.3"),
+        (SITE_URL + "/cookie-policy.html", today_iso, "monthly", "0.3"),
         (SITE_URL + "/contact.html", today_iso, "monthly", "0.3"),
         (SITE_URL + "/blog/", today_iso, "weekly", "0.6"),
     ]
