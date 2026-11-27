@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-26T15:57:52+05:00",
+    "timestamp": "2026-11-27T16:05:42+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -2078,7 +2078,7 @@
   },
   {
     "id": "job-189",
-    "timestamp": "2026-11-26T15:57:52+05:00",
+    "timestamp": "2026-11-27T16:05:42+05:00",
     "company": "Global Pharmaceutical (Pvt.) Ltd.",
     "title": "SPO",
     "location": "FAISALABAD",
@@ -2232,7 +2232,7 @@
   },
   {
     "id": "job-203",
-    "timestamp": "2026-11-13T16:01:34+05:00",
+    "timestamp": "2026-11-27T16:05:42+05:00",
     "company": "Genix Pharma",
     "title": "TM / STM",
     "location": "FAISALABAD",
@@ -2848,7 +2848,7 @@
   },
   {
     "id": "job-259",
-    "timestamp": "2026-11-18T16:00:00+05:00",
+    "timestamp": "2026-11-27T16:05:42+05:00",
     "company": "Tabros Pharmaceuticals Pvt Ltd",
     "title": "TM / STM (URO GYN Group)",
     "location": "LAHORE",
@@ -3318,5 +3318,60 @@
     "contact": 923006693051,
     "featured": false,
     "applyLink": "https://wa.me/923006693051"
+  },
+  {
+    "id": "job-302",
+    "timestamp": "2026-11-27T16:05:42+05:00",
+    "company": "confidential",
+    "title": "Product Specialist",
+    "location": "FAISALABAD",
+    "description": "A Medical Devices & Surgical Instruments company in Faisalabad is hiring a Product Specialist (PS) for its Surgery & Gynecology domain. The employer has not disclosed the company name in this advertisement (small franchise hiring), so this listing is shown as Confidential — the hiring manager will share company details with shortlisted candidates.\n\nRequirements: Female candidates only; minimum BSc / Pharm-D; good communication and convincing skills; fresh graduates can also apply.\n\nOffers: Attractive salary package plus incentives; professional training and growth opportunity; friendly working environment.\n\nSend your CV on WhatsApp to 0300 8512352 to apply. Last date to apply: 1 December 2026.",
+    "contact": 923008512352,
+    "featured": false,
+    "applyLink": "https://wa.me/923008512352"
+  },
+  {
+    "id": "job-303",
+    "timestamp": "2026-11-27T16:05:42+05:00",
+    "company": "Searle Pakistan",
+    "title": "Medical Representative (Iron Portfolio)",
+    "location": "LAHORE",
+    "description": "Searle Pakistan is hiring a Medical Representative for its Iron Portfolio (Ferinject / Maltofer) in Lahore, based at Lahore General Hospital (LGH).\n\nRequirements: Minimum qualification B.A / B.Com / B.Sc; minimum 6 months of experience in the same territory.\n\nOffers: Handsome salary package; learning environment; earning opportunity; career growth; incentive policy.\n\nCall or WhatsApp your CV to Waqas Tariq (RM) at 0300 8543184 to apply.",
+    "contact": 923008543184,
+    "featured": false,
+    "applyLink": "https://wa.me/923008543184"
+  },
+  {
+    "id": "job-304",
+    "timestamp": "2026-11-27T16:05:42+05:00",
+    "company": "Macter International Pvt Ltd",
+    "title": "PA / SPA / FE",
+    "location": "FAISALABAD",
+    "description": "Macter International Pvt Ltd is hiring a PA / SPA / FE for Gynae, Peads and GPs in Faisalabad (Satyana Road). Products: Titan Inj, Bismol, Sante.\n\nRequirements: Minimum Graduate; 2 to 3 years of experience in the said specialities and concerned areas; age maximum 28 to 30 years.\n\nOffers: Handsome salary package; quarterly lucrative incentive policy; internal promotion; friendly and learning environment; medical from 1st day; LFA of 1 gross salary; leave encashment; provident fund.\n\nSend your resume on WhatsApp to the RSM at 0310 4157970 to apply.",
+    "contact": 923104157970,
+    "featured": false,
+    "applyLink": "https://wa.me/923104157970"
+  },
+  {
+    "id": "job-305",
+    "timestamp": "2026-11-27T16:05:42+05:00",
+    "company": "Continental Pharma Belgium",
+    "title": "TM / STM",
+    "location": "FAISALABAD",
+    "description": "Continental Pharma Belgium urgently requires a male candidate for the post of TM / STM, based at Faisalabad. Areas: Satyana Road, Madina Town, Jaranwala, Shahkot. Products: Acabel, Ofis.\n\nRequirements: Minimum Graduate.\n\nOffers: Attractive salary packages; monthly incentive; learning and growing environment; career growth.\n\nWhatsApp your CV to 0300 1285147 to apply.",
+    "contact": 923001285147,
+    "featured": false,
+    "applyLink": "https://wa.me/923001285147"
+  },
+  {
+    "id": "job-306",
+    "timestamp": "2026-11-27T16:05:42+05:00",
+    "company": "Nabi Qasim Pharmaceutical",
+    "title": "Product Specialist",
+    "location": "FAISALABAD",
+    "description": "Nabi Qasim Pharmaceutical is hiring a Product Specialist in Faisalabad (Sargodha Road, Allied Hospital, Gulistan Colony).\n\nRequirements: At least 1 to 2 years of experience of sales in the Gynecology segment; experience in the same capacity as Product Specialist.\n\nOffers: Handsome salary package; internal promotions; career growth; excellent environment; zero pack monthly incentive.\n\nWhatsApp your CV to 0321 9600282 to apply (WhatsApp only — avoid calls, please). WhatsApp applications before 30 November.",
+    "contact": 923219600282,
+    "featured": false,
+    "applyLink": "https://wa.me/923219600282"
   }
 ]
