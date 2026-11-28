@@ -255,7 +255,7 @@
   },
   {
     "id": "job-24",
-    "timestamp": "2026-11-27T16:05:42+05:00",
+    "timestamp": "2026-11-28T16:02:46+05:00",
     "company": "Mass Pharma",
     "title": "PRODUCT SPECIALIST — DIABETES SPECIALTY GROUP",
     "location": "FAISALABAD",
@@ -1040,11 +1040,11 @@
   },
   {
     "id": "job-95",
-    "timestamp": "2026-10-18",
+    "timestamp": "2026-11-28T16:02:46+05:00",
     "company": "Hoechst Pakistan",
     "title": "Pharma Associate",
     "location": "FAISALABAD",
-    "description": "Hoechst Pakistan (formerly Sanofi), a fast-growing leading pharmaceutical company, invites applications from dynamic and result oriented candidates for Faisalabad. Position: Pharma Associate.\nCandidate profile: Bachelor's degree, preferably science / Pharmacy / Life sciences; relevant pharmaceutical sales experience; strong communication, presentation and interpersonal skills; target oriented and self-motivated.\nWhat we offer: competitive salary & attractive incentive, training and learning opportunity, professional growth and career development, bike loan policy.\nHow to apply: submit your application at adnanali.maliik@hoechst.com.pk by 22nd October 2026 — or drop your CV on WhatsApp 0345-7863380.",
+    "description": "Hoechst Pakistan (formerly Sanofi), a fast-growing leading pharmaceutical company, invites applications from dynamic and result oriented candidates for Faisalabad. Position: Pharma Associate.\nCandidate profile: Bachelor's degree, preferably science / Pharmacy / Life sciences; more than 5 years of pharmaceutical sales experience, preferably in injectable antibiotics; strong communication, presentation and interpersonal skills; target oriented and self-motivated.\nWhat we offer: competitive salary & attractive incentive, training and learning opportunity, professional growth and career development, bike loan policy.\nHow to apply: submit your application at adnanali.maliik@hoechst.com.pk by 28th November 2026 — or drop your CV on WhatsApp 0345-7863380.",
     "contact": "adnanali.maliik@hoechst.com.pk",
     "featured": false,
     "applyLink": "mailto:adnanali.maliik@hoechst.com.pk",
@@ -3373,5 +3373,49 @@
     "contact": 923219600282,
     "featured": false,
     "applyLink": "https://wa.me/923219600282"
+  },
+  {
+    "id": "job-307",
+    "timestamp": "2026-11-28T16:02:46+05:00",
+    "company": "Pharmatec Pakistan",
+    "title": "Product Specialist",
+    "location": "FAISALABAD",
+    "description": "Pharmatec Pakistan is hiring a Product Specialist in Faisalabad (Satiana Road Belt).\n\nRequirements: Graduate; minimum 1 year of experience.\n\nOffers: Attractive Salary Package; Monthly Incentive; Annual Increment; Health Insurance; Learning & Good Environment; Provident Fund.\n\nSend your CV on WhatsApp to Riaz Shahid at 0321 6692921 to apply.",
+    "contact": 923216692921,
+    "featured": false,
+    "applyLink": "https://wa.me/923216692921"
+  },
+  {
+    "id": "job-308",
+    "timestamp": "2026-11-28T16:02:46+05:00",
+    "company": "Efroze Pharma",
+    "title": "TM / STM / PS",
+    "location": "FAISALABAD",
+    "description": "Efroze Pharma (Ortho segment) urgently requires energetic candidates for the posts of TM / STM / PS, based at Faisalabad.\n\nRequirements: Graduate (B.A, BSc or B.Com); minimum 1 year of experience.\n\nOffers: Attractive Salary Package; Learning Atmosphere; Fast Career Growth; Internal Promotion; Monthly Incentive; Medical Insurance.\n\nSend your CV to M. Ali Rana (Area Sales Manager) at 0321 4584665 to apply.",
+    "contact": 923214584665,
+    "featured": false,
+    "applyLink": "https://wa.me/923214584665"
+  },
+  {
+    "id": "job-309",
+    "timestamp": "2026-11-28T16:02:46+05:00",
+    "company": "Genetics Pharmaceuticals",
+    "title": "SPO / SSPO / SE",
+    "location": "FAISALABAD",
+    "description": "Genetics Pharmaceuticals urgently requires energetic, hard working male / female candidates for the posts of SPO, SSPO and SE for the Allied Hospital Belt, Faisalabad (Allied Hospital, Gulistan Colony, G.M. Abad; out stations Chiniot, Sangla, Jhumra).\n\nRequirements: Graduation (BSc or B.A); minimum 1 year of experience; area knowledge and good relations with Gynaecologist doctors.\n\nOffers: Attractive Salary Package; attractive incentives (zero pack monthly); internal promotion; excellent learning environment; career growth; foreign tour on achievement; health insurance policy.\n\nSend your CV on WhatsApp to 0322 6002102 to apply.",
+    "contact": 923226002102,
+    "featured": false,
+    "applyLink": "https://wa.me/923226002102"
+  },
+  {
+    "id": "job-310",
+    "timestamp": "2026-11-28T16:02:46+05:00",
+    "company": "Hoechst Pakistan",
+    "title": "Pharma Associate",
+    "location": "SARGODHA",
+    "description": "Hoechst Pakistan (formerly Sanofi), a fast-growing leading pharmaceutical company, invites applications from dynamic and result oriented candidates for Sargodha. Position: Pharma Associate.\n\nCandidate profile: Bachelor's degree, preferably science / Pharmacy / Life sciences; more than 5 years of pharmaceutical sales experience, preferably in injectable antibiotics; strong communication, presentation and interpersonal skills; target oriented and self-motivated.\n\nWhat we offer: competitive salary & attractive incentive, training and learning opportunity, professional growth and career development, bike loan policy.\n\nHow to apply: submit your application at adnanali.maliik@hoechst.com.pk by 28th November 2026 — or drop your CV on WhatsApp 0345-7863380.",
+    "contact": "adnanali.maliik@hoechst.com.pk",
+    "featured": false,
+    "applyLink": "mailto:adnanali.maliik@hoechst.com.pk"
   }
 ]
